@@ -6,84 +6,164 @@
     initial-scale=1.0">
     <title>Jesus Winner Ministry Rongai</title>
     <link rel="stylesheet" href="css/style.css">
+</head>
 
 <body>
 
-     <nav>
+     <nav class="main-nav">
+        <button class="mobile-menu-toggle" aria-label="Open navigation menu">
+    ☰
+</button>
+
+    <div class="nav-brand">
+        <a href="#home">
+            <span class="brand-main">JESUS WINNER MINISTRY</span>
+            <span class="brand-location">RONGAI</span>
+        </a>
+    </div>
 
     <ul class="nav-links">
 
+        <li><a href="#home">Home</a></li>
+
+        <li><a href="#leadership">Leadership</a></li>
+
         <li><a href="#about">About</a></li>
-
-        <li><a href="#vision">Vision</a></li>
-
-        <li><a href="#services">Services</a></li>
 
         <li><a href="#ministries">Ministries</a></li>
 
+        <li><a href="#services">Services</a></li>
+
         <li><a href="#events">Events</a></li>
 
-        <li><a href="#gallery">Gallery</a></li>
+<li><a href="#media">Media</a></li>
 
-       <li>
-    <a href="https://www.google.com/maps/place/Jesus+Winner+Ministry+Ongata+Rongai/data=!4m2!3m1!1s0x0:b039ae56baa09148?sa=X&ved=1t:2428&ictx=111" target="_blank" rel="noopener noreferrer">
-        Location
-    </a>
+<li><a href="#join-us">Join Us</a></li>
+
+<li class="more-dropdown">
+
+    <button class="more-toggle" type="button" aria-expanded="false">
+    More ▾
+</button>
+
+    <div class="more-menu">
+
+        <a href="#gallery">Gallery</a>
+
+        <a href="#visit-us">Visit Us</a>
+
+        <a href="#prayer">Prayer Request</a>
+
+        <a href="#contact">Contact</a>
+
+    </div>
+
 </li>
-        <li><a href="#contact">Contact</a></li>
-
     </ul>
 
-</nav>
-    <!-- =====================================================
-     HERO SECTION
-====================================================== -->
+    <div class="nav-actions">
 
-<section class="hero" id="home">
+        <a href="#live-service" class="nav-live">
+            <span class="live-dot"></span>
+            LIVE
+        </a>
 
-    <div class="hero-overlay"></div>
+        <div class="social-dropdown">
 
-    <div class="hero-content">
+            <button class="social-toggle">
+                Social ▾
+            </button>
 
-        <div class="hero-badge">
-    <span>WELCOME TO</span>
-    <strong>JESUS WINNER MINISTRY</strong>
-    <small>RONGAI</small>
-</div>
+            <div class="social-menu">
 
-       
+                <a href="https://www.youtube.com/@jesuswinnerministryongatar5389"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    YouTube
+                </a>
 
-        <h1>
-            Faith. Hope. Love.
-        </h1>
+                <a href="https://www.tiktok.com/@jesuswinnerrongai"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    TikTok
+                </a>
 
-        <p>
-            A place where lives are transformed,
-            faith is strengthened, and people discover
-            their God-given purpose through Christ.
-        </p>
+                <a href="#" target="_blank">
+                    Facebook
+                </a>
 
-        <div class="hero-buttons">
+                <a href="#" target="_blank">
+                    Instagram
+                </a>
 
-            <a href="#services" class="btn btn-primary">
-                Join Us This Sunday
-            </a>
-
-            <a href="#about" class="btn btn-secondary">
-                Discover Our Story
-            </a>
-            <a href="#live-service" class="hero-live-btn">
-    <span class="live-dot"></span>
-    ENTER LIVE CHURCH SERVICE
-</a>
+            </div>
 
         </div>
 
     </div>
 
+</nav>
+
+<!-- =====================================================
+     HERO SECTION
+====================================================== -->
+
+    <section class="hero" id="home">
+
+    <div class="hero-slide active"
+         style="background-image: url('images/church-1.jpg');"></div>
+
+    <div class="hero-slide"
+         style="background-image: url('images/church-2.jpg');"></div>
+
+    <div class="hero-slide"
+         style="background-image: url('images/worship.jpg');"></div>
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+
+        <span class="hero-welcome">
+            WELCOME TO
+        </span>
+
+       <h1 class="hero-title">
+    <span>Jesus Winner Ministry</span>
+    <small>Rongai</small>
+</h1>
+        <p class="hero-verse">
+            <em>
+                “I was glad when they said to me,
+                “Let us go to the house of the Lord.”
+            </em>
+            <small>— Psalm 122:1</small>
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#live-service" class="hero-action live-action">
+                <span class="action-icon">▶</span>
+                <span>JOIN LIVE SERVICE</span>
+            </a>
+
+            <a href="#join-us" class="hero-action join-action">
+                <span class="action-icon">✦</span>
+                <span>JOIN US</span>
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="hero-dots">
+        <span class="hero-dot active"></span>
+        <span class="hero-dot"></span>
+        <span class="hero-dot"></span>
+    </div>
+
 </section>
-    
-   <!-- =====================================================
+
+ <!----===================================================
      ABOUT OUR CHURCH
 ====================================================== -->
 
@@ -2360,3 +2440,151 @@
  Faith . Hope . Love
 
 </div>
+
+<script>
+    const moreToggle = document.querySelector(".more-toggle");
+    const moreDropdown = document.querySelector(".more-dropdown");
+
+    moreToggle.addEventListener("click", function () {
+
+        const isOpen = moreDropdown.classList.toggle("open");
+
+        moreToggle.setAttribute(
+            "aria-expanded",
+            isOpen
+        );
+
+    });
+
+    document.addEventListener("click", function (event) {
+
+        if (!moreDropdown.contains(event.target)) {
+
+            moreDropdown.classList.remove("open");
+
+            moreToggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+        }
+
+    });
+    /* =========================================================
+   HERO BACKGROUND SLIDER
+   ========================================================= */
+
+const heroSlides = document.querySelectorAll(".hero-slide");
+const heroDots = document.querySelectorAll(".hero-dot");
+
+let currentHeroSlide = 0;
+
+function showHeroSlide(index) {
+
+    heroSlides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === index);
+    });
+
+    heroDots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === index);
+    });
+}
+
+
+function nextHeroSlide() {
+
+    currentHeroSlide++;
+
+    if (currentHeroSlide >= heroSlides.length) {
+        currentHeroSlide = 0;
+    }
+
+    showHeroSlide(currentHeroSlide);
+}
+
+
+/* Change image every 6 seconds */
+
+setInterval(nextHeroSlide, 6000);
+
+
+/* Allow the dots to be clicked */
+
+heroDots.forEach((dot, index) => {
+
+    dot.addEventListener("click", () => {
+
+        currentHeroSlide = index;
+
+        showHeroSlide(currentHeroSlide);
+
+    });
+
+});
+/* =========================================================
+   HERO TYPING ANIMATION
+   ========================================================= */
+
+/* =========================================================
+   HERO TITLE TYPING ANIMATION
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    /* =========================================
+   JESUS WINNER MINISTRY TYPING EFFECT
+   ========================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+   
+
+});
+/* =========================================================
+   HERO BACKGROUND SLIDESHOW
+   ========================================================= */
+
+const heroSlides = document.querySelectorAll(".hero-slide");
+const heroDots = document.querySelectorAll(".hero-dot");
+
+let currentHeroSlide = 0;
+
+function showHeroSlide(index) {
+
+    heroSlides.forEach((slide, i) => {
+
+        slide.classList.toggle(
+            "active",
+            i === index
+        );
+
+    });
+
+    heroDots.forEach((dot, i) => {
+
+        dot.classList.toggle(
+            "active",
+            i === index
+        );
+
+    });
+}
+
+function nextHeroSlide() {
+
+    currentHeroSlide++;
+
+    if (currentHeroSlide >= heroSlides.length) {
+
+        currentHeroSlide = 0;
+
+    }
+
+    showHeroSlide(currentHeroSlide);
+}
+
+setInterval(nextHeroSlide, 6000);
+</script>
+
+</body>
+</html>
