@@ -15,12 +15,11 @@
     ☰
 </button>
 
-    <div class="nav-brand">
-        <a href="#home">
-            <span class="brand-main">JESUS WINNER MINISTRY</span>
-            <span class="brand-location">RONGAI</span>
-        </a>
-    </div>
+   <div class="nav-brand">
+    <a href="#home">
+        <img src="images/Church/church.jpg/jwmtranslogo.png" alt="Jesus Winner Ministry Rongai Logo">
+    </a>
+</div>
 
    <ul class="nav-links">
 
@@ -89,10 +88,11 @@
                     TikTok
                 </a>
 
-                <a href="#" target="_blank">
+                <a href="https://www.facebook.com/jesuswinnerrongai"
+                   target="_blank"
+                   rel="noopener noreferrer">
                     Facebook
                 </a>
-
                 <a href="#" target="_blank">
                     Instagram
                 </a>
@@ -109,77 +109,249 @@
      HERO SECTION
 ====================================================== -->
 
-    <section class="hero" id="home">
+   <!-- =========================================================
+     CINEMATIC HERO SECTION
+     JESUS WINNER MINISTRY RONGAI
+========================================================= -->
 
-    <div class="hero-slide active">
+<section class="hero" id="home">
 
-    <video class="hero-video" autoplay muted playsinline>
-        <source src="videos/Pastors/pastor.mp4" type="video/mp4">
+
+    <!-- =====================================================
+         OPENING WELCOME BACKGROUND
+         Displays before the videos begin
+    ====================================================== -->
+
+    <div
+        class="hero-intro-background"
+        aria-hidden="true"
+    ></div>
+
+
+    <!-- =====================================================
+         VIDEO SLIDES
+    ====================================================== -->
+
+    <div class="hero-video-stage">
+
+<!-- BLURRED BACKGROUND VIDEO -->
+<div class="hero-video-background">
+    <video
+        id="heroBackgroundVideo"
+        muted
+        playsinline
+        loop
+        preload="auto"
+    >
+        <source
+            src="videos/Ministries/hero1.mp4"
+            type="video/mp4"
+        >
     </video>
-
 </div>
 
-<div class="hero-slide active">
 
-    <!-- Blurred background video -->
-    <video class="hero-video-bg" autoplay muted loop playsinline>
-        <source src="videos/pastor/pastor.mp4" type="video/mp4">
-    </video>
 
-    <!-- Main pastor video -->
-    <video class="hero-video" autoplay muted playsinline>
-        <source src="videos/pastor/pastor.mp4" type="video/mp4">
-    </video>
+        <!-- =================================================
+             VIDEO 1 — PORTRAIT / TIKTOK EDIT
+        ================================================== -->
 
-</div>
+        <div
+            class="hero-video-slide active"
+            data-slide="1"
+        >
 
-<div class="hero-slide"
-     style="background-image: url('images/Church/church.jpg/praise.jpg');"></div>
+            <video
+                class="hero-video"
+                id="heroVideo1"
+                muted
+                playsinline
+                preload="auto"
+            >
 
-    <div class="hero-overlay"></div>
+                <source
+                    src="videos/Ministries/hero1.mp4"
+                    type="video/mp4"
+                >
 
-    <div class="hero-content">
+                Your browser does not support
+                HTML5 video.
 
-        <span class="hero-welcome">
-            WELCOME TO
-        </span>
-
-       <h1 class="hero-title">
-    <span>Jesus Winner Ministry</span>
-    <small>Rongai</small>
-</h1>
-        <p class="hero-verse">
-            <em>
-                “I was glad when they said to me,
-                “Let us go to the house of the Lord.”
-            </em>
-            <small>— Psalm 122:1</small>
-        </p>
-
-        <div class="hero-buttons">
-
-            <a href="#live-service" class="hero-action live-action">
-                <span class="action-icon">▶</span>
-                <span>JOIN LIVE SERVICE</span>
-            </a>
-
-            <a href="#join-us" class="hero-action join-action">
-                <span class="action-icon">✦</span>
-                <span>JOIN US</span>
-            </a>
+            </video>
 
         </div>
 
+
+        <!-- =================================================
+             VIDEO 2
+        ================================================== -->
+
+        <div
+            class="hero-video-slide"
+            data-slide="2"
+        >
+
+            <video
+                class="hero-video"
+                id="heroVideo2"
+                muted
+                playsinline
+                preload="auto"
+            >
+
+                <source
+                    src="videos/Ministries/hero2.mp4"
+                    type="video/mp4"
+                >
+
+                Your browser does not support
+                HTML5 video.
+
+            </video>
+
+        </div>
+
+
     </div>
 
-    <div class="hero-dots">
-        <span class="hero-dot active"></span>
-        <span class="hero-dot"></span>
-        <span class="hero-dot"></span>
+
+    <!-- =====================================================
+         CINEMATIC DARK OVERLAY
+         Keeps text/buttons readable
+    ====================================================== -->
+
+    <div
+        class="hero-overlay"
+        aria-hidden="true"
+    ></div>
+
+
+    <!-- =====================================================
+         CENTERED WELCOME MESSAGE
+         This disappears after approximately 5 seconds
+    ====================================================== -->
+
+    <div class="hero-welcome-content">
+
+
+        <span class="hero-welcome">
+            KARIBU
+        </span>
+
+
+        <h1 class="hero-title">
+            Jesus Winner Ministry
+        </h1>
+
+
+        <p class="hero-location">
+            Ongata Rongai
+        </p>
+
+
+        <div
+            class="hero-welcome-line"
+            aria-hidden="true"
+        ></div>
+
+
+        <p class="hero-verse">
+
+            <em>
+                “I was glad when they said to me,
+                ‘Let us go to the house of the Lord.’”
+            </em>
+
+            <span>
+                — Psalm 122:1
+            </span>
+
+        </p>
+
+
     </div>
+
+
+    <!-- =====================================================
+         PERMANENT HERO ACTIONS
+
+         These remain visible even after the welcome
+         message disappears.
+    ====================================================== -->
+
+    <div class="hero-actions">
+
+
+        <!-- LIVE SERVICE -->
+
+        <a
+            href="#live-service"
+            class="hero-action live-action"
+        >
+
+            <span
+                class="action-icon"
+                aria-hidden="true"
+            >
+                ▶
+            </span>
+
+            <span>
+                JOIN LIVE SERVICE
+            </span>
+
+        </a>
+
+
+        <!-- JOIN US -->
+
+        <a
+            href="#join-us"
+            class="hero-action join-action"
+        >
+
+            <span
+                class="action-icon"
+                aria-hidden="true"
+            >
+                ✦
+            </span>
+
+            <span>
+                JOIN US
+            </span>
+
+        </a>
+
+
+    </div>
+
+
+    <!-- =====================================================
+         VIDEO INDICATORS
+    ====================================================== -->
+
+    <div
+        class="hero-dots"
+        aria-label="Hero video navigation"
+    >
+
+        <span
+            class="hero-dot active"
+            data-slide="1"
+            aria-label="Show first video"
+        ></span>
+
+        <span
+            class="hero-dot"
+            data-slide="2"
+            aria-label="Show second video"
+        ></span>
+
+    </div>
+
 
 </section>
-
  <!----===================================================
      ABOUT OUR CHURCH
 ====================================================== -->
@@ -211,11 +383,10 @@
 
         <div class="about-image">
 
-            <img
-                src="images/church.jpg"
-                alt="Jesus Winner Ministry Rongai"
-            >
-
+           <img
+    src="images/Church/church.jpg/frontchurch.png"
+    alt="Jesus Winner Ministry Rongai Church Building"
+>
         </div>
 
 
@@ -288,7 +459,7 @@
 
         <span class="section-label">A MESSAGE FROM OUR PASTOR</span>
 
-        <h2>Meet Pastor Isaiah</h2>
+        <h2>Meet Pastor Isaiah K. Philip</h2>
 
         <div class="section-line"></div>
 
@@ -309,17 +480,21 @@
 
         <div class="pastor-image-area">
 
+             <div class="diagonal-word word-faith">FAITH</div>
+<div class="diagonal-word word-hope">HOPE</div>
+<div class="horizontal-word word-purpose"></div>
+
             <div class="pastor-image-frame">
 
                 <!-- Replace this with Pastor Isaiah's actual photo -->
-                <img src="images/pastor-isaiah.jpg"
+                <img src="images/Pastor/Rev-Isaiah.png"
                      alt="Pastor Isaiah of Jesus Winner Ministry Rongai">
 
             </div>
 
             <div class="pastor-name-badge">
                 <span>PASTOR</span>
-                <h3>Isaiah</h3>
+                <h3>Isaiah K. Philip</h3>
                 <p>Lead Pastor</p>
             </div>
 
@@ -409,9 +584,11 @@
         <div class="leader-card">
 
             <div class="leader-photo">
-                <span>Bishop Photo</span>
-            </div>
-
+    <img
+        src="images/Pastor/BishopEdward.png"
+        alt="Bishop Edward Mwai"
+    >
+</div>
             <h3>Bishop Edward Mwai</h3>
 
             <h4>Bishop &amp; Overall Ministry Leader</h4>
@@ -441,10 +618,12 @@
 
         <div class="leader-card">
 
-            <div class="leader-photo">
-                <span>Reverend Photo</span>
-            </div>
-
+           <div class="leader-photo">
+    <img
+        src="images/Pastor/pastorisaiah.png"
+        alt="Reverend Isaiah of Jesus Winner Ministry Rongai"
+    >
+</div>
             <h3>Reverend Isaiah</h3>
 
             <h4>Reverend &amp; Pastor, Jesus Winner Ministry Rongai</h4>

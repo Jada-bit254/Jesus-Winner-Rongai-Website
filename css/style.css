@@ -851,84 +851,174 @@ section h2::after {
    16. PASTOR SECTION
    ========================================================= */
 
-#pastor {
+.pastor-section {
+    background: linear-gradient(
+        135deg,
+        #071A52 0%,
+        #123E8C 45%,
+        #7A1630 100%
+    );
 
-    background:
-        var(--white);
+    padding: 55px 5%;
+
+    position: relative;
+    overflow: hidden;
+}
+.pastor-intro {
+    max-width: 800px;
+    margin: 0 auto 35px;
+    text-align: center;
+    color: var(--white);
+}
+.pastor-intro h2 {
+    color: var(--white);
 }
 
+.pastor-intro-text {
+    max-width: 650px;
+    margin: 15px auto 0;
+    line-height: 1.6;
+}
 
-.pastor-container {
-
-    max-width: 1100px;
-
-    margin: auto;
+.pastor-feature {
+    max-width: 1150px;
+    margin: 0 auto;
 
     display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
 
-    grid-template-columns:
-        350px 1fr;
-
-    gap: 60px;
+    gap: 40px;
 
     align-items: center;
 }
+/* ================================
+   PASTOR IMAGE
+================================ */
 
+.pastor-image-area {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
 
-.pastor-image img {
+.pastor-image-frame {
+    width: 100%;
+    max-width: 520px;
+    height: 520px;
 
-    width: 350px;
+    overflow: hidden;
 
-    height: 350px;
+    border-radius: 18px;
+
+    border: 5px solid var(--gold);
+
+    box-shadow: var(--shadow-large);
+}
+.pastor-image-frame img {
+    width: 100%;
+    height: 100%;
 
     object-fit: cover;
 
-    border-radius: 50%;
-
-    border:
-        8px solid
-        var(--gold);
-
-    box-shadow:
-        var(--shadow-large);
+    display: block;
 }
 
 
-.pastor-message h2 {
+/* ================================
+   PASTOR NAME BADGE
+================================ */
 
-    text-align: left;
+.pastor-name-badge {
+    position: absolute;
 
-    margin-bottom: 25px;
+    left: 25px;
+    bottom: 25px;
+
+    background: var(--white);
+
+    padding: 18px 25px;
+
+    border-left: 5px solid var(--gold);
+
+    box-shadow: var(--shadow-large);
+
+    border-radius: 8px;
+}
+
+.pastor-name-badge span {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    font-weight: 700;
+}
+
+.pastor-name-badge h3 {
+    margin: 4px 0;
+}
+
+.pastor-name-badge p {
+    margin: 0;
+    font-size: 14px;
 }
 
 
-.pastor-message h2::after {
+/* ================================
+   PASTOR MESSAGE
+================================ */
 
-    margin-left: 0;
+.pastor-content {
+    width: 100%;
+    max-width: 500px;
+
+    padding: 30px;
+
+    background: #f7f7f7;
+
+    border-radius: 18px;
+
+    border-left: 4px solid var(--gold);
+
+    box-shadow: var(--shadow);
+}
+.pastor-content h3 {
+    font-size: 30px;
+    line-height: 1.2;
+    margin: 12px 0 20px;
 }
 
-
-.pastor-message p {
-
-    color:
-        var(--muted-text);
-
-    font-size: 18px;
-
-    line-height: 1.9;
-
+.pastor-content p {
+    line-height: 1.6;
+    margin-bottom: 14px;
+}
+.pastor-content p {
+    line-height: 1.8;
     margin-bottom: 18px;
 }
 
 
-.pastor-message h3 {
+/* ================================
+   PASTOR SIGNATURE
+================================ */
 
-    color:
-        var(--burgundy);
+.pastor-signature {
+    margin-top: 30px;
 
-    margin-top: 25px;
+    padding-top: 20px;
 
-    font-size: 22px;
+    border-top: 1px solid #ddd;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.pastor-signature strong {
+    font-size: 20px;
+}
+
+.pastor-signature span {
+    font-size: 13px;
+    color: #666;
 }
 
 
@@ -1584,6 +1674,8 @@ section h2::after {
 
 .about-image {
     position: relative;
+    width: 100%;
+    max-width: 600px;
 }
 
 .about-image::after {
@@ -1609,9 +1701,14 @@ section h2::after {
 
     z-index: 1;
 
-    min-height: 400px;
+    width: 100%;
+    height: 450px;
 
     object-fit: cover;
+
+    border-radius: 15px;
+
+    display: block;
 }
 .about-highlights {
     grid-template-columns: 1fr;
@@ -2433,23 +2530,19 @@ section h2::after {
 
 /* =========================================
    MAIN PASTOR FEATURE
-========================================= */
-
+============================================ */ 
 .pastor-feature {
-    max-width: 1150px;
-    margin: auto;
+    max-width: 1250px;
+    margin: 0 auto;
 
     display: grid;
-    grid-template-columns: 0.9fr 1.1fr;
+    grid-template-columns: 1.15fr 0.85fr;
 
-    background: white;
-    border-radius: 30px;
+    gap: 50px;
 
-    overflow: hidden;
-
-    box-shadow:
-        0 25px 60px rgba(11, 61, 145, 0.12);
-}
+    align-items: center;
+    , 61, 145, 0.12);
+} 
 
 
 /* =========================================
@@ -2935,9 +3028,10 @@ section h2::after {
 
 @media (max-width: 500px) {
 
-    .pastor-section {
-        padding: 75px 5%;
-    }
+   .pastor-section {
+    background: var(--white);
+    padding: 55px 5%;
+}
 
     .pastor-image-frame {
         width: 270px;
@@ -6701,10 +6795,15 @@ nav ul li a {
 
 .nav-brand a {
     display: flex;
-    flex-direction: column;
-    line-height: 1.1;
+    align-items: center;
 }
 
+.nav-brand img {
+    height: 80px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+}
 .brand-main {
     color: var(--white);
     font-size: 16px;
@@ -8142,4 +8241,4808 @@ nav ul li a {
     z-index: 4;
 }
 
+.nav-brand img {
+    height: 100px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+    background: transparent;
+    mix-blend-mode: screen;
+}
+.pastor-image-area {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.pastor-image-frame {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.pastor-image-frame img {
+    display: block;
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+.diagonal-word {
+    position: absolute;
+
+    font-size: 55px;
+    font-weight: 800;
+
+    letter-spacing: 6px;
+
+    color: var(--gold);
+
+    opacity: 0.12;
+
+    z-index: 0;
+
+    pointer-events: none;
+}
+
+.word-faith {
+    top: 5%;
+    left: -45px;
+    transform: rotate(-90deg);
+}
+
+.word-hope {
+    top: 45%;
+    right: -70px;
+    transform: rotate(90deg);
+}
+
+.word-purpose {
+    bottom: 5%;
+    left: -35px;
+    transform: rotate(-90deg);
+}
+.pastor-image-frame {
+    position: relative;
+    z-index: 2;
+}
+/* =========================================================
+   NEW PASTOR MESSAGE SECTION
+   ========================================================= */
+
+.pastor-section {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+
+    padding: 70px 6%;
+
+    background: linear-gradient(
+        120deg,
+        #071A52 0%,
+        #123E8C 48%,
+        #7A1630 100%
+    );
+
+    color: #ffffff;
+}
+
+
+/* =========================
+   SECTION INTRO
+   ========================= */
+
+.pastor-intro {
+    width: 100%;
+    max-width: 1000px;
+
+    margin: 0 auto 45px;
+
+    text-align: center;
+}
+
+.pastor-intro .section-label {
+    color: #D4AF37;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.pastor-intro h2 {
+    margin: 12px 0 15px;
+
+    color: #ffffff;
+
+    font-size: clamp(32px, 4vw, 52px);
+
+    line-height: 1.1;
+}
+
+.pastor-intro .section-line {
+    width: 70px;
+    height: 4px;
+
+    margin: 20px auto;
+
+    background: #D4AF37;
+
+    border-radius: 5px;
+}
+
+.pastor-intro-text {
+    max-width: 700px;
+
+    margin: 0 auto;
+
+    color: rgba(255, 255, 255, 0.85);
+
+    font-size: 17px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================
+   MAIN FEATURE
+   ========================= */
+
+.pastor-feature {
+    width: 100%;
+    max-width: 1250px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+
+    gap: 55px;
+
+    align-items: center;
+}
+
+
+/* =========================
+   PASTOR IMAGE
+   ========================= */
+
+.pastor-image-area {
+    position: relative;
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+}
+
+.pastor-image-frame {
+    position: relative;
+
+    width: 100%;
+
+    max-width: 600px;
+
+    height: 620px;
+
+    overflow: hidden;
+
+    border-radius: 24px;
+
+    border: 5px solid #D4AF37;
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.35);
+
+    z-index: 2;
+}
+
+.pastor-image-frame img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+
+/* =========================
+   PASTOR NAME BADGE
+   ========================= */
+
+.pastor-name-badge {
+    position: absolute;
+
+    left: 30px;
+    bottom: 30px;
+
+    z-index: 4;
+
+    padding: 16px 24px;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    color: #071A52;
+
+    border-left: 5px solid #D4AF37;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.pastor-name-badge span {
+    display: block;
+
+    color: #8A1538;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+.pastor-name-badge h3 {
+    margin: 3px 0;
+
+    font-size: 22px;
+}
+
+.pastor-name-badge p {
+    margin: 0;
+
+    font-size: 13px;
+
+    color: #555;
+}
+
+
+/* =========================
+   MESSAGE CARD
+   ========================= */
+
+.pastor-content {
+    width: 100%;
+
+    max-width: 600px;
+
+    margin: 0;
+
+    padding: 42px;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    color: #222;
+
+    border-radius: 24px;
+
+    border-top: 5px solid #D4AF37;
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.25);
+}
+
+.pastor-content .small-heading {
+    color: #8A1538;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+.pastor-content h3 {
+    margin: 12px 0 24px;
+
+    color: #071A52;
+
+    font-size: clamp(28px, 3vw, 40px);
+
+    line-height: 1.15;
+}
+
+.pastor-content p {
+    margin-bottom: 16px;
+
+    color: #444;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================
+   SIGNATURE
+   ========================= */
+
+.pastor-signature {
+    margin-top: 25px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.pastor-signature strong {
+    color: #071A52;
+
+    font-size: 20px;
+}
+
+.pastor-signature span {
+    color: #777;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   DECORATIVE BACKGROUND
+   ========================= */
+
+.pastor-section::before {
+    content: "FAITH";
+
+    position: absolute;
+
+    top: 12%;
+
+    left: -70px;
+
+    font-size: 100px;
+
+    font-weight: 900;
+
+    letter-spacing: 8px;
+
+    color: rgba(255, 255, 255, 0.06);
+
+    transform: rotate(-90deg);
+
+    pointer-events: none;
+}
+
+.pastor-section::after {
+    content: "PURPOSE";
+
+    position: absolute;
+
+    right: -90px;
+
+    bottom: 12%;
+
+    font-size: 90px;
+
+    font-weight: 900;
+
+    letter-spacing: 8px;
+
+    color: rgba(255, 255, 255, 0.06);
+
+    transform: rotate(90deg);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .pastor-section {
+        padding: 60px 5%;
+    }
+
+    .pastor-feature {
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+    }
+
+    .pastor-image-frame {
+        max-width: 600px;
+
+        height: 560px;
+    }
+
+    .pastor-content {
+        max-width: 600px;
+
+        margin: 0 auto;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .pastor-section {
+        padding: 50px 20px;
+    }
+
+    .pastor-intro {
+        margin-bottom: 30px;
+    }
+
+    .pastor-intro-text {
+        font-size: 15px;
+    }
+
+    .pastor-feature {
+        gap: 30px;
+    }
+
+    .pastor-image-frame {
+        height: 450px;
+
+        border-width: 4px;
+
+        border-radius: 18px;
+    }
+
+    .pastor-name-badge {
+        left: 15px;
+        bottom: 15px;
+
+        padding: 12px 17px;
+    }
+
+    .pastor-name-badge h3 {
+        font-size: 18px;
+    }
+
+    .pastor-content {
+        padding: 28px 22px;
+
+        border-radius: 18px;
+    }
+
+    .pastor-content h3 {
+        font-size: 27px;
+    }
+
+    .pastor-content p {
+        font-size: 14px;
+
+        line-height: 1.65;
+    }
+
+    .pastor-section::before {
+        font-size: 60px;
+
+        left: -55px;
+    }
+
+    .pastor-section::after {
+        font-size: 55px;
+
+        right: -65px;
+    }
+}
+/* =========================================================
+   PASTOR SECTION - FINAL CLEAN DESIGN
+   ========================================================= */
+
+/* Keep the gradient ONLY inside the Pastor section */
+.pastor-section {
+    position: relative;
+    overflow: hidden;
+
+    background: linear-gradient(
+        120deg,
+        #071A52 0%,
+        #123E8C 48%,
+        #7A1630 100%
+    );
+
+    color: #ffffff;
+}
+
+
+/* Remove the decorative diagonal words completely */
+.pastor-section::before,
+.pastor-section::after {
+    content: none;
+}
+
+
+/* Pastor introduction */
+.pastor-intro {
+    position: relative;
+    z-index: 2;
+
+    text-align: center;
+}
+
+.pastor-intro h2 {
+    color: #ffffff;
+}
+
+
+/* Main layout */
+.pastor-feature {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 50px;
+
+    align-items: start;
+}
+
+
+/* =========================================================
+   PASTOR PHOTO
+   ========================================================= */
+
+.pastor-image-area {
+    position: relative;
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+}
+
+.pastor-image-frame {
+    width: 100%;
+    max-width: 560px;
+
+    height: 600px;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    border: 5px solid var(--gold);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+.pastor-image-frame img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+
+/* =========================================================
+   PASTOR NAME - CENTERED UNDER IMAGE
+   ========================================================= */
+
+.pastor-name-badge {
+    position: relative;
+
+    left: auto;
+    bottom: auto;
+
+    margin-top: 18px;
+
+    padding: 0;
+
+    background: transparent;
+
+    border: none;
+
+    box-shadow: none;
+
+    text-align: center;
+
+    color: #ffffff;
+}
+
+.pastor-name-badge span {
+    display: block;
+
+    color: var(--gold);
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+}
+
+.pastor-name-badge h3 {
+    margin: 5px 0 2px;
+
+    color: #ffffff;
+
+    font-size: 26px;
+}
+
+.pastor-name-badge p {
+    margin: 0;
+
+    color: rgba(255, 255, 255, 0.8);
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   MESSAGE CARD
+   ========================================================= */
+
+.pastor-content {
+    width: 100%;
+    max-width: 560px;
+
+    padding: 38px;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    color: #222;
+
+    border-radius: 20px;
+
+    border-top: 5px solid var(--gold);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.25);
+}
+
+.pastor-content h3 {
+    color: #071A52;
+
+    margin: 12px 0 22px;
+}
+
+.pastor-content p {
+    color: #444;
+
+    line-height: 1.7;
+
+    margin-bottom: 15px;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .pastor-feature {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+    }
+
+    .pastor-image-frame {
+        max-width: 600px;
+
+        height: 550px;
+    }
+
+    .pastor-content {
+        max-width: 600px;
+
+        margin: 0 auto;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .pastor-section {
+        padding: 50px 20px;
+    }
+
+    .pastor-image-frame {
+        height: 450px;
+
+        border-width: 4px;
+    }
+
+    .pastor-name-badge h3 {
+        font-size: 22px;
+    }
+
+    .pastor-content {
+        padding: 28px 22px;
+    }
+
+}
+ /* =========================================================
+    STOP PASTOR GRADIENT FROM AFFECTING OTHER SECTIONS
+    ========================================================= */
+
+#pastor-message {
+    background: linear-gradient(
+        120deg,
+        #071A52 0%,
+        #123E8C 48%,
+        #7A1630 100%
+    ) !important;
+
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* Leadership */
+#leadership {
+    background: var(--white) !important;
+    background-image: none !important;
+}
+
+
+/* Ministries */
+#ministries {
+    background: var(--white) !important;
+    background-image: none !important;
+}
+
+
+/* Also prevent the gradient from being inherited */
+#leadership *,
+#ministries * {
+    background-image: none;
+}
+
+
+/* Keep Pastor gradient only on Pastor section */
+#pastor-message {
+    isolation: isolate;
+}
+/* =========================================================
+   MINISTRIES — CLEAN SEPARATE SECTION
+   ========================================================= */
+
+#ministries {
+    background: #ffffff !important;
+    background-image: none !important;
+
+    padding: 80px 6%;
+
+    position: relative;
+
+    border-top: 1px solid #eeeeee;
+}
+
+
+/* Ministries heading */
+#ministries .section-heading {
+    background: transparent !important;
+    text-align: center;
+
+    margin-bottom: 50px;
+}
+
+
+/* Make sure nothing inside Ministries inherits the gradient */
+#ministries,
+#ministries > *,
+#ministries .section-heading,
+#ministries .section-heading > * {
+    background-image: none !important;
+}
+
+
+/* Give the section a subtle visual separation */
+#ministries::before {
+    content: "";
+
+    display: block;
+
+    width: 70px;
+    height: 4px;
+
+    background: var(--gold);
+
+    margin: 0 auto 35px;
+
+    border-radius: 5px;
+}
+/* =========================================================
+   MINISTRY IN ACTION — SEPARATE WHITE SECTION
+   ========================================================= */
+
+.pastor-media {
+    width: 100%;
+
+    margin-top: 90px;
+    padding: 80px 6%;
+
+    background: #ffffff !important;
+    background-image: none !important;
+
+    color: #222222;
+
+    position: relative;
+
+    z-index: 5;
+
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.05);
+}
+
+
+/* Heading */
+.pastor-media .media-heading {
+    max-width: 800px;
+
+    margin: 0 auto 50px;
+
+    text-align: center;
+
+    background: transparent !important;
+}
+
+.pastor-media .media-heading h2 {
+    color: #071A52;
+
+    font-size: clamp(30px, 4vw, 45px);
+
+    margin: 12px 0 15px;
+}
+
+.pastor-media .media-heading p {
+    color: #555;
+
+    line-height: 1.7;
+
+    max-width: 700px;
+
+    margin: auto;
+}
+
+
+/* Gold divider */
+.pastor-media .media-heading::after {
+    content: "";
+
+    display: block;
+
+    width: 70px;
+    height: 4px;
+
+    background: var(--gold);
+
+    border-radius: 5px;
+
+    margin: 25px auto 0;
+}
+
+
+/* =========================================================
+   VIDEO CARDS
+   ========================================================= */
+
+.pastor-video-grid {
+    width: 100%;
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 30px;
+}
+
+
+.pastor-video-card {
+    background: #ffffff !important;
+
+    border: 1px solid #e5e5e5;
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.08);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.pastor-video-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.13);
+}
+
+
+/* Video placeholder */
+.video-placeholder {
+    height: 220px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #071A52,
+            #123E8C
+        ) !important;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    color: #ffffff;
+}
+
+
+.video-placeholder span {
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    text-align: center;
+}
+
+
+.play-button {
+    width: 58px;
+    height: 58px;
+
+    border-radius: 50%;
+
+    background: var(--gold);
+
+    color: #071A52;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 20px;
+
+    padding-left: 3px;
+}
+
+
+/* Card text */
+.pastor-video-card h3 {
+    color: #071A52;
+
+    font-size: 20px;
+
+    margin: 22px 22px 8px;
+}
+
+
+.pastor-video-card p {
+    color: #666;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    margin: 0 22px 25px;
+}
+
+
+/* Watch more button */
+.pastor-video-button {
+    display: block;
+
+    width: fit-content;
+
+    margin: 45px auto 0;
+
+    padding: 13px 28px;
+
+    background: #071A52;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    border-radius: 30px;
+
+    font-weight: 700;
+
+    transition: 0.3s ease;
+}
+
+
+.pastor-video-button:hover {
+    background: var(--gold);
+
+    color: #071A52;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .pastor-media {
+        margin-top: 60px;
+
+        padding: 65px 5%;
+    }
+
+    .pastor-video-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .pastor-media {
+        margin-top: 45px;
+
+        padding: 55px 20px;
+    }
+
+    .pastor-video-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .video-placeholder {
+        height: 200px;
+    }
+}
+.leader-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+}
+/* ==========================================
+   REVEREND ISAIAH - ZOOM PHOTO
+   ========================================== */
+
+.leader-card:nth-child(2) .leader-photo img {
+    width: 115%;
+    height: 115%;
+
+    object-fit: cover;
+
+    object-position: center center;
+
+    transform: translate(-7.5%, -7.5%);
+}
+/* ==========================================
+   REVEREND ISAIAH - FIT & POSITION
+   ========================================== */
+
+.leader-card:nth-child(2) .leader-photo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: 60% center;
+
+    transform: none;
+}
+/* =========================================================
+   CINEMATIC FULL-SCREEN HERO
+   ========================================================= */
+
+
+/* HERO CONTAINER */
+
+.hero {
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+
+    min-height: 650px;
+
+    overflow: hidden;
+
+    background: #050505;
+
+    isolation: isolate;
+}
+
+
+/* =========================================================
+   HERO SLIDES
+   ========================================================= */
+
+.hero-slide {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    z-index: 0;
+
+    transition:
+        opacity 1.2s ease,
+        visibility 1.2s ease;
+}
+
+
+.hero-slide.active {
+    opacity: 1;
+
+    visibility: visible;
+
+    z-index: 1;
+}
+
+
+/* =========================================================
+   FULL SCREEN VIDEO
+   ========================================================= */
+
+.hero-video {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 100%;
+    height: 100%;
+
+    min-width: 100%;
+    min-height: 100%;
+
+    transform: translate(-50%, -50%);
+
+    object-fit: cover;
+
+    object-position: center center;
+
+    display: block;
+
+    z-index: 0;
+}
+
+
+/* =========================================================
+   CINEMATIC OVERLAY
+   ========================================================= */
+
+.hero-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 3;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.72) 0%,
+            rgba(0, 0, 0, 0.38) 45%,
+            rgba(0, 0, 0, 0.20) 100%
+        );
+}
+
+
+/* Subtle bottom fade */
+
+.hero-overlay::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 30%;
+
+    background:
+        linear-gradient(
+            transparent,
+            rgba(0, 0, 0, 0.65)
+        );
+}
+
+
+/* =========================================================
+   HERO CONTENT
+   ========================================================= */
+
+.hero-content {
+    position: absolute;
+
+    z-index: 5;
+
+    left: 8%;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: min(700px, 85%);
+
+    text-align: left;
+
+    color: #ffffff;
+}
+
+
+/* Welcome */
+
+.hero-welcome {
+    display: inline-block;
+
+    margin-bottom: 18px;
+
+    color: var(--gold);
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+    letter-spacing: 5px;
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.hero-title {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: clamp(
+        42px,
+        6vw,
+        82px
+    );
+
+    font-weight: 800;
+
+    line-height: 0.98;
+
+    letter-spacing: -2px;
+}
+
+
+.hero-title span {
+    display: block;
+}
+
+
+.hero-title small {
+    display: block;
+
+    margin-top: 14px;
+
+    color: var(--gold);
+
+    font-size: clamp(
+        20px,
+        2.5vw,
+        34px
+    );
+
+    font-weight: 500;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================================
+   VERSE
+   ========================================================= */
+
+.hero-verse {
+    max-width: 600px;
+
+    margin: 28px 0 35px;
+
+    color: rgba(255, 255, 255, 0.90);
+
+    font-size: 17px;
+
+    line-height: 1.7;
+}
+
+
+.hero-verse small {
+    display: block;
+
+    margin-top: 8px;
+
+    color: var(--gold);
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.hero-buttons {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+}
+
+
+.hero-action {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 14px 24px;
+
+    border-radius: 4px;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+
+.live-action {
+    background: var(--gold);
+
+    color: #071A52;
+}
+
+
+.join-action {
+    background: rgba(255, 255, 255, 0.10);
+
+    color: #ffffff;
+
+    border: 1px solid
+        rgba(255, 255, 255, 0.65);
+
+    backdrop-filter: blur(8px);
+}
+
+
+.hero-action:hover {
+    transform: translateY(-3px);
+}
+
+
+.live-action:hover {
+    background: #ffffff;
+
+    color: #071A52;
+}
+
+
+.join-action:hover {
+    background: #ffffff;
+
+    color: #071A52;
+}
+
+
+.action-icon {
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   HERO DOTS
+   ========================================================= */
+
+.hero-dots {
+    position: absolute;
+
+    z-index: 6;
+
+    bottom: 30px;
+
+    left: 8%;
+
+    display: flex;
+
+    gap: 8px;
+}
+
+
+.hero-dot {
+    width: 30px;
+
+    height: 3px;
+
+    background: rgba(255, 255, 255, 0.45);
+
+    cursor: pointer;
+
+    transition:
+        width 0.3s ease,
+        background 0.3s ease;
+}
+
+
+.hero-dot.active {
+    width: 55px;
+
+    background: var(--gold);
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .hero {
+        height: 100svh;
+
+        min-height: 600px;
+    }
+
+
+    .hero-video {
+        object-position: center center;
+    }
+
+
+    .hero-overlay {
+        background:
+            linear-gradient(
+                180deg,
+                rgba(0, 0, 0, 0.35) 0%,
+                rgba(0, 0, 0, 0.55) 55%,
+                rgba(0, 0, 0, 0.80) 100%
+            );
+    }
+
+
+    .hero-content {
+        left: 6%;
+
+        width: 88%;
+
+        top: 52%;
+
+        text-align: left;
+    }
+
+
+    .hero-title {
+        font-size: clamp(
+            38px,
+            11vw,
+            58px
+        );
+
+        letter-spacing: -1px;
+    }
+
+
+    .hero-title small {
+        font-size: 21px;
+    }
+
+
+    .hero-verse {
+        font-size: 15px;
+
+        margin: 22px 0 28px;
+    }
+
+
+    .hero-action {
+        padding: 12px 18px;
+
+        font-size: 11px;
+    }
+
+
+    .hero-dots {
+        left: 6%;
+
+        bottom: 22px;
+    }
+
+}
+/* =========================================================
+   CLEAN CINEMATIC HERO
+   ========================================================= */
+
+.hero {
+    position: relative;
+
+    width: 100%;
+    height: 88vh;
+
+    min-height: 650px;
+
+    overflow: hidden;
+
+    background: #071A52;
+
+    isolation: isolate;
+}
+
+
+/* =========================================================
+   SLIDES
+   ========================================================= */
+
+.hero-slide {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    padding: 0 5%;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
+
+    z-index: 1;
+}
+
+
+.hero-slide.active {
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+/* =========================================================
+   VIDEO
+   ========================================================= */
+
+.hero-video {
+    position: relative;
+
+    width: min(62vw, 950px);
+
+    height: auto;
+
+    max-height: 78vh;
+
+    aspect-ratio: 16 / 9;
+
+    object-fit: contain;
+
+    object-position: center;
+
+    display: block;
+
+    border-radius: 6px;
+
+    z-index: 2;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.45);
+}
+
+
+/* =========================================================
+   VIDEO BACKDROP
+   ========================================================= */
+
+.hero-slide::before {
+    content: "";
+
+    position: absolute;
+
+    inset: -40px;
+
+    background:
+        inherit;
+
+    filter: blur(35px);
+
+    transform: scale(1.1);
+
+    opacity: 0.35;
+
+    z-index: -2;
+}
+
+
+/* =========================================================
+   DARK CINEMATIC GRADIENT
+   ========================================================= */
+
+.hero-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 3;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            90deg,
+            #071A52 0%,
+            rgba(7, 26, 82, 0.94) 28%,
+            rgba(7, 26, 82, 0.50) 55%,
+            rgba(7, 26, 82, 0.15) 100%
+        );
+}
+
+
+/* =========================================================
+   HERO CONTENT
+   ========================================================= */
+
+.hero-content {
+    position: absolute;
+
+    z-index: 5;
+
+    left: 7%;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 40%;
+
+    max-width: 560px;
+
+    text-align: left;
+
+    color: #ffffff;
+}
+
+
+.hero-welcome {
+    display: block;
+
+    margin-bottom: 15px;
+
+    color: var(--gold);
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    letter-spacing: 5px;
+}
+
+
+.hero-title {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: clamp(
+        42px,
+        5vw,
+        75px
+    );
+
+    line-height: 0.98;
+
+    font-weight: 800;
+
+    letter-spacing: -2px;
+}
+
+
+.hero-title span {
+    display: block;
+}
+
+
+.hero-title small {
+    display: block;
+
+    margin-top: 15px;
+
+    color: var(--gold);
+
+    font-size: clamp(
+        20px,
+        2.2vw,
+        30px
+    );
+
+    font-weight: 500;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================================
+   VERSE
+   ========================================================= */
+
+.hero-verse {
+    max-width: 480px;
+
+    margin: 25px 0 30px;
+
+    color: rgba(255, 255, 255, 0.88);
+
+    font-size: 16px;
+
+    line-height: 1.7;
+}
+
+
+.hero-verse small {
+    display: block;
+
+    margin-top: 7px;
+
+    color: var(--gold);
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.hero-buttons {
+    display: flex;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
+
+.hero-action {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 13px 22px;
+
+    border-radius: 4px;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    transition: 0.3s ease;
+}
+
+
+.live-action {
+    background: var(--gold);
+
+    color: #071A52;
+}
+
+
+.join-action {
+    color: #ffffff;
+
+    background:
+        rgba(255, 255, 255, 0.10);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.5);
+
+    backdrop-filter: blur(8px);
+}
+
+
+.hero-action:hover {
+    transform: translateY(-3px);
+
+    background: #ffffff;
+
+    color: #071A52;
+}
+
+
+/* =========================================================
+   DOTS
+   ========================================================= */
+
+.hero-dots {
+    position: absolute;
+
+    z-index: 6;
+
+    left: 7%;
+
+    bottom: 30px;
+
+    display: flex;
+
+    gap: 7px;
+}
+
+
+.hero-dot {
+    width: 25px;
+
+    height: 3px;
+
+    background:
+        rgba(255, 255, 255, 0.4);
+}
+
+
+.hero-dot.active {
+    width: 50px;
+
+    background: var(--gold);
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .hero {
+        height: auto;
+
+        min-height: 750px;
+    }
+
+
+    .hero-slide {
+        align-items: flex-end;
+
+        justify-content: center;
+
+        padding:
+            0 5% 70px;
+    }
+
+
+    .hero-video {
+        width: 85vw;
+
+        max-height: 55vh;
+    }
+
+
+    .hero-content {
+        left: 6%;
+
+        top: 12%;
+
+        transform: none;
+
+        width: 75%;
+
+        max-width: 600px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .hero {
+        min-height: 760px;
+    }
+
+
+    .hero-slide {
+        padding:
+            0 20px 55px;
+
+        align-items: flex-end;
+    }
+
+
+    .hero-video {
+        width: 100%;
+
+        max-height: 42vh;
+
+        border-radius: 4px;
+    }
+
+
+    .hero-content {
+        top: 9%;
+
+        left: 20px;
+
+        width: calc(100% - 40px);
+    }
+
+
+    .hero-title {
+        font-size: 42px;
+
+        letter-spacing: -1px;
+    }
+
+
+    .hero-title small {
+        font-size: 19px;
+    }
+
+
+    .hero-verse {
+        font-size: 14px;
+
+        margin: 18px 0 22px;
+    }
+
+
+    .hero-action {
+        padding: 11px 15px;
+
+        font-size: 10px;
+    }
+
+
+    .hero-dots {
+        left: 20px;
+
+        bottom: 20px;
+    }
+
+}
+/* =========================================================
+   CINEMATIC VIDEO HERO
+   ========================================================= */
+
+.hero {
+    position: relative;
+
+    width: 100%;
+    height: 90vh;
+
+    min-height: 650px;
+
+    overflow: hidden;
+
+    background: #050505;
+
+    isolation: isolate;
+}
+
+
+/* =========================================================
+   BACKGROUND VIDEO
+   ========================================================= */
+
+.hero-background-video {
+    position: absolute;
+
+    inset: -5%;
+
+    width: 110%;
+    height: 110%;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    filter: blur(18px);
+
+    transform: scale(1.08);
+
+    opacity: 0.55;
+
+    z-index: 0;
+}
+
+
+/* =========================================================
+   MAIN VIDEO AREA
+   ========================================================= */
+
+.hero-slides {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.hero-slide {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity 1.2s ease,
+        visibility 1.2s ease;
+}
+
+
+.hero-slide.active {
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+/* =========================================================
+   MAIN VIDEO
+   ========================================================= */
+
+.hero-main-video {
+    width: min(82vw, 1200px);
+
+    height: auto;
+
+    max-height: 78vh;
+
+    aspect-ratio: 16 / 9;
+
+    object-fit: contain;
+
+    object-position: center;
+
+    display: block;
+
+    border-radius: 6px;
+
+    box-shadow:
+        0 20px 70px
+        rgba(0, 0, 0, 0.45);
+}
+
+
+/* =========================================================
+   DARK OVERLAY
+   ========================================================= */
+
+.hero-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 3;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.35),
+            rgba(0, 0, 0, 0.12) 45%,
+            rgba(0, 0, 0, 0.60)
+        );
+}
+
+
+/* =========================================================
+   CENTERED HERO CONTENT
+   ========================================================= */
+
+.hero-content {
+    position: absolute;
+
+    z-index: 5;
+
+    top: 50%;
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    width: 90%;
+
+    max-width: 850px;
+
+    text-align: center;
+
+    color: #ffffff;
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+
+/* Content disappears */
+
+.hero-content.hide {
+    opacity: 0;
+
+    transform:
+        translate(-50%, -55%);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   WELCOME
+   ========================================================= */
+
+.hero-welcome {
+    display: block;
+
+    margin-bottom: 15px;
+
+    color: var(--gold);
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+    letter-spacing: 6px;
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.hero-title {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: clamp(
+        42px,
+        6vw,
+        80px
+    );
+
+    line-height: 1;
+
+    font-weight: 800;
+
+    letter-spacing: -2px;
+}
+
+
+.hero-title span {
+    display: block;
+}
+
+
+.hero-title small {
+    display: block;
+
+    margin-top: 14px;
+
+    color: var(--gold);
+
+    font-size: clamp(
+        20px,
+        2.5vw,
+        32px
+    );
+
+    font-weight: 500;
+
+    letter-spacing: 3px;
+}
+
+
+/* =========================================================
+   VERSE
+   ========================================================= */
+
+.hero-verse {
+    max-width: 650px;
+
+    margin:
+        25px auto 30px;
+
+    color:
+        rgba(255, 255, 255, 0.92);
+
+    font-size: 16px;
+
+    line-height: 1.7;
+}
+
+
+.hero-verse small {
+    display: block;
+
+    margin-top: 8px;
+
+    color: var(--gold);
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.hero-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
+
+.hero-action {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding:
+        13px 22px;
+
+    border-radius: 4px;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease;
+}
+
+
+.live-action {
+    background: var(--gold);
+
+    color: #071A52;
+}
+
+
+.join-action {
+    color: #ffffff;
+
+    background:
+        rgba(255, 255, 255, 0.10);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.55);
+
+    backdrop-filter: blur(8px);
+}
+
+
+.hero-action:hover {
+    transform: translateY(-3px);
+
+    background: #ffffff;
+
+    color: #071A52;
+}
+
+
+/* =========================================================
+   DOTS
+   ========================================================= */
+
+.hero-dots {
+    position: absolute;
+
+    z-index: 6;
+
+    bottom: 30px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    gap: 8px;
+}
+
+
+.hero-dot {
+    width: 28px;
+
+    height: 3px;
+
+    background:
+        rgba(255, 255, 255, 0.45);
+
+    transition:
+        width 0.3s ease,
+        background 0.3s ease;
+}
+
+
+.hero-dot.active {
+    width: 55px;
+
+    background: var(--gold);
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .hero {
+        height: 85vh;
+
+        min-height: 650px;
+    }
+
+
+    .hero-main-video {
+        width: 94vw;
+
+        max-height: 55vh;
+    }
+
+
+    .hero-content {
+        width: 92%;
+    }
+
+
+    .hero-title {
+        font-size: 42px;
+    }
+
+
+    .hero-title small {
+        font-size: 20px;
+    }
+
+
+    .hero-verse {
+        font-size: 14px;
+    }
+
+
+    .hero-action {
+        padding:
+            11px 16px;
+
+        font-size: 10px;
+    }
+
+}
+/* =========================================================
+   CLEAN FULL-QUALITY VIDEO HERO
+   ========================================================= */
+
+.hero {
+    position: relative;
+
+    width: 100%;
+    height: 90vh;
+
+    min-height: 650px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #061747,
+            #0B3D91
+        );
+
+    isolation: isolate;
+}
+
+
+/* =========================================================
+   VIDEO SLIDES
+   ========================================================= */
+
+.hero-slides {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 1;
+}
+
+
+.hero-slide {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
+}
+
+
+.hero-slide.active {
+    opacity: 1;
+
+    visibility: visible;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   VIDEO
+   ========================================================= */
+
+.hero-main-video {
+    width: 90%;
+
+    height: auto;
+
+    max-width: 1400px;
+
+    max-height: 82vh;
+
+    aspect-ratio: 16 / 9;
+
+    object-fit: contain;
+
+    object-position: center;
+
+    display: block;
+
+    border-radius: 0;
+
+    background: transparent;
+
+    box-shadow:
+        0 20px 60px
+        rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================================================
+   LIGHT CINEMATIC OVERLAY
+   ========================================================= */
+
+.hero-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 3;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.20),
+            rgba(0, 0, 0, 0.05) 50%,
+            rgba(0, 0, 0, 0.40)
+        );
+}
+
+
+/* =========================================================
+   CENTERED CONTENT
+   ========================================================= */
+
+.hero-content {
+    position: absolute;
+
+    z-index: 5;
+
+    top: 50%;
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    width: 90%;
+
+    max-width: 850px;
+
+    text-align: center;
+
+    color: #ffffff;
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+
+/* Hide after a few seconds */
+
+.hero-content.hide {
+    opacity: 0;
+
+    transform:
+        translate(-50%, -55%);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   WELCOME
+   ========================================================= */
+
+.hero-welcome {
+    display: block;
+
+    margin-bottom: 14px;
+
+    color: var(--gold);
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    letter-spacing: 6px;
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.hero-title {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size:
+        clamp(42px, 6vw, 78px);
+
+    line-height: 1;
+
+    font-weight: 800;
+
+    letter-spacing: -2px;
+
+    text-shadow:
+        0 3px 20px
+        rgba(0, 0, 0, 0.45);
+}
+
+
+.hero-title span {
+    display: block;
+}
+
+
+.hero-title small {
+    display: block;
+
+    margin-top: 12px;
+
+    color: var(--gold);
+
+    font-size:
+        clamp(20px, 2.5vw, 32px);
+
+    font-weight: 500;
+
+    letter-spacing: 3px;
+}
+
+
+/* =========================================================
+   VERSE
+   ========================================================= */
+
+.hero-verse {
+    max-width: 650px;
+
+    margin:
+        24px auto 30px;
+
+    color:
+        rgba(255, 255, 255, 0.95);
+
+    font-size: 16px;
+
+    line-height: 1.7;
+
+    text-shadow:
+        0 2px 10px
+        rgba(0, 0, 0, 0.5);
+}
+
+
+.hero-verse small {
+    display: block;
+
+    margin-top: 7px;
+
+    color: var(--gold);
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.hero-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
+
+.hero-action {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding:
+        13px 22px;
+
+    text-decoration: none;
+
+    border-radius: 4px;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    transition: 0.3s ease;
+}
+
+
+.live-action {
+    background: var(--gold);
+
+    color: #071A52;
+}
+
+
+.join-action {
+    color: #ffffff;
+
+    background:
+        rgba(7, 26, 82, 0.60);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.7);
+}
+
+
+.hero-action:hover {
+    transform: translateY(-3px);
+
+    background: #ffffff;
+
+    color: #071A52;
+}
+
+
+/* =========================================================
+   DOTS
+   ========================================================= */
+
+.hero-dots {
+    position: absolute;
+
+    z-index: 7;
+
+    left: 50%;
+
+    bottom: 25px;
+
+    transform:
+        translateX(-50%);
+
+    display: flex;
+
+    gap: 8px;
+}
+
+
+.hero-dot {
+    width: 28px;
+
+    height: 3px;
+
+    background:
+        rgba(255, 255, 255, 0.5);
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+
+.hero-dot.active {
+    width: 55px;
+
+    background: var(--gold);
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .hero {
+        height: 82vh;
+
+        min-height: 620px;
+    }
+
+
+    .hero-main-video {
+        width: 94%;
+
+        max-height: 60vh;
+    }
+
+
+    .hero-content {
+        width: 92%;
+    }
+
+
+    .hero-title {
+        font-size: 40px;
+
+        letter-spacing: -1px;
+    }
+
+
+    .hero-title small {
+        font-size: 19px;
+    }
+
+
+    .hero-verse {
+        font-size: 14px;
+
+        margin:
+            18px auto 24px;
+    }
+
+
+    .hero-action {
+        padding:
+            11px 16px;
+
+        font-size: 10px;
+    }
+
+}
+/* =========================================================
+   JESUS WINNER MINISTRY — CINEMATIC HERO OVERRIDE
+   Paste this at the VERY BOTTOM of your CSS file
+   ========================================================= */
+
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 100svh;
+    height: 100svh;
+    overflow: hidden;
+
+    /* Your blue textured background */
+    background-image: url("../images/ministries/background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    isolation: isolate;
+}
+
+
+/* =========================================================
+   VIDEO AREA
+   ========================================================= */
+
+.hero-slides {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.hero-slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 1.2s ease,
+        visibility 1.2s ease;
+
+    overflow: hidden;
+}
+
+
+/* Only the active video is visible */
+.hero-slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* The actual videos */
+.hero-main-video {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    /*
+       Keeps the original proportions of your
+       vertical 9:16 videos.
+    */
+    object-fit: cover;
+
+    /*
+       Keeps the important middle portion visible.
+    */
+    object-position: center center;
+
+    background: transparent;
+}
+
+
+/* =========================================================
+   CINEMATIC DARK OVERLAY
+   Helps white text remain readable.
+   ========================================================= */
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    z-index: 3;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.28) 0%,
+            rgba(0, 0, 0, 0.08) 35%,
+            rgba(0, 0, 0, 0.20) 65%,
+            rgba(0, 0, 0, 0.65) 100%
+        );
+}
+
+
+/* =========================================================
+   HERO CONTENT
+   ========================================================= */
+
+.hero-content {
+    position: relative;
+
+    z-index: 4;
+
+    width: min(900px, 90%);
+
+    margin: 0 auto;
+
+    text-align: center;
+
+    color: #ffffff;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 2rem 1rem;
+
+    /*
+       Keeps the content comfortably inside
+       the phone safe area.
+    */
+    padding-top: max(2rem, env(safe-area-inset-top));
+    padding-bottom: max(2rem, env(safe-area-inset-bottom));
+
+    animation: heroContentEntrance 1.4s ease both;
+}
+
+
+/* Small welcome text */
+.hero-welcome {
+    display: block;
+
+    font-size: clamp(0.75rem, 1.5vw, 1rem);
+
+    font-weight: 600;
+
+    letter-spacing: 0.35em;
+
+    text-transform: uppercase;
+
+    margin-bottom: 1rem;
+
+    opacity: 0.95;
+}
+
+
+/* Main title */
+.hero-title {
+    margin: 0;
+
+    font-size: clamp(2.4rem, 7vw, 5.8rem);
+
+    line-height: 0.95;
+
+    font-weight: 700;
+
+    letter-spacing: -0.035em;
+
+    text-transform: none;
+
+    text-shadow:
+        0 3px 20px rgba(0, 0, 0, 0.45),
+        0 1px 3px rgba(0, 0, 0, 0.65);
+}
+
+
+/* Church location */
+.hero-title small {
+    display: block;
+
+    margin-top: 1rem;
+
+    font-size: clamp(0.9rem, 2vw, 1.25rem);
+
+    font-weight: 400;
+
+    letter-spacing: 0.18em;
+
+    text-transform: uppercase;
+
+    opacity: 0.9;
+}
+
+
+/* =========================================================
+   VERSE
+   ========================================================= */
+
+.hero-verse {
+    max-width: 650px;
+
+    margin: 1.8rem auto 0;
+
+    font-size: clamp(0.9rem, 1.8vw, 1.15rem);
+
+    line-height: 1.7;
+
+    color: rgba(255, 255, 255, 0.92);
+
+    text-shadow:
+        0 2px 10px rgba(0, 0, 0, 0.55);
+}
+
+
+.hero-verse em {
+    font-style: italic;
+}
+
+
+.hero-verse small {
+    display: block;
+
+    margin-top: 0.6rem;
+
+    font-size: 0.8em;
+
+    font-style: normal;
+
+    letter-spacing: 0.08em;
+
+    opacity: 0.85;
+}
+
+
+/* =========================================================
+   HERO BUTTONS
+   ========================================================= */
+
+.hero-buttons {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 1rem;
+
+    margin-top: 2rem;
+}
+
+
+.hero-action {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 0.65rem;
+
+    min-height: 48px;
+
+    padding: 0.8rem 1.35rem;
+
+    border-radius: 999px;
+
+    text-decoration: none;
+
+    font-size: 0.78rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
+
+    text-transform: uppercase;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+
+.hero-action:hover {
+    transform: translateY(-3px);
+}
+
+
+.action-icon {
+    font-size: 0.85rem;
+
+    line-height: 1;
+}
+
+
+/* Live button */
+.live-action {
+    background: rgba(255, 255, 255, 0.95);
+
+    color: #071d35;
+
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.22);
+}
+
+
+/* Join button */
+.join-action {
+    background: rgba(255, 255, 255, 0.12);
+
+    color: #ffffff;
+
+    border: 1px solid rgba(255, 255, 255, 0.55);
+
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+
+.join-action:hover {
+    background: rgba(255, 255, 255, 0.22);
+}
+
+
+/* =========================================================
+   REMOVE THE SLIDESHOW DOTS
+   ========================================================= */
+
+.hero-dots {
+    display: none !important;
+}
+
+
+/* =========================================================
+   INTRO ANIMATION
+   ========================================================= */
+
+@keyframes heroContentEntrance {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   TABLETS
+   ========================================================= */
+
+@media (min-width: 600px) {
+
+    .hero-content {
+        width: min(850px, 88%);
+    }
+
+    .hero-action {
+        min-height: 50px;
+
+        padding:
+            0.85rem
+            1.55rem;
+    }
+
+}
+
+
+/* =========================================================
+   DESKTOP
+   ========================================================= */
+
+@media (min-width: 1024px) {
+
+    .hero {
+        min-height: 100vh;
+        height: 100vh;
+    }
+
+    /*
+       On wide screens, don't let the vertical video
+       become excessively cropped.
+    */
+    .hero-main-video {
+        object-fit: cover;
+        object-position: center center;
+    }
+
+    .hero-content {
+        max-width: 1000px;
+    }
+
+    .hero-title {
+        font-size: clamp(4rem, 6vw, 6.5rem);
+    }
+
+}
+
+
+/* =========================================================
+   VERY WIDE SCREENS
+   ========================================================= */
+
+@media (min-width: 1600px) {
+
+    .hero-main-video {
+        object-position: center center;
+    }
+
+}
+
+```css
+/* =========================================================
+   JWM RONGAI — CINEMATIC FULL-SCREEN HERO
+========================================================= */
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 92vh;
+    min-height: 650px;
+    overflow: hidden;
+    isolation: isolate;
+    background: #071a52;
+}
+
+
+/* =========================================================
+   BLURRED / OPENING BACKGROUND
+========================================================= */
+
+.hero-intro-background {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    background-image: url("../images/ministries/background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    opacity: 1;
+    transition: opacity 1.5s ease-in-out;
+}
+
+
+/* =========================================================
+   VIDEO STAGE
+========================================================= */
+
+.hero-video-stage {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   VIDEO SLIDES
+========================================================= */
+
+.hero-video-slide {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 1.5s ease-in-out,
+        visibility 1.5s ease-in-out;
+}
+
+.hero-video-slide.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    z-index: 3;
+}
+
+
+/* =========================================================
+   MAIN HERO VIDEOS
+   Keeps portrait videos proportional
+   without stretching or cropping the subject
+========================================================= */
+
+.hero-video {
+    display: block;
+
+    width: auto;
+    height: 100%;
+
+    max-width: 100%;
+    max-height: 100%;
+
+    object-fit: contain;
+    object-position: center;
+
+    border: none;
+    background: transparent;
+
+    filter:
+        contrast(1.04)
+        brightness(1.03)
+        saturate(1.03);
+
+    transform: scale(1);
+
+    transition:
+        opacity 1.5s ease,
+        transform 2.5s ease,
+        filter 1.5s ease;
+}
+
+
+/* =========================================================
+   SUBTLE CINEMATIC MOVEMENT
+========================================================= */
+
+.hero-video-slide.active .hero-video {
+    transform: scale(1.015);
+}
+
+
+/* =========================================================
+   VIDEO EDGE BLENDING
+========================================================= */
+
+.hero-video-stage::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    z-index: 4;
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.30) 0%,
+            transparent 20%,
+            transparent 80%,
+            rgba(0, 0, 0, 0.30) 100%
+        );
+}
+
+
+/* =========================================================
+   GENERAL DARK OVERLAY
+========================================================= */
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    z-index: 5;
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.05) 0%,
+            rgba(0, 0, 0, 0.02) 50%,
+            rgba(0, 0, 0, 0.48) 100%
+        );
+}
+
+
+/* =========================================================
+   WELCOME CONTENT
+========================================================= */
+
+.hero-welcome-content {
+    position: absolute;
+
+    z-index: 8;
+
+    top: 50%;
+    left: 50%;
+
+    width: min(900px, 90%);
+
+    transform: translate(-50%, -50%);
+
+    text-align: center;
+    color: #fff;
+
+    opacity: 1;
+
+    transition:
+        opacity 1.5s ease,
+        transform 1.5s ease;
+}
+
+.hero-welcome-content.hide {
+    opacity: 0;
+    transform: translate(-50%, -53%);
+}
+
+
+/* =========================================================
+   WELCOME LABEL
+========================================================= */
+
+.hero-welcome {
+    display: block;
+
+    margin-bottom: 16px;
+
+    color: var(--gold);
+
+    font-size: 14px;
+    font-weight: 800;
+
+    letter-spacing: 7px;
+}
+
+
+/* =========================================================
+   CHURCH NAME
+========================================================= */
+
+.hero-title {
+    margin: 0;
+
+    color: #fff;
+
+    font-size: clamp(42px, 6vw, 78px);
+    line-height: 1;
+
+    font-weight: 800;
+    letter-spacing: -2px;
+
+    text-shadow:
+        0 5px 30px rgba(0, 0, 0, 0.65);
+}
+
+
+/* =========================================================
+   LOCATION
+========================================================= */
+
+.hero-location {
+    margin: 15px 0 22px;
+
+    color: var(--gold);
+
+    font-size: clamp(20px, 2.5vw, 32px);
+    letter-spacing: 4px;
+}
+
+
+/* =========================================================
+   GOLD DIVIDER
+========================================================= */
+
+.hero-welcome-line {
+    width: 70px;
+    height: 2px;
+
+    margin: 0 auto 20px;
+
+    background: var(--gold);
+}
+
+
+/* =========================================================
+   BIBLE VERSE
+========================================================= */
+
+.hero-verse {
+    max-width: 650px;
+
+    margin: 0 auto;
+
+    color: rgba(255, 255, 255, 0.94);
+
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.hero-verse em {
+    display: block;
+}
+
+.hero-verse span {
+    display: block;
+
+    margin-top: 8px;
+
+    color: var(--gold);
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   HERO ACTION BUTTONS
+========================================================= */
+
+.hero-actions {
+    position: absolute;
+
+    z-index: 10;
+
+    left: 50%;
+    bottom: 48px;
+
+    transform: translateX(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 14px;
+
+    width: 90%;
+
+    flex-wrap: wrap;
+}
+
+.hero-action {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    min-width: 190px;
+
+    padding: 14px 25px;
+
+    border-radius: 4px;
+
+    text-decoration: none;
+
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+
+    transition:
+        transform .3s ease,
+        background .3s ease,
+        color .3s ease;
+}
+
+.live-action {
+    background: var(--gold);
+    color: #071a52;
+}
+
+.join-action {
+    background: rgba(7, 26, 82, .55);
+
+    color: #fff;
+
+    border: 1px solid rgba(255,255,255,.75);
+
+    backdrop-filter: blur(6px);
+}
+
+.hero-action:hover {
+    transform: translateY(-3px);
+
+    background: #fff;
+    color: #071a52;
+}
+
+
+/* =========================================================
+   VIDEO NAVIGATION DOTS
+========================================================= */
+
+.hero-dots {
+    position: absolute;
+
+    z-index: 11;
+
+    left: 50%;
+    bottom: 18px;
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    gap: 7px;
+}
+
+.hero-dot {
+    width: 25px;
+    height: 3px;
+
+    background: rgba(255,255,255,.4);
+
+    cursor: pointer;
+
+    transition:
+        width .4s ease,
+        background .4s ease;
+}
+
+.hero-dot.active {
+    width: 48px;
+
+    background: var(--gold);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .hero {
+        height: 90vh;
+        min-height: 620px;
+    }
+
+    .hero-video {
+        height: 100%;
+        max-height: 100%;
+        max-width: 100%;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .hero {
+        height: 88vh;
+        min-height: 600px;
+    }
+
+    .hero-video {
+        width: auto;
+        height: 100%;
+
+        max-width: 100%;
+        max-height: 100%;
+
+        object-fit: contain;
+    }
+
+    .hero-title {
+        font-size: 40px;
+        letter-spacing: -1px;
+    }
+
+    .hero-location {
+        font-size: 18px;
+        letter-spacing: 2px;
+    }
+
+    .hero-verse {
+        font-size: 13px;
+        padding: 0 15px;
+    }
+
+    .hero-actions {
+        bottom: 48px;
+        width: 94%;
+    }
+
+    .hero-action {
+        min-width: 145px;
+        padding: 12px 15px;
+        font-size: 10px;
+    }
+
+    .hero-dots {
+        bottom: 18px;
+    }
+}
+```css
+/* =========================================================
+   JESUS WINNER MINISTRY RONGAI
+   CINEMATIC HERO — CLEAN VERSION
+========================================================= */
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 92vh;
+    min-height: 650px;
+
+    overflow: hidden;
+    isolation: isolate;
+
+    background: #071a52;
+}
+
+
+/* =========================================================
+   WELCOME BACKGROUND
+========================================================= */
+
+.hero-intro-background {
+    position: absolute;
+    inset: 0;
+
+    z-index: 1;
+
+    background-image: url("../images/ministries/background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    opacity: 1;
+
+    transition: opacity 1.5s ease;
+}
+
+
+/* =========================================================
+   VIDEO STAGE
+========================================================= */
+
+.hero-video-stage {
+    position: absolute;
+    inset: 0;
+
+    z-index: 2;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    background: #000;
+}
+
+
+/* =========================================================
+   VIDEO SLIDES
+========================================================= */
+
+.hero-video-slide {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: opacity 1.4s ease;
+}
+
+
+.hero-video-slide.active {
+    opacity: 1;
+    visibility: visible;
+
+    z-index: 3;
+}
+
+
+/* =========================================================
+   VIDEO 1
+   Large portrait video
+   Keeps the complete video visible
+========================================================= */
+
+#heroVideo1 {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    height: 100%;
+    width: auto;
+
+    max-width: none;
+    max-height: none;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1.10);
+
+    object-fit: contain;
+    object-position: center;
+
+    display: block;
+
+    border: none;
+}
+
+
+/* =========================================================
+   VIDEO 2
+   FULL SCREEN / HORIZONTAL
+========================================================= */
+
+#heroVideo2 {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 100%;
+    height: 100%;
+
+    max-width: none;
+    max-height: none;
+
+    transform:
+        translate(-50%, -50%);
+
+    object-fit: cover;
+    object-position: center center;
+
+    display: block;
+
+    border: none;
+}
+
+
+/* =========================================================
+   VIDEO DARKENING
+========================================================= */
+
+.hero-video-stage::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    z-index: 4;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,0.05) 0%,
+            rgba(0,0,0,0.02) 50%,
+            rgba(0,0,0,0.45) 100%
+        );
+}
+
+
+/* =========================================================
+   WELCOME CONTENT
+========================================================= */
+
+.hero-welcome-content {
+    position: absolute;
+
+    z-index: 8;
+
+    top: 50%;
+    left: 50%;
+
+    width: min(900px, 90%);
+
+    transform:
+        translate(-50%, -50%);
+
+    text-align: center;
+
+    color: #fff;
+
+    opacity: 1;
+
+    transition:
+        opacity 1.4s ease,
+        transform 1.4s ease;
+}
+
+
+.hero-welcome-content.hide {
+    opacity: 0;
+
+    transform:
+        translate(-50%, -53%);
+}
+
+
+/* =========================================================
+   WELCOME LABEL
+========================================================= */
+
+.hero-welcome {
+    display: block;
+
+    margin-bottom: 16px;
+
+    color: var(--gold);
+
+    font-size: 14px;
+    font-weight: 800;
+
+    letter-spacing: 7px;
+}
+
+
+/* =========================================================
+   CHURCH NAME
+========================================================= */
+
+.hero-title {
+    margin: 0;
+
+    color: #fff;
+
+    font-size:
+        clamp(42px, 6vw, 78px);
+
+    line-height: 1;
+
+    font-weight: 800;
+
+    letter-spacing: -2px;
+
+    text-shadow:
+        0 5px 30px rgba(0,0,0,0.65);
+}
+
+
+/* =========================================================
+   LOCATION
+========================================================= */
+
+.hero-location {
+    margin:
+        15px 0 22px;
+
+    color: var(--gold);
+
+    font-size:
+        clamp(20px, 2.5vw, 32px);
+
+    letter-spacing: 4px;
+}
+
+
+/* =========================================================
+   GOLD LINE
+========================================================= */
+
+.hero-welcome-line {
+    width: 70px;
+    height: 2px;
+
+    margin:
+        0 auto 20px;
+
+    background: var(--gold);
+}
+
+
+/* =========================================================
+   VERSE
+========================================================= */
+
+.hero-verse {
+    max-width: 650px;
+
+    margin: 0 auto;
+
+    color:
+        rgba(255,255,255,0.94);
+
+    font-size: 16px;
+
+    line-height: 1.7;
+}
+
+
+.hero-verse em {
+    display: block;
+}
+
+
+.hero-verse span {
+    display: block;
+
+    margin-top: 8px;
+
+    color: var(--gold);
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   HERO BUTTONS
+========================================================= */
+
+.hero-actions {
+    position: absolute;
+
+    z-index: 10;
+
+    left: 50%;
+    bottom: 48px;
+
+    transform:
+        translateX(-50%);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 14px;
+
+    width: 90%;
+
+    flex-wrap: wrap;
+}
+
+
+.hero-action {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    min-width: 190px;
+
+    padding:
+        14px 25px;
+
+    border-radius: 4px;
+
+    text-decoration: none;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.2px;
+
+    transition:
+        transform .3s ease,
+        background .3s ease,
+        color .3s ease;
+}
+
+
+.live-action {
+    background: var(--gold);
+
+    color: #071a52;
+}
+
+
+.join-action {
+    background:
+        rgba(7,26,82,.55);
+
+    color: #fff;
+
+    border:
+        1px solid
+        rgba(255,255,255,.75);
+
+    backdrop-filter:
+        blur(6px);
+}
+
+
+.hero-action:hover {
+    transform:
+        translateY(-3px);
+
+    background: #fff;
+
+    color: #071a52;
+}
+
+
+/* =========================================================
+   VIDEO DOTS
+========================================================= */
+
+.hero-dots {
+    position: absolute;
+
+    z-index: 11;
+
+    left: 50%;
+    bottom: 18px;
+
+    transform:
+        translateX(-50%);
+
+    display: flex;
+
+    gap: 7px;
+}
+
+
+.hero-dot {
+    width: 25px;
+    height: 3px;
+
+    background:
+        rgba(255,255,255,.4);
+
+    cursor: pointer;
+
+    transition:
+        width .4s ease,
+        background .4s ease;
+}
+
+
+.hero-dot.active {
+    width: 48px;
+
+    background: var(--gold);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .hero {
+        height: 90vh;
+        min-height: 620px;
+    }
+
+    #heroVideo1 {
+        height: 100%;
+        transform:
+            translate(-50%, -50%)
+            scale(1.08);
+    }
+
+    #heroVideo2 {
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .hero {
+        height: 88vh;
+        min-height: 600px;
+    }
+
+
+    #heroVideo1 {
+        height: 100%;
+        width: auto;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.05);
+
+        object-fit: contain;
+    }
+
+
+    #heroVideo2 {
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+
+        object-position: center center;
+    }
+
+
+    .hero-title {
+        font-size: 40px;
+        letter-spacing: -1px;
+    }
+
+
+    .hero-location {
+        font-size: 18px;
+        letter-spacing: 2px;
+    }
+
+
+    .hero-verse {
+        font-size: 13px;
+
+        padding: 0 15px;
+    }
+
+
+    .hero-actions {
+        bottom: 48px;
+        width: 94%;
+    }
+
+
+    .hero-action {
+        min-width: 145px;
+
+        padding:
+            12px 15px;
+
+        font-size: 10px;
+    }
+}
+
+```css id="hero-clean-reset"
+/* =========================================================
+   JESUS WINNER MINISTRY RONGAI
+   CLEAN CINEMATIC HERO
+========================================================= */
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 92vh;
+    min-height: 650px;
+    overflow: hidden;
+    background: #071a52;
+}
+
+
+/* =========================================================
+   OPENING BLUE BACKGROUND
+========================================================= */
+
+.hero-intro-background {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    background:
+        linear-gradient(
+            135deg,
+            #071a52,
+            #0b3d91,
+            #071a52
+        );
+
+    opacity: 1;
+
+    transition: opacity 1.5s ease;
+}
+
+
+/* =========================================================
+   VIDEO AREA
+========================================================= */
+
+.hero-video-stage {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   VIDEO SLIDE
+========================================================= */
+
+.hero-video-slide {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 1.2s ease,
+        visibility 1.2s ease;
+}
+
+
+.hero-video-slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* =========================================================
+   VIDEO 1
+   Large portrait video
+========================================================= */
+
+#heroVideo1 {
+    width: auto;
+    height: 100%;
+
+    max-width: 100%;
+    max-height: 100%;
+
+    object-fit: contain;
+    object-position: center;
+
+    display: block;
+
+    transform: scale(1.08);
+}
+
+
+/* =========================================================
+   VIDEO 2
+   Fills the entire hero horizontally
+========================================================= */
+
+#heroVideo2 {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    display: block;
+}
+
+
+/* =========================================================
+   DARK OVERLAY
+========================================================= */
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    z-index: 6;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,0.05),
+            rgba(0,0,0,0.45)
+        );
+}
+
+
+/* =========================================================
+   WELCOME CONTENT
+========================================================= */
+
+.hero-welcome-content {
+    position: absolute;
+
+    z-index: 8;
+
+    top: 50%;
+    left: 50%;
+
+    width: 90%;
+    max-width: 900px;
+
+    transform:
+        translate(-50%, -50%);
+
+    text-align: center;
+
+    color: white;
+
+    opacity: 1;
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s ease;
+}
+
+
+.hero-welcome-content.hide {
+    opacity: 0;
+
+    transform:
+        translate(-50%, -53%);
+}
+
+
+/* =========================================================
+   WELCOME TEXT
+========================================================= */
+
+.hero-welcome {
+    display: block;
+
+    margin-bottom: 16px;
+
+    color: var(--gold);
+
+    font-size: 14px;
+    font-weight: 800;
+
+    letter-spacing: 7px;
+}
+
+
+.hero-title {
+    margin: 0;
+
+    color: white;
+
+    font-size:
+        clamp(42px, 6vw, 78px);
+
+    line-height: 1;
+
+    font-weight: 800;
+
+    letter-spacing: -2px;
+
+    text-shadow:
+        0 5px 30px rgba(0,0,0,0.65);
+}
+
+
+.hero-location {
+    margin: 15px 0 22px;
+
+    color: var(--gold);
+
+    font-size:
+        clamp(20px, 2.5vw, 32px);
+
+    letter-spacing: 4px;
+}
+
+
+.hero-welcome-line {
+    width: 70px;
+    height: 2px;
+
+    margin:
+        0 auto 20px;
+
+    background: var(--gold);
+}
+
+
+.hero-verse {
+    max-width: 650px;
+
+    margin: 0 auto;
+
+    color:
+        rgba(255,255,255,0.94);
+
+    font-size: 16px;
+
+    line-height: 1.7;
+}
+
+
+.hero-verse em {
+    display: block;
+}
+
+
+.hero-verse span {
+    display: block;
+
+    margin-top: 8px;
+
+    color: var(--gold);
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.hero-actions {
+    position: absolute;
+
+    z-index: 10;
+
+    left: 50%;
+    bottom: 48px;
+
+    transform:
+        translateX(-50%);
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 14px;
+
+    width: 90%;
+}
+
+
+.hero-action {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    min-width: 190px;
+
+    padding:
+        14px 25px;
+
+    border-radius: 4px;
+
+    text-decoration: none;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 1.2px;
+}
+
+
+.live-action {
+    background: var(--gold);
+    color: #071a52;
+}
+
+
+.join-action {
+    background:
+        rgba(7,26,82,0.65);
+
+    color: white;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.75);
+}
+
+
+/* =========================================================
+   DOTS
+========================================================= */
+
+.hero-dots {
+    position: absolute;
+
+    z-index: 11;
+
+    left: 50%;
+    bottom: 18px;
+
+    transform:
+        translateX(-50%);
+
+    display: flex;
+
+    gap: 7px;
+}
+
+
+.hero-dot {
+    width: 25px;
+    height: 3px;
+
+    background:
+        rgba(255,255,255,0.4);
+}
+
+
+.hero-dot.active {
+    width: 48px;
+
+    background: var(--gold);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .hero {
+        height: 88vh;
+        min-height: 600px;
+    }
+
+
+    #heroVideo1 {
+        height: 100%;
+        width: auto;
+
+        transform: scale(1.03);
+
+        object-fit: contain;
+    }
+
+
+    #heroVideo2 {
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+        object-position: center;
+    }
+
+
+    .hero-title {
+        font-size: 40px;
+    }
+
+
+    .hero-location {
+        font-size: 18px;
+    }
+
+
+    .hero-verse {
+        font-size: 13px;
+        padding: 0 15px;
+    }
+
+
+    .hero-actions {
+        bottom: 48px;
+        width: 94%;
+    }
+
+
+    .hero-action {
+        min-width: 145px;
+        padding: 12px 15px;
+        font-size: 10px;
+    }
+}
+```
