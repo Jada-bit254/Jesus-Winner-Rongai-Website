@@ -10,92 +10,166 @@
 
 <body>
 
-     <nav class="main-nav">
-        <button class="mobile-menu-toggle" aria-label="Open navigation menu">
-    ☰
-</button>
+    <nav class="main-nav" id="main-navigation">
 
-   <div class="nav-brand">
-    <a href="#home">
-        <img src="images/Church/church.jpg/jwmtranslogo.png" alt="Jesus Winner Ministry Rongai Logo">
-    </a>
-</div>
-
-   <ul class="nav-links">
-
-    <li><a href="#home">Home</a></li>
-
-    <li><a href="#about">About</a></li>
-
-    <li><a href="#leadership">Leadership</a></li>
-
-    <li><a href="#ministries">Ministries</a></li>
-
-    <li><a href="#services">Services</a></li>
-
-    <li><a href="#events">Events</a></li>
-
-    <li><a href="#media">Media</a></li>
-
-    <li><a href="#join-us">Join Us</a></li>
-
-<li class="more-dropdown">
-
-    <button class="more-toggle" type="button" aria-expanded="false">
-        More ▾
-    </button>
-
-    <div class="more-menu">
-
-        <a href="#gallery">Gallery</a>
-
-        <a href="#visit-us">Visit Us</a>
-
-        <a href="#prayer">Prayer Request</a>
-
-        <a href="#contact">Contact</a>
-
+    <!-- LOGO -->
+    <div class="nav-brand">
+        <a href="index.html" aria-label="Jesus Winner Ministry Rongai Home">
+            <img
+                src="images/Church/church/jwmtranslogo.png"
+                alt="Jesus Winner Ministry Rongai"
+                class="church-logo"
+            >
+        </a>
     </div>
 
-</li>
-</li>
-    </ul>
 
-    <div class="nav-actions">
+    <!-- MOBILE MENU BUTTON -->
+    <button
+        class="mobile-menu-toggle"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="main-nav-links"
+    >
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
 
-        <a href="#live-service" class="nav-live">
-            <span class="live-dot"></span>
-            LIVE
-        </a>
 
-        <div class="social-dropdown">
+    <!-- MAIN NAVIGATION -->
+    <div class="nav-menu-wrapper" id="main-nav-links">
 
-            <button class="social-toggle">
-                Social ▾
-            </button>
+        <ul class="nav-links">
 
-            <div class="social-menu">
+            <li>
+                <a href="index.html">Home</a>
+            </li>
 
-                <a href="https://www.youtube.com/@jesuswinnerministryongatar5389"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                    YouTube
-                </a>
+            <li>
+                <a href="about.html">About</a>
+            </li>
 
-                <a href="https://www.tiktok.com/@jesuswinnerrongai"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                    TikTok
-                </a>
+            <li>
+                <a href="leadership.html">Leadership</a>
+            </li>
 
-                <a href="https://www.facebook.com/jesuswinnerrongai"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                    Facebook
-                </a>
-                <a href="#" target="_blank">
-                    Instagram
-                </a>
+            <li>
+                <a href="ministries.html">Ministries</a>
+            </li>
+
+            <li>
+                <a href="services.html">Services</a>
+            </li>
+
+            <li>
+                <a href="events.html">Events</a>
+            </li>
+
+            <li>
+                <a href="media.html">Media</a>
+            </li>
+
+            <li>
+                <a href="join-us.html">Join Us</a>
+            </li>
+
+
+            <!-- MORE -->
+            <li class="more-dropdown">
+
+                <button
+                    class="more-toggle"
+                    type="button"
+                    aria-expanded="false"
+                >
+                    More
+                    <span class="dropdown-arrow">⌄</span>
+                </button>
+
+                <div class="more-menu">
+
+                    <a href="gallery.html">
+                        <span>Gallery</span>
+                    </a>
+
+                    <a href="visit-us.html">
+                        <span>Visit Us</span>
+                    </a>
+
+                    <a href="prayer.html">
+                        <span>Prayer Request</span>
+                    </a>
+
+                    <a href="contact.html">
+                        <span>Contact</span>
+                    </a>
+
+                </div>
+
+            </li>
+
+        </ul>
+
+
+        <!-- RIGHT SIDE ACTIONS -->
+        <div class="nav-actions">
+
+            <!-- LIVE -->
+            <a
+                href="live-service.html"
+                class="nav-live"
+                aria-label="Watch live church service"
+            >
+                <span class="live-indicator"></span>
+
+                <span class="live-text">LIVE</span>
+            </a>
+
+
+            <!-- SOCIAL -->
+            <div class="social-dropdown">
+
+                <button
+                    class="social-toggle"
+                    type="button"
+                    aria-expanded="false"
+                >
+                    Social
+                    <span class="dropdown-arrow">⌄</span>
+                </button>
+
+                <div class="social-menu">
+
+                    <a
+                        href="https://www.youtube.com/@jesuswinnerministryongatar5389"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <span>YouTube</span>
+                        <span class="social-arrow">↗</span>
+                    </a>
+
+                    <a
+                        href="https://www.facebook.com/jesuswinnerrongai"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <span>Facebook</span>
+                        <span class="social-arrow">↗</span>
+                    </a>
+
+                    <a
+                        href="https://www.tiktok.com/@jesuswinnerrongai"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <span>TikTok</span>
+                        <span class="social-arrow">↗</span>
+                    </a>
+
+                </div>
 
             </div>
 
@@ -109,55 +183,38 @@
      HERO SECTION
 ====================================================== -->
 
-   <!-- =========================================================
-     CINEMATIC HERO SECTION
+   <!-- =====================================================
+     CINEMATIC HERO
      JESUS WINNER MINISTRY RONGAI
-========================================================= -->
+====================================================== -->
 
 <section class="hero" id="home">
 
+    <!-- =================================================
+         WELCOME IMAGE
+         Shown for 6 seconds
+    ================================================== -->
 
-    <!-- =====================================================
-         OPENING WELCOME BACKGROUND
-         Displays before the videos begin
-    ====================================================== -->
-
-    <div
-        class="hero-intro-background"
-        aria-hidden="true"
-    ></div>
+    <div class="hero-intro-background">
+        <img
+            src="images/Church/Ministries/background.png"
+            alt="Jesus Winner Ministry Rongai"
+        >
+    </div>
 
 
-    <!-- =====================================================
-         VIDEO SLIDES
-    ====================================================== -->
+    <!-- =================================================
+         VIDEO STAGE
+    ================================================== -->
 
     <div class="hero-video-stage">
 
-<!-- BLURRED BACKGROUND VIDEO -->
-<div class="hero-video-background">
-    <video
-        id="heroBackgroundVideo"
-        muted
-        playsinline
-        loop
-        preload="auto"
-    >
-        <source
-            src="videos/Ministries/hero1.mp4"
-            type="video/mp4"
-        >
-    </video>
-</div>
-
-
-
-        <!-- =================================================
-             VIDEO 1 — PORTRAIT / TIKTOK EDIT
-        ================================================== -->
+        <!-- =============================================
+             VIDEO 1 — PRAISE
+        ============================================== -->
 
         <div
-            class="hero-video-slide active"
+            class="hero-video-slide"
             data-slide="1"
         >
 
@@ -170,21 +227,20 @@
             >
 
                 <source
-                    src="videos/Ministries/hero1.mp4"
+                    src="Videos/Ministries/Praise.mp4"
                     type="video/mp4"
                 >
 
-                Your browser does not support
-                HTML5 video.
+                Your browser does not support HTML5 video.
 
             </video>
 
         </div>
 
 
-        <!-- =================================================
-             VIDEO 2
-        ================================================== -->
+        <!-- =============================================
+             VIDEO 2 — PASTOR
+        ============================================== -->
 
         <div
             class="hero-video-slide"
@@ -200,25 +256,22 @@
             >
 
                 <source
-                    src="videos/Ministries/hero2.mp4"
+                    src="Videos/Pastors/video1.mp4"
                     type="video/mp4"
                 >
 
-                Your browser does not support
-                HTML5 video.
+                Your browser does not support HTML5 video.
 
             </video>
 
         </div>
 
-
     </div>
 
 
-    <!-- =====================================================
-         CINEMATIC DARK OVERLAY
-         Keeps text/buttons readable
-    ====================================================== -->
+    <!-- =================================================
+         DARK CINEMATIC OVERLAY
+    ================================================== -->
 
     <div
         class="hero-overlay"
@@ -226,34 +279,28 @@
     ></div>
 
 
-    <!-- =====================================================
-         CENTERED WELCOME MESSAGE
-         This disappears after approximately 5 seconds
-    ====================================================== -->
+    <!-- =================================================
+         WELCOME MESSAGE
+    ================================================== -->
 
     <div class="hero-welcome-content">
-
 
         <span class="hero-welcome">
             KARIBU
         </span>
 
-
         <h1 class="hero-title">
             Jesus Winner Ministry
         </h1>
-
 
         <p class="hero-location">
             Ongata Rongai
         </p>
 
-
         <div
             class="hero-welcome-line"
             aria-hidden="true"
         ></div>
-
 
         <p class="hero-verse">
 
@@ -268,21 +315,15 @@
 
         </p>
 
-
     </div>
 
 
-    <!-- =====================================================
-         PERMANENT HERO ACTIONS
-
-         These remain visible even after the welcome
-         message disappears.
-    ====================================================== -->
+    <!-- =================================================
+         PERMANENT HERO BUTTONS
+         These remain visible throughout the hero
+    ================================================== -->
 
     <div class="hero-actions">
-
-
-        <!-- LIVE SERVICE -->
 
         <a
             href="#live-service"
@@ -303,8 +344,6 @@
         </a>
 
 
-        <!-- JOIN US -->
-
         <a
             href="#join-us"
             class="hero-action join-action"
@@ -323,13 +362,12 @@
 
         </a>
 
-
     </div>
 
 
-    <!-- =====================================================
-         VIDEO INDICATORS
-    ====================================================== -->
+    <!-- =================================================
+         VIDEO DOTS
+    ================================================== -->
 
     <div
         class="hero-dots"
@@ -339,17 +377,16 @@
         <span
             class="hero-dot active"
             data-slide="1"
-            aria-label="Show first video"
+            aria-label="Show Praise video"
         ></span>
 
         <span
             class="hero-dot"
             data-slide="2"
-            aria-label="Show second video"
+            aria-label="Show Pastor video"
         ></span>
 
     </div>
-
 
 </section>
  <!----===================================================

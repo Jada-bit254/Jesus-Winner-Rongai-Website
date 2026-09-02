@@ -1,355 +1,228 @@
 /* =========================================================
-   MORE DROPDOWN
+   JESUS WINNER MINISTRY RONGAI
+   NAVIGATION CONTROLLER
    ========================================================= */
-
-const moreToggle = document.querySelector(".more-toggle");
-const moreDropdown = document.querySelector(".more-dropdown");
-
-if (moreToggle && moreDropdown) {
-
-    moreToggle.addEventListener("click", function () {
-
-        const isOpen = moreDropdown.classList.toggle("open");
-
-        moreToggle.setAttribute(
-            "aria-expanded",
-            isOpen
-        );
-
-    });
-
-    document.addEventListener("click", function (event) {
-
-        if (
-            !moreDropdown.contains(event.target) &&
-            !moreToggle.contains(event.target)
-        ) {
-
-            moreDropdown.classList.remove("open");
-
-            moreToggle.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-
-        }
-
-    });
-
-}
-
-
-/* =========================================================
-   HERO BACKGROUND SLIDER
-   ========================================================= */
-
-const heroSlides = document.querySelectorAll(".hero-slide");
-const heroDots = document.querySelectorAll(".hero-dot");
-
-let currentHeroSlide = 0;
-
-/* =====================================================
-   PREPARE CINEMATIC BACKGROUND VIDEO
-===================================================== */
-
-const backgroundVideo =
-    hero.querySelector(
-        "#heroBackgroundVideo"
-    );
-
-if (backgroundVideo) {
-
-    backgroundVideo.muted = true;
-
-    backgroundVideo.playsInline = true;
-
-    backgroundVideo.play().catch(
-        () => {}
-    );
-}
-```
-
-function showHeroSlide(index) {
-
-    heroSlides.forEach((slide, i) => {
-    
-
-        slide.classList.toggle(
-            "active",
-            i === index
-        );
-
-    });
-
-    heroDots.forEach((dot, i) => {
-
-        dot.classList.toggle(
-            "active",
-            i === index
-        );
-
-    });
-
-}
-
-
-function nextHeroSlide() {
-
-    currentHeroSlide++;
-
-    if (currentHeroSlide >= heroSlides.length) {
-
-        currentHeroSlide = 0;
-
-    }
-
-    showHeroSlide(currentHeroSlide);
-
-}
-
-
-/* Change hero image every 6 seconds */
-
-if (heroSlides.length > 0) {
-
-    setInterval(nextHeroSlide, 6000);
-
-}
-
-
-/* =========================================================
-   HERO SLIDER DOTS
-   ========================================================= */
-
-heroDots.forEach((dot, index) => {
-
-    dot.addEventListener("click", () => {
-
-        currentHeroSlide = index;
-
-        showHeroSlide(currentHeroSlide);
-
-    });
-
-});
-/* =========================================================
-   JWM RONGAI — CINEMATIC HERO CONTROLLER
-========================================================= */
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    const hero =
-        document.querySelector(".hero");
+    /* =====================================================
+       ELEMENTS
+       ===================================================== */
 
-    if (!hero) return;
+    const mobileToggle =
+        document.querySelector(".mobile-menu-toggle");
 
+    const navWrapper =
+        document.querySelector(".nav-menu-wrapper");
 
-    const intro =
-        hero.querySelector(
-            ".hero-intro-background"
-        );
+    const moreToggle =
+        document.querySelector(".more-toggle");
 
-    const welcome =
-        hero.querySelector(
-            ".hero-welcome-content"
-        );
+    const moreDropdown =
+        document.querySelector(".more-dropdown");
 
-    const slides =
-        hero.querySelectorAll(
-            ".hero-video-slide"
-        );
+    const socialToggle =
+        document.querySelector(".social-toggle");
 
-    const videos =
-        hero.querySelectorAll(
-            ".hero-video"
-        );
-
-    const dots =
-        hero.querySelectorAll(
-            ".hero-dot"
-        );
-
-
-    let currentSlide = 0;
+    const socialDropdown =
+        document.querySelector(".social-dropdown");
 
 
     /* =====================================================
-       SHOW VIDEO
-    ===================================================== */
+       MOBILE MENU
+       ===================================================== */
 
-    function showVideo(index) {
+    if (mobileToggle && navWrapper) {
 
-        if (!slides[index]) return;
+        mobileToggle.addEventListener("click", function () {
 
+            const isOpen =
+                navWrapper.classList.toggle("open");
 
-        slides.forEach(
-            (slide, i) => {
+            mobileToggle.setAttribute(
+                "aria-expanded",
+                isOpen
+            );
 
-                slide.classList.toggle(
-                    "active",
-                    i === index
-                );
+            mobileToggle.setAttribute(
+                "aria-label",
+                isOpen
+                    ? "Close navigation menu"
+                    : "Open navigation menu"
+            );
 
-            }
-        );
-
-
-        dots.forEach(
-            (dot, i) => {
-
-                dot.classList.toggle(
-                    "active",
-                    i === index
-                );
-
-            }
-        );
-
-
-        videos.forEach(
-            (video, i) => {
-
-                if (i === index) {
-
-                    video.currentTime = 0;
-
-                    video.play().catch(
-                        () => {}
-                    );
-
-                } else {
-
-                    video.pause();
-
-                }
-
-            }
-        );
-
-
-        currentSlide = index;
+        });
 
     }
 
 
     /* =====================================================
-       OPENING SCENE
-       7 SECOND WELCOME
-    ===================================================== */
+       MORE DROPDOWN
+       ===================================================== */
 
-/* =====================================================
-   TRANSITION FROM BLUE OPENING TO VIDEO
-   AFTER 7 SECONDS
-===================================================== */
+    if (moreToggle && moreDropdown) {
+
+        moreToggle.addEventListener("click", function (event) {
+
+            event.stopPropagation();
+
+            const isOpen =
+                moreDropdown.classList.toggle("open");
+
+            moreToggle.setAttribute(
+                "aria-expanded",
+                isOpen
+            );
 
 
-/* =====================================================
-   START FIRST VIDEO
-===================================================== */
+            /* Close Social */
 
-showVideo(0);
-  
+            if (socialDropdown && socialToggle) {
+
+                socialDropdown.classList.remove("open");
+
+                socialToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+            }
+
+        });
+
+    }
+
 
     /* =====================================================
-       VIDEO TRANSITIONS
-    ===================================================== */
+       SOCIAL DROPDOWN
+       ===================================================== */
 
-    videos.forEach(
-        (video, index) => {
+    if (socialToggle && socialDropdown) {
 
-            video.addEventListener(
-                "ended",
-                function () {
+        socialToggle.addEventListener(
+            "click",
+            function (event) {
 
-                    const next =
-                        index + 1;
+                event.stopPropagation();
 
+                const isOpen =
+                    socialDropdown.classList.toggle("open");
 
-                    /* =====================================
-                       MOVE TO NEXT VIDEO
-                    ================================== */
-
-                    if (
-                        next <
-                        videos.length
-                    ) {
-
-                        showVideo(next);
-
-                        return;
-
-                    }
+                socialToggle.setAttribute(
+                    "aria-expanded",
+                    isOpen
+                );
 
 
-                    /* =====================================
-                       ALL VIDEOS FINISHED
+                /* Close More */
 
-                       Return to welcome scene
-                    ================================== */
+                if (moreDropdown && moreToggle) {
 
-                    slides.forEach(
-                        slide => {
+                    moreDropdown.classList.remove("open");
 
-                            slide.classList.remove(
-                                "active"
-                            );
-
-                        }
+                    moreToggle.setAttribute(
+                        "aria-expanded",
+                        "false"
                     );
-
-
-                    intro.style.opacity = "1";
-
-                    welcome.classList.remove(
-                        "hide"
-                    );
-
-
-                    /* Keep welcome for 7 seconds */
-
-                    setTimeout(function () {
-
-                        welcome.classList.add(
-                            "hide"
-                        );
-
-                        intro.style.opacity =
-                            "0";
-
-                        showVideo(0);
-
-                    }, 7000);
-
                 }
-            );
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       CLOSE DROPDOWNS WHEN CLICKING OUTSIDE
+       ===================================================== */
+
+    document.addEventListener(
+        "click",
+        function (event) {
+
+            if (
+                moreDropdown &&
+                !moreDropdown.contains(event.target)
+            ) {
+
+                moreDropdown.classList.remove("open");
+
+                if (moreToggle) {
+
+                    moreToggle.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+                }
+            }
+
+
+            if (
+                socialDropdown &&
+                !socialDropdown.contains(event.target)
+            ) {
+
+                socialDropdown.classList.remove("open");
+
+                if (socialToggle) {
+
+                    socialToggle.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+                }
+            }
 
         }
     );
 
 
     /* =====================================================
-       DOT CONTROLS
-    ===================================================== */
+       CLOSE MOBILE MENU AFTER SELECTING A PAGE
+       ===================================================== */
 
-    dots.forEach(
-        (dot, index) => {
+    if (navWrapper) {
 
-            dot.addEventListener(
+        const navLinks =
+            navWrapper.querySelectorAll(
+                "a"
+            );
+
+        navLinks.forEach(function (link) {
+
+            link.addEventListener(
                 "click",
                 function () {
 
-                    intro.style.opacity = "0";
+                    if (
+                        window.innerWidth <= 950 &&
+                        !link.closest(".social-menu") &&
+                        !link.closest(".more-menu")
+                    ) {
 
-                    welcome.classList.add(
-                        "hide"
-                    );
+                        navWrapper.classList.remove(
+                            "open"
+                        );
 
-                    showVideo(index);
+                        if (mobileToggle) {
+
+                            mobileToggle.setAttribute(
+                                "aria-expanded",
+                                "false"
+                            );
+
+                            mobileToggle.setAttribute(
+                                "aria-label",
+                                "Open navigation menu"
+                            );
+                        }
+                    }
 
                 }
             );
 
-        }
-    );
+        });
+
+    }
 
 });
+

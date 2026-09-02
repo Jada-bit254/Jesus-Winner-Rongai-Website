@@ -103,393 +103,767 @@ a {
 
 
 /* =========================================================
-   6. NAVIGATION
+   JESUS WINNER MINISTRY RONGAI
+   PREMIUM MAIN NAVIGATION
    ========================================================= */
 
-nav {
-
+.main-nav {
     position: sticky;
-
     top: 0;
-
     z-index: 1000;
 
     width: 100%;
+    min-height: 86px;
 
     display: flex;
-
-    justify-content: space-between;
-
     align-items: center;
 
-    padding: 18px 6%;
+    padding: 8px 4%;
 
-    background:
-        rgba(11, 61, 145, 0.96);
+    background: rgba(11, 61, 145, 0.98);
 
-    backdrop-filter:
-        blur(12px);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.25);
 
     box-shadow:
-        0 5px 25px rgba(0, 0, 0, 0.15);
+        0 8px 30px rgba(0, 0, 0, 0.14);
+
+    backdrop-filter: blur(14px);
 }
 
 
-/* Church logo/name */
+/* =========================================================
+   LOGO
+   ========================================================= */
 
-.logo h2 {
-
-    background: none;
-
-    color: var(--white);
-
-    padding: 0;
-
-    margin: 0;
-
-    font-size: 25px;
-
-    letter-spacing: 0.5px;
-}
-
-
-/* Navigation list */
-
-.nav-links {
-
+.nav-brand {
+    flex-shrink: 0;
     display: flex;
-
     align-items: center;
-
-    gap: 28px;
-
-    list-style: none;
 }
 
+.nav-brand a {
+    display: flex;
+    align-items: center;
+}
 
-/* Navigation links */
+.church-logo {
+    width: 225px;
+    height: 70px;
 
-.nav-links a {
+    object-fit: fill;
 
-    position: relative;
+    display: block;
 
-    color: var(--white);
-
-    font-size: 15px;
-
-    font-weight: 600;
+    mix-blend-mode: screen;
+}
+    /*
+       Helps visually blend a logo with a blue background
+       when the source image contains a black background.
+    */
+    mix-blend-mode: screen;
 
     transition:
-        color var(--transition);
+        transform 0.35s ease,
+        filter 0.35s ease;
+}
+
+.church-logo:hover {
+    transform: scale(1.03);
+
+    filter:
+        drop-shadow(0 0 10px rgba(212, 175, 55, 0.25));
 }
 
 
-/* Gold underline animation */
+/* =========================================================
+   NAVIGATION WRAPPER
+   ========================================================= */
 
-.nav-links a::after {
+.nav-menu-wrapper {
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    gap: 15px;
+
+    min-width: 0;
+}
+
+
+/* =========================================================
+   NAVIGATION LINKS
+   ========================================================= */
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    gap: 17px;
+
+    list-style: none;
+
+    margin: 0;
+    padding: 0;
+
+    margin-left: 18px;
+}
+.nav-links > li {
+    position: relative;
+}
+
+.nav-links > li > a,
+.more-toggle,
+.social-toggle {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+
+    padding: 10px 2px;
+
+    background: transparent;
+    border: none;
+
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+
+    letter-spacing: 0.2px;
+
+    white-space: nowrap;
+
+    cursor: pointer;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+/* =========================================================
+   GOLD UNDERLINE
+   ========================================================= */
+
+.nav-links > li > a::after,
+.more-toggle::after,
+.social-toggle::after {
 
     content: "";
 
     position: absolute;
 
     left: 0;
-
-    bottom: -7px;
+    bottom: 2px;
 
     width: 0;
-
     height: 2px;
 
-    background:
-        var(--gold);
+    border-radius: 10px;
 
-    transition:
-        width var(--transition);
+    background: #D4AF37;
+
+    transition: width 0.3s ease;
 }
 
 
-.nav-links a:hover {
+.nav-links > li > a:hover,
+.more-toggle:hover,
+.social-toggle:hover {
 
-    color: var(--gold);
+    color: #D4AF37;
 }
 
 
-.nav-links a:hover::after {
+.nav-links > li > a:hover::after,
+.more-toggle:hover::after,
+.social-toggle:hover::after {
 
     width: 100%;
 }
 
 
 /* =========================================================
-   7. HERO SECTION
+   DROPDOWN ARROW
    ========================================================= */
 
-.hero {
+.dropdown-arrow {
+    font-size: 13px;
 
-    min-height: 88vh;
+    transition:
+        transform 0.3s ease;
+}
+
+.more-dropdown.open .dropdown-arrow,
+.social-dropdown.open .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+
+/* =========================================================
+   MORE DROPDOWN
+   ========================================================= */
+
+.more-dropdown {
+    position: relative;
+}
+
+.more-menu {
+    position: absolute;
+
+    top: calc(100% + 15px);
+    left: 50%;
+
+    width: 205px;
+
+    padding: 8px;
+
+    background: #ffffff;
+
+    border:
+        1px solid
+        rgba(212, 175, 55, 0.30);
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.20);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform:
+        translate(-50%, -10px)
+        scale(0.96);
+
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+/* Small gold detail above menu */
+
+.more-menu::before,
+.social-menu::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: -6px;
+
+    width: 12px;
+    height: 12px;
+
+    background: #ffffff;
+
+    transform: rotate(45deg);
+
+    border-left:
+        1px solid
+        rgba(212, 175, 55, 0.30);
+
+    border-top:
+        1px solid
+        rgba(212, 175, 55, 0.30);
+}
+
+.more-menu::before {
+    left: 50%;
+}
+
+
+/* OPEN */
+
+.more-dropdown.open .more-menu {
+
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    transform:
+        translate(-50%, 0)
+        scale(1);
+}
+
+
+/* MORE LINKS */
+
+.more-menu a {
+
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+
+    padding: 12px 14px;
+
+    color: #20242A;
+
+    border-radius: 9px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        padding-left 0.25s ease;
+}
+
+.more-menu a:hover {
+
+    background:
+        rgba(11, 61, 145, 0.07);
+
+    color: #0B3D91;
+
+    padding-left: 19px;
+}
+
+
+/* =========================================================
+   RIGHT ACTIONS
+   ========================================================= */
+
+.nav-actions {
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   LIVE BUTTON
+   ========================================================= */
+
+.nav-live {
+
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    min-width: 78px;
+
+    padding: 10px 16px;
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #D4AF37,
+            #E8C85A
+        );
+
+    color: #0B3D91;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    box-shadow:
+        0 5px 18px rgba(212, 175, 55, 0.25);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.nav-live:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 9px 25px rgba(212, 175, 55, 0.40);
+}
+
+
+/* LIVE DOT */
+
+.live-indicator {
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #D71920;
+
+    box-shadow:
+        0 0 0 0 rgba(215, 25, 32, 0.55);
+
+    animation:
+        livePulse 1.5s infinite;
+}
+
+@keyframes livePulse {
+
+    0% {
+        box-shadow:
+            0 0 0 0
+            rgba(215, 25, 32, 0.55);
+    }
+
+    70% {
+        box-shadow:
+            0 0 0 7px
+            rgba(215, 25, 32, 0);
+    }
+
+    100% {
+        box-shadow:
+            0 0 0 0
+            rgba(215, 25, 32, 0);
+    }
+}
+
+
+/* =========================================================
+   SOCIAL DROPDOWN
+   ========================================================= */
+
+.social-dropdown {
+    position: relative;
+}
+
+.social-toggle {
+
+    padding:
+        9px 13px !important;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.35);
+
+    border-radius: 25px;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease;
+}
+
+.social-toggle:hover {
+
+    background:
+        rgba(212, 175, 55, 0.12);
+
+    border-color:
+        #D4AF37;
+}
+
+
+/* SOCIAL MENU */
+
+.social-menu {
+
+    position: absolute;
+
+    top: calc(100% + 15px);
+    right: 0;
+
+    width: 175px;
+
+    padding: 8px;
+
+    background: #ffffff;
+
+    border:
+        1px solid
+        rgba(212, 175, 55, 0.30);
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.20);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform:
+        translateY(-10px)
+        scale(0.96);
+
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+/* Arrow */
+
+.social-menu::before {
+    right: 22px;
+}
+
+
+/* OPEN STATE */
+
+.social-dropdown.open .social-menu {
+
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* SOCIAL LINKS */
+
+.social-menu a {
 
     display: flex;
 
-    justify-content: center;
-
     align-items: center;
+    justify-content: space-between;
 
-    text-align: center;
+    width: 100%;
 
-    padding: 80px 25px;
+    padding: 11px 13px;
 
-    color: var(--white);
+    color: #20242A;
 
-    background:
+    border-radius: 9px;
 
-        linear-gradient(
-            rgba(11, 61, 145, 0.78),
-            rgba(11, 61, 145, 0.70)
-        ),
-
-        url("../images/church.jpg");
-
-    background-size: cover;
-
-    background-position: center;
-
-    background-attachment: fixed;
-
-    position: relative;
-}
-
-
-/* Hero content */
-
-.hero-content {
-
-    max-width: 900px;
-
-    margin: auto;
-
-    animation:
-        heroEntrance 1.2s ease;
-}
-
-
-/* Hero heading */
-
-.hero h1 {
-
-    background: none;
-
-    color: var(--white);
-
-    padding: 0;
-
-    margin-bottom: 25px;
-
-    font-size: clamp(
-        42px,
-        6vw,
-        72px
-    );
-
-    line-height: 1.1;
-
-    font-weight: 800;
-
-    letter-spacing: -1px;
-}
-
-
-/* Gold emphasis line */
-
-.hero h1::after {
-
-    content: "";
-
-    display: block;
-
-    width: 90px;
-
-    height: 4px;
-
-    background:
-        var(--gold);
-
-    margin: 28px auto;
-}
-
-
-/* Hero paragraph */
-
-.hero p {
-
-    max-width: 760px;
-
-    margin: 0 auto 35px;
-
-    font-size: 20px;
-
-    color: rgba(
-        255,
-        255,
-        255,
-        0.92
-    );
-}
-
-
-/* =========================================================
-   8. BUTTONS
-   ========================================================= */
-
-.btn {
-
-    display: inline-block;
-
-    padding: 15px 30px;
-
-    margin: 8px;
-
-    border-radius: 50px;
-
-    background:
-        var(--gold);
-
-    color:
-        var(--primary-blue);
-
-    font-weight: 700;
-
-    border:
-        2px solid var(--gold);
+    font-size: 13px;
+    font-weight: 600;
 
     transition:
-        all var(--transition);
-
-    box-shadow:
-        0 8px 20px
-        rgba(0, 0, 0, 0.15);
+        background 0.25s ease,
+        color 0.25s ease,
+        padding-left 0.25s ease;
 }
 
+.social-menu a:hover {
 
-.btn:hover {
+    background:
+        rgba(11, 61, 145, 0.07);
+
+    color: #0B3D91;
+
+    padding-left: 17px;
+}
+
+.social-arrow {
+
+    opacity: 0.5;
+
+    transition:
+        transform 0.25s ease,
+        opacity 0.25s ease;
+}
+
+.social-menu a:hover .social-arrow {
 
     transform:
-        translateY(-5px);
+        translate(2px, -2px);
 
-    background:
-        var(--white);
-
-    color:
-        var(--primary-blue);
-
-    box-shadow:
-        0 15px 30px
-        rgba(0, 0, 0, 0.25);
-}
-
-
-/* Secondary button */
-
-.btn-secondary {
-
-    background:
-        transparent;
-
-    color:
-        var(--white);
-
-    border:
-        2px solid
-        rgba(255, 255, 255, 0.8);
-}
-
-
-.btn-secondary:hover {
-
-    background:
-        var(--rose);
-
-    border-color:
-        var(--rose);
-
-    color:
-        var(--white);
+    opacity: 1;
 }
 
 
 /* =========================================================
-   9. GENERAL SECTIONS
+   MOBILE BUTTON
    ========================================================= */
 
-section {
+.mobile-menu-toggle {
 
-    width: min(
-        1180px,
-        92%
-    );
+    display: none;
 
-    margin: 80px auto;
+    width: 42px;
+    height: 42px;
 
-    padding: 70px 50px;
+    border: 1px solid
+        rgba(255,255,255,0.25);
 
-    background:
-        var(--white);
+    border-radius: 8px;
 
-    border-radius: 24px;
+    background: transparent;
 
-    box-shadow:
-        var(--shadow-soft);
+    cursor: pointer;
+
+    padding: 9px;
 }
 
-
-/* =========================================================
-   10. SECTION HEADINGS
-   ========================================================= */
-
-section h2 {
-
-    position: relative;
-
-    text-align: center;
-
-    color:
-        var(--primary-blue);
-
-    font-size:
-        clamp(
-            30px,
-            4vw,
-            42px
-        );
-
-    margin-bottom: 45px;
-
-    line-height: 1.2;
-}
-
-
-/* Gold decorative line */
-
-section h2::after {
-
-    content: "";
+.mobile-menu-toggle span {
 
     display: block;
 
-    width: 70px;
+    width: 100%;
+    height: 2px;
 
-    height: 4px;
+    margin: 5px 0;
 
-    background:
-        linear-gradient(
-            90deg,
-            var(--gold),
-            var(--rose)
-        );
+    background: #ffffff;
 
-    margin:
-        16px auto 0;
+    border-radius: 3px;
 
-    border-radius: 10px;
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1200px) {
+
+    .main-nav {
+        padding-left: 2.5%;
+        padding-right: 2.5%;
+    }
+
+    .church-logo {
+        width: 160px;
+    }
+
+    .nav-links {
+        gap: 13px;
+    }
+
+    .nav-links > li > a,
+    .more-toggle,
+    .social-toggle {
+        font-size: 12px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 950px) {
+
+    .main-nav {
+
+        min-height: 76px;
+
+        padding:
+            8px 5%;
+
+        flex-wrap: wrap;
+    }
+
+    .church-logo {
+
+        width: 160px;
+        height: 58px;
+    }
+
+    .mobile-menu-toggle {
+
+        display: block;
+
+        margin-left: auto;
+    }
+
+    .nav-menu-wrapper {
+
+        display: none;
+
+        width: 100%;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 15px;
+
+        padding:
+            20px 0 10px;
+    }
+
+    .nav-menu-wrapper.open {
+        display: flex;
+    }
+
+    .nav-links {
+
+        width: 100%;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 3px;
+    }
+
+    .nav-links > li > a,
+    .more-toggle,
+    .social-toggle {
+
+        width: 100%;
+
+        justify-content: space-between;
+
+        padding:
+            13px 8px;
+
+        font-size: 14px;
+    }
+
+    .nav-actions {
+
+        width: 100%;
+
+        justify-content: center;
+
+        padding-top: 10px;
+    }
+
+    .more-menu,
+    .social-menu {
+
+        position: static;
+
+        width: 100%;
+
+        margin-top: 5px;
+
+        transform: none;
+
+        box-shadow: none;
+
+        border-radius: 10px;
+    }
+
+    .more-dropdown.open .more-menu,
+    .social-dropdown.open .social-menu {
+
+        transform: none;
+    }
+
+    .more-menu::before,
+    .social-menu::before {
+
+        display: none;
+    }
 }
 
 
@@ -1672,10 +2046,10 @@ section h2::after {
     line-height: 1.5;
 }
 
-.about-image {
+age {
     position: relative;
     width: 100%;
-    max-width: 600px;
+    max-width: 600p.about-imx;
 }
 
 .about-image::after {
@@ -1710,6 +2084,32 @@ section h2::after {
 
     display: block;
 }
+
+
+.about-image img {
+    position: relative;
+
+    z-index: 1;
+
+    width: 100%;
+    height: 450px;
+
+    object-fit: cover;
+
+    border-radius: 15px;
+
+    display: block
+
+.about-highlights {
+    grid-template-columns: 1fr;
+}
+
+.about-text h3 {
+    font-size: 28px;
+}
+
+.hero-buttons {
+
 .about-highlights {
     grid-template-columns: 1fr;
 }
@@ -10279,1335 +10679,51 @@ nav ul li a {
 
 }
 /* =========================================================
-   CINEMATIC VIDEO HERO
-   ========================================================= */
-
-.hero {
-    position: relative;
-
-    width: 100%;
-    height: 90vh;
-
-    min-height: 650px;
-
-    overflow: hidden;
-
-    background: #050505;
-
-    isolation: isolate;
-}
-
-
-/* =========================================================
-   BACKGROUND VIDEO
-   ========================================================= */
-
-.hero-background-video {
-    position: absolute;
-
-    inset: -5%;
-
-    width: 110%;
-    height: 110%;
-
-    object-fit: cover;
-
-    object-position: center;
-
-    filter: blur(18px);
-
-    transform: scale(1.08);
-
-    opacity: 0.55;
-
-    z-index: 0;
-}
-
-
-/* =========================================================
-   MAIN VIDEO AREA
-   ========================================================= */
-
-.hero-slides {
-    position: absolute;
-
-    inset: 0;
-
-    z-index: 1;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-}
-
-
-.hero-slide {
-    position: absolute;
-
-    inset: 0;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    transition:
-        opacity 1.2s ease,
-        visibility 1.2s ease;
-}
-
-
-.hero-slide.active {
-    opacity: 1;
-
-    visibility: visible;
-}
-
-
-/* =========================================================
-   MAIN VIDEO
-   ========================================================= */
-
-.hero-main-video {
-    width: min(82vw, 1200px);
-
-    height: auto;
-
-    max-height: 78vh;
-
-    aspect-ratio: 16 / 9;
-
-    object-fit: contain;
-
-    object-position: center;
-
-    display: block;
-
-    border-radius: 6px;
-
-    box-shadow:
-        0 20px 70px
-        rgba(0, 0, 0, 0.45);
-}
-
-
-/* =========================================================
-   DARK OVERLAY
-   ========================================================= */
-
-.hero-overlay {
-    position: absolute;
-
-    inset: 0;
-
-    z-index: 3;
-
-    pointer-events: none;
-
-    background:
-        linear-gradient(
-            180deg,
-            rgba(0, 0, 0, 0.35),
-            rgba(0, 0, 0, 0.12) 45%,
-            rgba(0, 0, 0, 0.60)
-        );
-}
-
-
-/* =========================================================
-   CENTERED HERO CONTENT
-   ========================================================= */
-
-.hero-content {
-    position: absolute;
-
-    z-index: 5;
-
-    top: 50%;
-    left: 50%;
-
-    transform:
-        translate(-50%, -50%);
-
-    width: 90%;
-
-    max-width: 850px;
-
-    text-align: center;
-
-    color: #ffffff;
-
-    transition:
-        opacity 1s ease,
-        transform 1s ease;
-}
-
-
-/* Content disappears */
-
-.hero-content.hide {
-    opacity: 0;
-
-    transform:
-        translate(-50%, -55%);
-
-    pointer-events: none;
-}
-
-
-/* =========================================================
-   WELCOME
-   ========================================================= */
-
-.hero-welcome {
-    display: block;
-
-    margin-bottom: 15px;
-
-    color: var(--gold);
-
-    font-size: 14px;
-
-    font-weight: 800;
-
-    letter-spacing: 6px;
-}
-
-
-/* =========================================================
-   TITLE
-   ========================================================= */
-
-.hero-title {
-    margin: 0;
-
-    color: #ffffff;
-
-    font-size: clamp(
-        42px,
-        6vw,
-        80px
-    );
-
-    line-height: 1;
-
-    font-weight: 800;
-
-    letter-spacing: -2px;
-}
-
-
-.hero-title span {
-    display: block;
-}
-
-
-.hero-title small {
-    display: block;
-
-    margin-top: 14px;
-
-    color: var(--gold);
-
-    font-size: clamp(
-        20px,
-        2.5vw,
-        32px
-    );
-
-    font-weight: 500;
-
-    letter-spacing: 3px;
-}
-
-
-/* =========================================================
-   VERSE
-   ========================================================= */
-
-.hero-verse {
-    max-width: 650px;
-
-    margin:
-        25px auto 30px;
-
-    color:
-        rgba(255, 255, 255, 0.92);
-
-    font-size: 16px;
-
-    line-height: 1.7;
-}
-
-
-.hero-verse small {
-    display: block;
-
-    margin-top: 8px;
-
-    color: var(--gold);
-
-    font-weight: 700;
-}
-
-
-/* =========================================================
-   BUTTONS
-   ========================================================= */
-
-.hero-buttons {
-    display: flex;
-
-    justify-content: center;
-
-    gap: 12px;
-
-    flex-wrap: wrap;
-}
-
-
-.hero-action {
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 9px;
-
-    padding:
-        13px 22px;
-
-    border-radius: 4px;
-
-    text-decoration: none;
-
-    font-size: 12px;
-
-    font-weight: 800;
-
-    letter-spacing: 1px;
-
-    transition:
-        transform 0.3s ease,
-        background 0.3s ease;
-}
-
-
-.live-action {
-    background: var(--gold);
-
-    color: #071A52;
-}
-
-
-.join-action {
-    color: #ffffff;
-
-    background:
-        rgba(255, 255, 255, 0.10);
-
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.55);
-
-    backdrop-filter: blur(8px);
-}
-
-
-.hero-action:hover {
-    transform: translateY(-3px);
-
-    background: #ffffff;
-
-    color: #071A52;
-}
-
-
-/* =========================================================
-   DOTS
-   ========================================================= */
-
-.hero-dots {
-    position: absolute;
-
-    z-index: 6;
-
-    bottom: 30px;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    display: flex;
-
-    gap: 8px;
-}
-
-
-.hero-dot {
-    width: 28px;
-
-    height: 3px;
-
-    background:
-        rgba(255, 255, 255, 0.45);
-
-    transition:
-        width 0.3s ease,
-        background 0.3s ease;
-}
-
-
-.hero-dot.active {
-    width: 55px;
-
-    background: var(--gold);
-}
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 768px) {
-
-    .hero {
-        height: 85vh;
-
-        min-height: 650px;
-    }
-
-
-    .hero-main-video {
-        width: 94vw;
-
-        max-height: 55vh;
-    }
-
-
-    .hero-content {
-        width: 92%;
-    }
-
-
-    .hero-title {
-        font-size: 42px;
-    }
-
-
-    .hero-title small {
-        font-size: 20px;
-    }
-
-
-    .hero-verse {
-        font-size: 14px;
-    }
-
-
-    .hero-action {
-        padding:
-            11px 16px;
-
-        font-size: 10px;
-    }
-
-}
-/* =========================================================
-   CLEAN FULL-QUALITY VIDEO HERO
-   ========================================================= */
-
-.hero {
-    position: relative;
-
-    width: 100%;
-    height: 90vh;
-
-    min-height: 650px;
-
-    overflow: hidden;
-
-    background:
-        linear-gradient(
-            135deg,
-            #061747,
-            #0B3D91
-        );
-
-    isolation: isolate;
-}
-
-
-/* =========================================================
-   VIDEO SLIDES
-   ========================================================= */
-
-.hero-slides {
-    position: absolute;
-
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-
-    z-index: 1;
-}
-
-
-.hero-slide {
-    position: absolute;
-
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    transition:
-        opacity 1s ease,
-        visibility 1s ease;
-}
-
-
-.hero-slide.active {
-    opacity: 1;
-
-    visibility: visible;
-
-    z-index: 2;
-}
-
-
-/* =========================================================
-   VIDEO
-   ========================================================= */
-
-.hero-main-video {
-    width: 90%;
-
-    height: auto;
-
-    max-width: 1400px;
-
-    max-height: 82vh;
-
-    aspect-ratio: 16 / 9;
-
-    object-fit: contain;
-
-    object-position: center;
-
-    display: block;
-
-    border-radius: 0;
-
-    background: transparent;
-
-    box-shadow:
-        0 20px 60px
-        rgba(0, 0, 0, 0.35);
-}
-
-
-/* =========================================================
-   LIGHT CINEMATIC OVERLAY
-   ========================================================= */
-
-.hero-overlay {
-    position: absolute;
-
-    inset: 0;
-
-    z-index: 3;
-
-    pointer-events: none;
-
-    background:
-        linear-gradient(
-            180deg,
-            rgba(0, 0, 0, 0.20),
-            rgba(0, 0, 0, 0.05) 50%,
-            rgba(0, 0, 0, 0.40)
-        );
-}
-
-
-/* =========================================================
-   CENTERED CONTENT
-   ========================================================= */
-
-.hero-content {
-    position: absolute;
-
-    z-index: 5;
-
-    top: 50%;
-    left: 50%;
-
-    transform:
-        translate(-50%, -50%);
-
-    width: 90%;
-
-    max-width: 850px;
-
-    text-align: center;
-
-    color: #ffffff;
-
-    transition:
-        opacity 1s ease,
-        transform 1s ease;
-}
-
-
-/* Hide after a few seconds */
-
-.hero-content.hide {
-    opacity: 0;
-
-    transform:
-        translate(-50%, -55%);
-
-    pointer-events: none;
-}
-
-
-/* =========================================================
-   WELCOME
-   ========================================================= */
-
-.hero-welcome {
-    display: block;
-
-    margin-bottom: 14px;
-
-    color: var(--gold);
-
-    font-size: 13px;
-
-    font-weight: 800;
-
-    letter-spacing: 6px;
-}
-
-
-/* =========================================================
-   TITLE
-   ========================================================= */
-
-.hero-title {
-    margin: 0;
-
-    color: #ffffff;
-
-    font-size:
-        clamp(42px, 6vw, 78px);
-
-    line-height: 1;
-
-    font-weight: 800;
-
-    letter-spacing: -2px;
-
-    text-shadow:
-        0 3px 20px
-        rgba(0, 0, 0, 0.45);
-}
-
-
-.hero-title span {
-    display: block;
-}
-
-
-.hero-title small {
-    display: block;
-
-    margin-top: 12px;
-
-    color: var(--gold);
-
-    font-size:
-        clamp(20px, 2.5vw, 32px);
-
-    font-weight: 500;
-
-    letter-spacing: 3px;
-}
-
-
-/* =========================================================
-   VERSE
-   ========================================================= */
-
-.hero-verse {
-    max-width: 650px;
-
-    margin:
-        24px auto 30px;
-
-    color:
-        rgba(255, 255, 255, 0.95);
-
-    font-size: 16px;
-
-    line-height: 1.7;
-
-    text-shadow:
-        0 2px 10px
-        rgba(0, 0, 0, 0.5);
-}
-
-
-.hero-verse small {
-    display: block;
-
-    margin-top: 7px;
-
-    color: var(--gold);
-
-    font-weight: 700;
-}
-
-
-/* =========================================================
-   BUTTONS
-   ========================================================= */
-
-.hero-buttons {
-    display: flex;
-
-    justify-content: center;
-
-    gap: 12px;
-
-    flex-wrap: wrap;
-}
-
-
-.hero-action {
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 9px;
-
-    padding:
-        13px 22px;
-
-    text-decoration: none;
-
-    border-radius: 4px;
-
-    font-size: 12px;
-
-    font-weight: 800;
-
-    letter-spacing: 1px;
-
-    transition: 0.3s ease;
-}
-
-
-.live-action {
-    background: var(--gold);
-
-    color: #071A52;
-}
-
-
-.join-action {
-    color: #ffffff;
-
-    background:
-        rgba(7, 26, 82, 0.60);
-
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.7);
-}
-
-
-.hero-action:hover {
-    transform: translateY(-3px);
-
-    background: #ffffff;
-
-    color: #071A52;
-}
-
-
-/* =========================================================
-   DOTS
-   ========================================================= */
-
-.hero-dots {
-    position: absolute;
-
-    z-index: 7;
-
-    left: 50%;
-
-    bottom: 25px;
-
-    transform:
-        translateX(-50%);
-
-    display: flex;
-
-    gap: 8px;
-}
-
-
-.hero-dot {
-    width: 28px;
-
-    height: 3px;
-
-    background:
-        rgba(255, 255, 255, 0.5);
-
-    cursor: pointer;
-
-    transition: 0.3s ease;
-}
-
-
-.hero-dot.active {
-    width: 55px;
-
-    background: var(--gold);
-}
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 768px) {
-
-    .hero {
-        height: 82vh;
-
-        min-height: 620px;
-    }
-
-
-    .hero-main-video {
-        width: 94%;
-
-        max-height: 60vh;
-    }
-
-
-    .hero-content {
-        width: 92%;
-    }
-
-
-    .hero-title {
-        font-size: 40px;
-
-        letter-spacing: -1px;
-    }
-
-
-    .hero-title small {
-        font-size: 19px;
-    }
-
-
-    .hero-verse {
-        font-size: 14px;
-
-        margin:
-            18px auto 24px;
-    }
-
-
-    .hero-action {
-        padding:
-            11px 16px;
-
-        font-size: 10px;
-    }
-
-}
-/* =========================================================
-   JESUS WINNER MINISTRY — CINEMATIC HERO OVERRIDE
-   Paste this at the VERY BOTTOM of your CSS file
-   ========================================================= */
-
-.hero {
-    position: relative;
-    width: 100%;
-    min-height: 100svh;
-    height: 100svh;
-    overflow: hidden;
-
-    /* Your blue textured background */
-    background-image: url("../images/ministries/background.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    isolation: isolate;
-}
-
-
-/* =========================================================
-   VIDEO AREA
-   ========================================================= */
-
-.hero-slides {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-}
-
-.hero-slide {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-
-    opacity: 0;
-    visibility: hidden;
-
-    transition:
-        opacity 1.2s ease,
-        visibility 1.2s ease;
-
-    overflow: hidden;
-}
-
-
-/* Only the active video is visible */
-.hero-slide.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-
-/* The actual videos */
-.hero-main-video {
-    position: absolute;
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-
-    display: block;
-
-    /*
-       Keeps the original proportions of your
-       vertical 9:16 videos.
-    */
-    object-fit: cover;
-
-    /*
-       Keeps the important middle portion visible.
-    */
-    object-position: center center;
-
-    background: transparent;
-}
-
-
-/* =========================================================
-   CINEMATIC DARK OVERLAY
-   Helps white text remain readable.
-   ========================================================= */
-
-.hero-overlay {
-    position: absolute;
-    inset: 0;
-
-    z-index: 3;
-
-    pointer-events: none;
-
-    background:
-        linear-gradient(
-            180deg,
-            rgba(0, 0, 0, 0.28) 0%,
-            rgba(0, 0, 0, 0.08) 35%,
-            rgba(0, 0, 0, 0.20) 65%,
-            rgba(0, 0, 0, 0.65) 100%
-        );
-}
-
-
-/* =========================================================
-   HERO CONTENT
-   ========================================================= */
-
-.hero-content {
-    position: relative;
-
-    z-index: 4;
-
-    width: min(900px, 90%);
-
-    margin: 0 auto;
-
-    text-align: center;
-
-    color: #ffffff;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    padding: 2rem 1rem;
-
-    /*
-       Keeps the content comfortably inside
-       the phone safe area.
-    */
-    padding-top: max(2rem, env(safe-area-inset-top));
-    padding-bottom: max(2rem, env(safe-area-inset-bottom));
-
-    animation: heroContentEntrance 1.4s ease both;
-}
-
-
-/* Small welcome text */
-.hero-welcome {
-    display: block;
-
-    font-size: clamp(0.75rem, 1.5vw, 1rem);
-
-    font-weight: 600;
-
-    letter-spacing: 0.35em;
-
-    text-transform: uppercase;
-
-    margin-bottom: 1rem;
-
-    opacity: 0.95;
-}
-
-
-/* Main title */
-.hero-title {
-    margin: 0;
-
-    font-size: clamp(2.4rem, 7vw, 5.8rem);
-
-    line-height: 0.95;
-
-    font-weight: 700;
-
-    letter-spacing: -0.035em;
-
-    text-transform: none;
-
-    text-shadow:
-        0 3px 20px rgba(0, 0, 0, 0.45),
-        0 1px 3px rgba(0, 0, 0, 0.65);
-}
-
-
-/* Church location */
-.hero-title small {
-    display: block;
-
-    margin-top: 1rem;
-
-    font-size: clamp(0.9rem, 2vw, 1.25rem);
-
-    font-weight: 400;
-
-    letter-spacing: 0.18em;
-
-    text-transform: uppercase;
-
-    opacity: 0.9;
-}
-
-
-/* =========================================================
-   VERSE
-   ========================================================= */
-
-.hero-verse {
-    max-width: 650px;
-
-    margin: 1.8rem auto 0;
-
-    font-size: clamp(0.9rem, 1.8vw, 1.15rem);
-
-    line-height: 1.7;
-
-    color: rgba(255, 255, 255, 0.92);
-
-    text-shadow:
-        0 2px 10px rgba(0, 0, 0, 0.55);
-}
-
-
-.hero-verse em {
-    font-style: italic;
-}
-
-
-.hero-verse small {
-    display: block;
-
-    margin-top: 0.6rem;
-
-    font-size: 0.8em;
-
-    font-style: normal;
-
-    letter-spacing: 0.08em;
-
-    opacity: 0.85;
-}
-
-
-/* =========================================================
-   HERO BUTTONS
-   ========================================================= */
-
-.hero-buttons {
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    flex-wrap: wrap;
-
-    gap: 1rem;
-
-    margin-top: 2rem;
-}
-
-
-.hero-action {
-    display: inline-flex;
-
-    align-items: center;
-    justify-content: center;
-
-    gap: 0.65rem;
-
-    min-height: 48px;
-
-    padding: 0.8rem 1.35rem;
-
-    border-radius: 999px;
-
-    text-decoration: none;
-
-    font-size: 0.78rem;
-
-    font-weight: 700;
-
-    letter-spacing: 0.08em;
-
-    text-transform: uppercase;
-
-    transition:
-        transform 0.3s ease,
-        background 0.3s ease,
-        box-shadow 0.3s ease;
-
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-}
-
-
-.hero-action:hover {
-    transform: translateY(-3px);
-}
-
-
-.action-icon {
-    font-size: 0.85rem;
-
-    line-height: 1;
-}
-
-
-/* Live button */
-.live-action {
-    background: rgba(255, 255, 255, 0.95);
-
-    color: #071d35;
-
-    box-shadow:
-        0 8px 30px rgba(0, 0, 0, 0.22);
-}
-
-
-/* Join button */
-.join-action {
-    background: rgba(255, 255, 255, 0.12);
-
-    color: #ffffff;
-
-    border: 1px solid rgba(255, 255, 255, 0.55);
-
-    box-shadow:
-        0 8px 30px rgba(0, 0, 0, 0.12);
-}
-
-
-.join-action:hover {
-    background: rgba(255, 255, 255, 0.22);
-}
-
-
-/* =========================================================
-   REMOVE THE SLIDESHOW DOTS
-   ========================================================= */
-
-.hero-dots {
-    display: none !important;
-}
-
-
-/* =========================================================
-   INTRO ANIMATION
-   ========================================================= */
-
-@keyframes heroContentEntrance {
-
-    from {
-        opacity: 0;
-        transform: translateY(25px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-}
-
-
-/* =========================================================
-   TABLETS
-   ========================================================= */
-
-@media (min-width: 600px) {
-
-    .hero-content {
-        width: min(850px, 88%);
-    }
-
-    .hero-action {
-        min-height: 50px;
-
-        padding:
-            0.85rem
-            1.55rem;
-    }
-
-}
-
-
-/* =========================================================
-   DESKTOP
-   ========================================================= */
-
-@media (min-width: 1024px) {
-
-    .hero {
-        min-height: 100vh;
-        height: 100vh;
-    }
-
-    /*
-       On wide screens, don't let the vertical video
-       become excessively cropped.
-    */
-    .hero-main-video {
-        object-fit: cover;
-        object-position: center center;
-    }
-
-    .hero-content {
-        max-width: 1000px;
-    }
-
-    .hero-title {
-        font-size: clamp(4rem, 6vw, 6.5rem);
-    }
-
-}
-
-
-/* =========================================================
-   VERY WIDE SCREENS
-   ========================================================= */
-
-@media (min-width: 1600px) {
-
-    .hero-main-video {
-        object-position: center center;
-    }
-
-}
-
-```css
-/* =========================================================
-   JWM RONGAI — CINEMATIC FULL-SCREEN HERO
+   JESUS WINNER MINISTRY RONGAI
+   HERO SECTION — CLEAN FINAL VERSION
 ========================================================= */
 
 .hero {
     position: relative;
     width: 100%;
-    height: 92vh;
+    height: 90vh;
     min-height: 650px;
+
     overflow: hidden;
-    isolation: isolate;
+
     background: #071a52;
 }
 
 
 /* =========================================================
-   BLURRED / OPENING BACKGROUND
+   OPENING IMAGE
+   Displays for approximately 6 seconds
 ========================================================= */
 
 .hero-intro-background {
     position: absolute;
-    inset: 0;
+
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
     z-index: 1;
 
-    background-image: url("../images/ministries/background.png");
+    background-image:
+        url("../images/Ministries/background.png");
+
     background-size: cover;
-    background-position: center;
+    background-position: center center;
     background-repeat: no-repeat;
 
     opacity: 1;
-    transition: opacity 1.5s ease-in-out;
+
+    transition:
+        opacity 1.5s ease-in-out;
 }
 
 
@@ -11617,17 +10733,20 @@ nav ul li a {
 
 .hero-video-stage {
     position: absolute;
-    inset: 0;
-    z-index: 2;
+
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 
     width: 100%;
     height: 100%;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    z-index: 2;
 
     overflow: hidden;
+
+    background: #071a52;
 }
 
 
@@ -11637,116 +10756,118 @@ nav ul li a {
 
 .hero-video-slide {
     position: absolute;
-    inset: 0;
+
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 
     width: 100%;
     height: 100%;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
     opacity: 0;
     visibility: hidden;
-    pointer-events: none;
 
     transition:
         opacity 1.5s ease-in-out,
         visibility 1.5s ease-in-out;
 }
 
+
+/* Active video */
+
 .hero-video-slide.active {
     opacity: 1;
     visibility: visible;
-    pointer-events: auto;
+
     z-index: 3;
 }
 
 
 /* =========================================================
-   MAIN HERO VIDEOS
-   Keeps portrait videos proportional
-   without stretching or cropping the subject
+   ALL HERO VIDEOS
+   KEEP ORIGINAL VIDEO PROPORTIONS
 ========================================================= */
 
 .hero-video {
     display: block;
 
-    width: auto;
+    width: 100%;
     height: 100%;
 
     max-width: 100%;
     max-height: 100%;
 
-    object-fit: contain;
-    object-position: center;
+    margin: 0;
+    padding: 0;
 
     border: none;
+
+    object-fit: contain;
+
+    object-position: center center;
+
     background: transparent;
-
-    filter:
-        contrast(1.04)
-        brightness(1.03)
-        saturate(1.03);
-
-    transform: scale(1);
-
-    transition:
-        opacity 1.5s ease,
-        transform 2.5s ease,
-        filter 1.5s ease;
 }
 
 
 /* =========================================================
-   SUBTLE CINEMATIC MOVEMENT
+   VIDEO 1
+   Keeps the entire portrait video visible
 ========================================================= */
 
-.hero-video-slide.active .hero-video {
-    transform: scale(1.015);
+#heroVideo1 {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    object-position: center center;
 }
 
 
 /* =========================================================
-   VIDEO EDGE BLENDING
+   VIDEO 2
+   Keeps the entire video visible
+   WITHOUT STRETCHING OR CROPPING
 ========================================================= */
 
-.hero-video-stage::before {
-    content: "";
+#heroVideo2 {
+    width: 100%;
+    height: 100%;
 
-    position: absolute;
-    inset: 0;
+    object-fit: contain;
 
-    z-index: 4;
-    pointer-events: none;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(0, 0, 0, 0.30) 0%,
-            transparent 20%,
-            transparent 80%,
-            rgba(0, 0, 0, 0.30) 100%
-        );
+    object-position: center center;
 }
 
 
 /* =========================================================
-   GENERAL DARK OVERLAY
+   DARK CINEMATIC OVERLAY
 ========================================================= */
 
 .hero-overlay {
     position: absolute;
-    inset: 0;
 
-    z-index: 5;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    z-index: 6;
+
     pointer-events: none;
 
     background:
         linear-gradient(
-            180deg,
-            rgba(0, 0, 0, 0.05) 0%,
-            rgba(0, 0, 0, 0.02) 50%,
+            to bottom,
+            rgba(0, 0, 0, 0.08) 0%,
+            rgba(0, 0, 0, 0.03) 45%,
             rgba(0, 0, 0, 0.48) 100%
         );
 }
@@ -11759,495 +10880,10 @@ nav ul li a {
 .hero-welcome-content {
     position: absolute;
 
-    z-index: 8;
-
     top: 50%;
     left: 50%;
-
-    width: min(900px, 90%);
-
-    transform: translate(-50%, -50%);
-
-    text-align: center;
-    color: #fff;
-
-    opacity: 1;
-
-    transition:
-        opacity 1.5s ease,
-        transform 1.5s ease;
-}
-
-.hero-welcome-content.hide {
-    opacity: 0;
-    transform: translate(-50%, -53%);
-}
-
-
-/* =========================================================
-   WELCOME LABEL
-========================================================= */
-
-.hero-welcome {
-    display: block;
-
-    margin-bottom: 16px;
-
-    color: var(--gold);
-
-    font-size: 14px;
-    font-weight: 800;
-
-    letter-spacing: 7px;
-}
-
-
-/* =========================================================
-   CHURCH NAME
-========================================================= */
-
-.hero-title {
-    margin: 0;
-
-    color: #fff;
-
-    font-size: clamp(42px, 6vw, 78px);
-    line-height: 1;
-
-    font-weight: 800;
-    letter-spacing: -2px;
-
-    text-shadow:
-        0 5px 30px rgba(0, 0, 0, 0.65);
-}
-
-
-/* =========================================================
-   LOCATION
-========================================================= */
-
-.hero-location {
-    margin: 15px 0 22px;
-
-    color: var(--gold);
-
-    font-size: clamp(20px, 2.5vw, 32px);
-    letter-spacing: 4px;
-}
-
-
-/* =========================================================
-   GOLD DIVIDER
-========================================================= */
-
-.hero-welcome-line {
-    width: 70px;
-    height: 2px;
-
-    margin: 0 auto 20px;
-
-    background: var(--gold);
-}
-
-
-/* =========================================================
-   BIBLE VERSE
-========================================================= */
-
-.hero-verse {
-    max-width: 650px;
-
-    margin: 0 auto;
-
-    color: rgba(255, 255, 255, 0.94);
-
-    font-size: 16px;
-    line-height: 1.7;
-}
-
-.hero-verse em {
-    display: block;
-}
-
-.hero-verse span {
-    display: block;
-
-    margin-top: 8px;
-
-    color: var(--gold);
-
-    font-size: 14px;
-    font-weight: 700;
-}
-
-
-/* =========================================================
-   HERO ACTION BUTTONS
-========================================================= */
-
-.hero-actions {
-    position: absolute;
-
-    z-index: 10;
-
-    left: 50%;
-    bottom: 48px;
-
-    transform: translateX(-50%);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    gap: 14px;
-
-    width: 90%;
-
-    flex-wrap: wrap;
-}
-
-.hero-action {
-    display: inline-flex;
-
-    align-items: center;
-    justify-content: center;
-
-    gap: 9px;
-
-    min-width: 190px;
-
-    padding: 14px 25px;
-
-    border-radius: 4px;
-
-    text-decoration: none;
-
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 1.2px;
-
-    transition:
-        transform .3s ease,
-        background .3s ease,
-        color .3s ease;
-}
-
-.live-action {
-    background: var(--gold);
-    color: #071a52;
-}
-
-.join-action {
-    background: rgba(7, 26, 82, .55);
-
-    color: #fff;
-
-    border: 1px solid rgba(255,255,255,.75);
-
-    backdrop-filter: blur(6px);
-}
-
-.hero-action:hover {
-    transform: translateY(-3px);
-
-    background: #fff;
-    color: #071a52;
-}
-
-
-/* =========================================================
-   VIDEO NAVIGATION DOTS
-========================================================= */
-
-.hero-dots {
-    position: absolute;
-
-    z-index: 11;
-
-    left: 50%;
-    bottom: 18px;
-
-    transform: translateX(-50%);
-
-    display: flex;
-
-    gap: 7px;
-}
-
-.hero-dot {
-    width: 25px;
-    height: 3px;
-
-    background: rgba(255,255,255,.4);
-
-    cursor: pointer;
-
-    transition:
-        width .4s ease,
-        background .4s ease;
-}
-
-.hero-dot.active {
-    width: 48px;
-
-    background: var(--gold);
-}
-
-
-/* =========================================================
-   TABLET
-========================================================= */
-
-@media (max-width: 900px) {
-
-    .hero {
-        height: 90vh;
-        min-height: 620px;
-    }
-
-    .hero-video {
-        height: 100%;
-        max-height: 100%;
-        max-width: 100%;
-    }
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 600px) {
-
-    .hero {
-        height: 88vh;
-        min-height: 600px;
-    }
-
-    .hero-video {
-        width: auto;
-        height: 100%;
-
-        max-width: 100%;
-        max-height: 100%;
-
-        object-fit: contain;
-    }
-
-    .hero-title {
-        font-size: 40px;
-        letter-spacing: -1px;
-    }
-
-    .hero-location {
-        font-size: 18px;
-        letter-spacing: 2px;
-    }
-
-    .hero-verse {
-        font-size: 13px;
-        padding: 0 15px;
-    }
-
-    .hero-actions {
-        bottom: 48px;
-        width: 94%;
-    }
-
-    .hero-action {
-        min-width: 145px;
-        padding: 12px 15px;
-        font-size: 10px;
-    }
-
-    .hero-dots {
-        bottom: 18px;
-    }
-}
-```css
-/* =========================================================
-   JESUS WINNER MINISTRY RONGAI
-   CINEMATIC HERO — CLEAN VERSION
-========================================================= */
-
-.hero {
-    position: relative;
-    width: 100%;
-    height: 92vh;
-    min-height: 650px;
-
-    overflow: hidden;
-    isolation: isolate;
-
-    background: #071a52;
-}
-
-
-/* =========================================================
-   WELCOME BACKGROUND
-========================================================= */
-
-.hero-intro-background {
-    position: absolute;
-    inset: 0;
-
-    z-index: 1;
-
-    background-image: url("../images/ministries/background.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    opacity: 1;
-
-    transition: opacity 1.5s ease;
-}
-
-
-/* =========================================================
-   VIDEO STAGE
-========================================================= */
-
-.hero-video-stage {
-    position: absolute;
-    inset: 0;
-
-    z-index: 2;
-
-    width: 100%;
-    height: 100%;
-
-    overflow: hidden;
-
-    background: #000;
-}
-
-
-/* =========================================================
-   VIDEO SLIDES
-========================================================= */
-
-.hero-video-slide {
-    position: absolute;
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    opacity: 0;
-    visibility: hidden;
-
-    transition: opacity 1.4s ease;
-}
-
-
-.hero-video-slide.active {
-    opacity: 1;
-    visibility: visible;
-
-    z-index: 3;
-}
-
-
-/* =========================================================
-   VIDEO 1
-   Large portrait video
-   Keeps the complete video visible
-========================================================= */
-
-#heroVideo1 {
-    position: absolute;
-
-    top: 50%;
-    left: 50%;
-
-    height: 100%;
-    width: auto;
-
-    max-width: none;
-    max-height: none;
-
-    transform:
-        translate(-50%, -50%)
-        scale(1.10);
-
-    object-fit: contain;
-    object-position: center;
-
-    display: block;
-
-    border: none;
-}
-
-
-/* =========================================================
-   VIDEO 2
-   FULL SCREEN / HORIZONTAL
-========================================================= */
-
-#heroVideo2 {
-    position: absolute;
-
-    top: 50%;
-    left: 50%;
-
-    width: 100%;
-    height: 100%;
-
-    max-width: none;
-    max-height: none;
-
-    transform:
-        translate(-50%, -50%);
-
-    object-fit: cover;
-    object-position: center center;
-
-    display: block;
-
-    border: none;
-}
-
-
-/* =========================================================
-   VIDEO DARKENING
-========================================================= */
-
-.hero-video-stage::after {
-    content: "";
-
-    position: absolute;
-    inset: 0;
-
-    z-index: 4;
-
-    pointer-events: none;
-
-    background:
-        linear-gradient(
-            180deg,
-            rgba(0,0,0,0.05) 0%,
-            rgba(0,0,0,0.02) 50%,
-            rgba(0,0,0,0.45) 100%
-        );
-}
-
-
-/* =========================================================
-   WELCOME CONTENT
-========================================================= */
-
-.hero-welcome-content {
-    position: absolute;
 
     z-index: 8;
-
-    top: 50%;
-    left: 50%;
 
     width: min(900px, 90%);
 
@@ -12256,15 +10892,17 @@ nav ul li a {
 
     text-align: center;
 
-    color: #fff;
+    color: #ffffff;
 
     opacity: 1;
 
     transition:
-        opacity 1.4s ease,
-        transform 1.4s ease;
+        opacity 1.5s ease-in-out,
+        transform 1.5s ease-in-out;
 }
 
+
+/* Welcome disappears */
 
 .hero-welcome-content.hide {
     opacity: 0;
@@ -12286,6 +10924,7 @@ nav ul li a {
     color: var(--gold);
 
     font-size: 14px;
+
     font-weight: 800;
 
     letter-spacing: 7px;
@@ -12299,7 +10938,7 @@ nav ul li a {
 .hero-title {
     margin: 0;
 
-    color: #fff;
+    color: #ffffff;
 
     font-size:
         clamp(42px, 6vw, 78px);
@@ -12311,7 +10950,8 @@ nav ul li a {
     letter-spacing: -2px;
 
     text-shadow:
-        0 5px 30px rgba(0,0,0,0.65);
+        0 5px 30px
+        rgba(0, 0, 0, 0.65);
 }
 
 
@@ -12333,17 +10973,19 @@ nav ul li a {
 
 
 /* =========================================================
-   GOLD LINE
+   GOLD DIVIDER
 ========================================================= */
 
 .hero-welcome-line {
     width: 70px;
+
     height: 2px;
 
     margin:
         0 auto 20px;
 
-    background: var(--gold);
+    background:
+        var(--gold);
 }
 
 
@@ -12357,7 +10999,7 @@ nav ul li a {
     margin: 0 auto;
 
     color:
-        rgba(255,255,255,0.94);
+        rgba(255, 255, 255, 0.94);
 
     font-size: 16px;
 
@@ -12384,16 +11026,16 @@ nav ul li a {
 
 
 /* =========================================================
-   HERO BUTTONS
+   PERMANENT HERO BUTTONS
 ========================================================= */
 
 .hero-actions {
     position: absolute;
 
-    z-index: 10;
-
     left: 50%;
     bottom: 48px;
+
+    z-index: 10;
 
     transform:
         translateX(-50%);
@@ -12406,10 +11048,10 @@ nav ul li a {
     gap: 14px;
 
     width: 90%;
-
-    flex-wrap: wrap;
 }
 
+
+/* Individual buttons */
 
 .hero-action {
     display: inline-flex;
@@ -12435,41 +11077,49 @@ nav ul li a {
     letter-spacing: 1.2px;
 
     transition:
-        transform .3s ease,
-        background .3s ease,
-        color .3s ease;
+        transform 0.3s ease,
+        background 0.3s ease,
+        color 0.3s ease;
 }
 
+
+/* Live button */
 
 .live-action {
-    background: var(--gold);
+    background:
+        var(--gold);
 
-    color: #071a52;
+    color:
+        #071a52;
 }
 
+
+/* Join button */
 
 .join-action {
     background:
-        rgba(7,26,82,.55);
+        rgba(7, 26, 82, 0.70);
 
-    color: #fff;
+    color:
+        #ffffff;
 
     border:
         1px solid
-        rgba(255,255,255,.75);
-
-    backdrop-filter:
-        blur(6px);
+        rgba(255, 255, 255, 0.75);
 }
 
+
+/* Hover */
 
 .hero-action:hover {
     transform:
         translateY(-3px);
 
-    background: #fff;
+    background:
+        #ffffff;
 
-    color: #071a52;
+    color:
+        #071a52;
 }
 
 
@@ -12480,10 +11130,10 @@ nav ul li a {
 .hero-dots {
     position: absolute;
 
-    z-index: 11;
-
     left: 50%;
     bottom: 18px;
+
+    z-index: 11;
 
     transform:
         translateX(-50%);
@@ -12496,23 +11146,25 @@ nav ul li a {
 
 .hero-dot {
     width: 25px;
+
     height: 3px;
 
     background:
-        rgba(255,255,255,.4);
+        rgba(255, 255, 255, 0.4);
 
     cursor: pointer;
 
     transition:
-        width .4s ease,
-        background .4s ease;
+        width 0.4s ease,
+        background 0.4s ease;
 }
 
 
 .hero-dot.active {
     width: 48px;
 
-    background: var(--gold);
+    background:
+        var(--gold);
 }
 
 
@@ -12523,23 +11175,23 @@ nav ul li a {
 @media (max-width: 900px) {
 
     .hero {
-        height: 90vh;
+        height: 88vh;
         min-height: 620px;
     }
 
-    #heroVideo1 {
-        height: 100%;
-        transform:
-            translate(-50%, -50%)
-            scale(1.08);
-    }
 
-    #heroVideo2 {
+    .hero-video {
         width: 100%;
         height: 100%;
 
-        object-fit: cover;
+        object-fit: contain;
     }
+
+
+    .hero-title {
+        font-size: 52px;
+    }
+
 }
 
 
@@ -12555,36 +11207,24 @@ nav ul li a {
     }
 
 
-    #heroVideo1 {
+    .hero-video {
+        width: 100%;
         height: 100%;
-        width: auto;
-
-        transform:
-            translate(-50%, -50%)
-            scale(1.05);
 
         object-fit: contain;
     }
 
 
-    #heroVideo2 {
-        width: 100%;
-        height: 100%;
-
-        object-fit: cover;
-
-        object-position: center center;
-    }
-
-
     .hero-title {
         font-size: 40px;
+
         letter-spacing: -1px;
     }
 
 
     .hero-location {
         font-size: 18px;
+
         letter-spacing: 2px;
     }
 
@@ -12592,13 +11232,17 @@ nav ul li a {
     .hero-verse {
         font-size: 13px;
 
-        padding: 0 15px;
+        padding:
+            0 15px;
     }
 
 
     .hero-actions {
         bottom: 48px;
+
         width: 94%;
+
+        gap: 9px;
     }
 
 
@@ -12610,439 +11254,606 @@ nav ul li a {
 
         font-size: 10px;
     }
+
+
+    .hero-dots {
+        bottom: 18px;
+    }
 }
-
-```css id="hero-clean-reset"
 /* =========================================================
-   JESUS WINNER MINISTRY RONGAI
-   CLEAN CINEMATIC HERO
-========================================================= */
+   NAVIGATION BAR — FINAL POLISH
+   ========================================================= */
 
-.hero {
-    position: relative;
+/* Main navigation */
+.main-nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
     width: 100%;
-    height: 92vh;
-    min-height: 650px;
-    overflow: hidden;
-    background: #071a52;
-}
+    min-height: 78px;
 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-/* =========================================================
-   OPENING BLUE BACKGROUND
-========================================================= */
-
-.hero-intro-background {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
+    padding: 10px 4.5%;
 
     background:
         linear-gradient(
             135deg,
-            #071a52,
-            #0b3d91,
-            #071a52
+            #0B3D91 0%,
+            #1455A5 50%,
+            #0B3D91 100%
         );
 
-    opacity: 1;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.35);
 
-    transition: opacity 1.5s ease;
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.18);
+
+    backdrop-filter: blur(12px);
 }
 
 
 /* =========================================================
-   VIDEO AREA
-========================================================= */
+   CHURCH LOGO
+   ========================================================= */
 
-.hero-video-stage {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
+.nav-brand {
+    display: flex;
+    align-items: center;
 
-    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.nav-brand a {
+    display: flex;
+    align-items: center;
+}
+
+.church-logo {
+    width: 145px;
+    height: 58px;
+
+    object-fit: contain;
+
+    display: block;
+
+    /*
+       The logo now sits directly on the
+       navigation background.
+    */
+    background: transparent;
+
+    border-radius: 8px;
+
+    transition:
+        transform 0.35s ease,
+        filter 0.35s ease;
+}
+
+.church-logo:hover {
+    transform: scale(1.04);
+
+    filter:
+        drop-shadow(0 0 8px rgba(255,255,255,0.25));
 }
 
 
 /* =========================================================
-   VIDEO SLIDE
-========================================================= */
+   NAVIGATION LINKS
+   ========================================================= */
 
-.hero-video-slide {
-    position: absolute;
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-
+.nav-links {
     display: flex;
     align-items: center;
     justify-content: center;
 
-    opacity: 0;
-    visibility: hidden;
+    gap: 24px;
+
+    list-style: none;
+
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links > li {
+    position: relative;
+}
+
+.nav-links > li > a,
+.more-toggle,
+.social-toggle {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+
+    color: #FFFFFF;
+
+    background: transparent;
+
+    border: none;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    letter-spacing: 0.2px;
+
+    cursor: pointer;
+
+    padding: 9px 2px;
 
     transition:
-        opacity 1.2s ease,
-        visibility 1.2s ease;
+        color 0.3s ease,
+        transform 0.3s ease;
 }
 
 
-.hero-video-slide.active {
-    opacity: 1;
-    visibility: visible;
-}
+/* Gold animated underline */
 
+.nav-links > li > a::after,
+.more-toggle::after,
+.social-toggle::after {
+    content: "";
 
-/* =========================================================
-   VIDEO 1
-   Large portrait video
-========================================================= */
-
-#heroVideo1 {
-    width: auto;
-    height: 100%;
-
-    max-width: 100%;
-    max-height: 100%;
-
-    object-fit: contain;
-    object-position: center;
-
-    display: block;
-
-    transform: scale(1.08);
-}
-
-
-/* =========================================================
-   VIDEO 2
-   Fills the entire hero horizontally
-========================================================= */
-
-#heroVideo2 {
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-    object-position: center;
-
-    display: block;
-}
-
-
-/* =========================================================
-   DARK OVERLAY
-========================================================= */
-
-.hero-overlay {
     position: absolute;
-    inset: 0;
 
-    z-index: 6;
+    left: 0;
+    bottom: 0;
+
+    width: 0;
+    height: 2px;
+
+    background: #D4AF37;
+
+    border-radius: 10px;
+
+    transition:
+        width 0.3s ease;
+}
+
+.nav-links > li > a:hover,
+.more-toggle:hover,
+.social-toggle:hover {
+    color: #D4AF37;
+}
+
+.nav-links > li > a:hover::after,
+.more-toggle:hover::after,
+.social-toggle:hover::after {
+    width: 100%;
+}
+
+
+/* =========================================================
+   MORE DROPDOWN
+   ========================================================= */
+
+.more-dropdown {
+    position: relative;
+}
+
+
+/* The actual dropdown box */
+
+.more-menu {
+    position: absolute;
+
+    top: calc(100% + 14px);
+    left: 50%;
+
+    transform:
+        translateX(-50%)
+        translateY(-10px)
+        scale(0.96);
+
+    width: 190px;
+
+    padding: 8px;
+
+    background: #FFFFFF;
+
+    border-radius: 12px;
+
+    border: 1px solid rgba(212, 175, 55, 0.25);
+
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.22);
+
+    opacity: 0;
+
+    visibility: hidden;
 
     pointer-events: none;
 
-    background:
-        linear-gradient(
-            to bottom,
-            rgba(0,0,0,0.05),
-            rgba(0,0,0,0.45)
-        );
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease,
+        visibility 0.25s ease;
 }
 
 
-/* =========================================================
-   WELCOME CONTENT
-========================================================= */
+/* Small gold triangle */
 
-.hero-welcome-content {
+.more-menu::before {
+    content: "";
+
     position: absolute;
 
-    z-index: 8;
-
-    top: 50%;
+    top: -7px;
     left: 50%;
 
-    width: 90%;
-    max-width: 900px;
+    width: 14px;
+    height: 14px;
 
-    transform:
-        translate(-50%, -50%);
+    background: #FFFFFF;
 
-    text-align: center;
+    transform: translateX(-50%) rotate(45deg);
 
-    color: white;
+    border-left: 1px solid rgba(212, 175, 55, 0.25);
+    border-top: 1px solid rgba(212, 175, 55, 0.25);
+}
 
+
+/* Open state */
+
+.more-dropdown.open .more-menu {
     opacity: 1;
 
-    transition:
-        opacity 1.2s ease,
-        transform 1.2s ease;
-}
+    visibility: visible;
 
-
-.hero-welcome-content.hide {
-    opacity: 0;
+    pointer-events: auto;
 
     transform:
-        translate(-50%, -53%);
+        translateX(-50%)
+        translateY(0)
+        scale(1);
 }
 
 
-/* =========================================================
-   WELCOME TEXT
-========================================================= */
+/* Dropdown links */
 
-.hero-welcome {
-    display: block;
-
-    margin-bottom: 16px;
-
-    color: var(--gold);
-
-    font-size: 14px;
-    font-weight: 800;
-
-    letter-spacing: 7px;
-}
-
-
-.hero-title {
-    margin: 0;
-
-    color: white;
-
-    font-size:
-        clamp(42px, 6vw, 78px);
-
-    line-height: 1;
-
-    font-weight: 800;
-
-    letter-spacing: -2px;
-
-    text-shadow:
-        0 5px 30px rgba(0,0,0,0.65);
-}
-
-
-.hero-location {
-    margin: 15px 0 22px;
-
-    color: var(--gold);
-
-    font-size:
-        clamp(20px, 2.5vw, 32px);
-
-    letter-spacing: 4px;
-}
-
-
-.hero-welcome-line {
-    width: 70px;
-    height: 2px;
-
-    margin:
-        0 auto 20px;
-
-    background: var(--gold);
-}
-
-
-.hero-verse {
-    max-width: 650px;
-
-    margin: 0 auto;
-
-    color:
-        rgba(255,255,255,0.94);
-
-    font-size: 16px;
-
-    line-height: 1.7;
-}
-
-
-.hero-verse em {
-    display: block;
-}
-
-
-.hero-verse span {
-    display: block;
-
-    margin-top: 8px;
-
-    color: var(--gold);
-
-    font-size: 14px;
-    font-weight: 700;
-}
-
-
-/* =========================================================
-   BUTTONS
-========================================================= */
-
-.hero-actions {
-    position: absolute;
-
-    z-index: 10;
-
-    left: 50%;
-    bottom: 48px;
-
-    transform:
-        translateX(-50%);
-
+.more-menu a {
     display: flex;
 
-    justify-content: center;
     align-items: center;
 
-    gap: 14px;
+    width: 100%;
 
-    width: 90%;
+    padding: 11px 14px;
+
+    color: #20242A;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        padding-left 0.25s ease;
+}
+
+.more-menu a:hover {
+    background: rgba(11, 61, 145, 0.08);
+
+    color: #0B3D91;
+
+    padding-left: 18px;
 }
 
 
-.hero-action {
+/* =========================================================
+   LIVE BUTTON
+   ========================================================= */
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    flex-shrink: 0;
+}
+
+
+/* LIVE */
+
+.nav-live {
+    position: relative;
+
     display: inline-flex;
 
     align-items: center;
     justify-content: center;
 
-    gap: 9px;
+    gap: 8px;
 
-    min-width: 190px;
+    min-width: 76px;
 
-    padding:
-        14px 25px;
+    padding: 9px 15px;
 
-    border-radius: 4px;
+    color: #FFFFFF;
 
-    text-decoration: none;
+    background:
+        linear-gradient(
+            135deg,
+            #B5122A,
+            #D21F3C
+        );
 
-    font-size: 11px;
+    border: 1px solid rgba(255,255,255,0.25);
+
+    border-radius: 30px;
+
+    font-size: 13px;
     font-weight: 800;
 
-    letter-spacing: 1.2px;
+    letter-spacing: 0.8px;
+
+    box-shadow:
+        0 5px 18px rgba(181, 18, 42, 0.35);
+
+    overflow: hidden;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 
-.live-action {
-    background: var(--gold);
-    color: #071a52;
-}
+/* Moving shine */
 
+.nav-live::before {
+    content: "";
 
-.join-action {
-    background:
-        rgba(7,26,82,0.65);
-
-    color: white;
-
-    border:
-        1px solid
-        rgba(255,255,255,0.75);
-}
-
-
-/* =========================================================
-   DOTS
-========================================================= */
-
-.hero-dots {
     position: absolute;
 
-    z-index: 11;
+    top: 0;
+    left: -120%;
 
-    left: 50%;
-    bottom: 18px;
-
-    transform:
-        translateX(-50%);
-
-    display: flex;
-
-    gap: 7px;
-}
-
-
-.hero-dot {
-    width: 25px;
-    height: 3px;
+    width: 80%;
+    height: 100%;
 
     background:
-        rgba(255,255,255,0.4);
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.35),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    animation:
+        liveShine 3s infinite;
 }
 
 
-.hero-dot.active {
-    width: 48px;
+@keyframes liveShine {
 
-    background: var(--gold);
+    0% {
+        left: -120%;
+    }
+
+    45% {
+        left: 140%;
+    }
+
+    100% {
+        left: 140%;
+    }
+}
+
+
+.nav-live:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 25px rgba(181, 18, 42, 0.55);
+}
+
+
+/* Pulsing live dot */
+
+.live-dot {
+    position: relative;
+
+    width: 8px;
+    height: 8px;
+
+    background: #FFFFFF;
+
+    border-radius: 50%;
+
+    flex-shrink: 0;
+}
+
+
+.live-dot::after {
+    content: "";
+
+    position: absolute;
+
+    inset: -5px;
+
+    border: 2px solid rgba(255,255,255,0.65);
+
+    border-radius: 50%;
+
+    animation:
+        livePulse 1.5s infinite;
+}
+
+
+@keyframes livePulse {
+
+    0% {
+        transform: scale(0.7);
+        opacity: 1;
+    }
+
+    70% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
 }
 
 
 /* =========================================================
-   MOBILE
-========================================================= */
+   SOCIAL DROPDOWN
+   ========================================================= */
 
-@media (max-width: 600px) {
-
-    .hero {
-        height: 88vh;
-        min-height: 600px;
-    }
-
-
-    #heroVideo1 {
-        height: 100%;
-        width: auto;
-
-        transform: scale(1.03);
-
-        object-fit: contain;
-    }
-
-
-    #heroVideo2 {
-        width: 100%;
-        height: 100%;
-
-        object-fit: cover;
-        object-position: center;
-    }
-
-
-    .hero-title {
-        font-size: 40px;
-    }
-
-
-    .hero-location {
-        font-size: 18px;
-    }
-
-
-    .hero-verse {
-        font-size: 13px;
-        padding: 0 15px;
-    }
-
-
-    .hero-actions {
-        bottom: 48px;
-        width: 94%;
-    }
-
-
-    .hero-action {
-        min-width: 145px;
-        padding: 12px 15px;
-        font-size: 10px;
-    }
+.social-dropdown {
+    position: relative;
 }
-```
+
+
+/* Social button */
+
+.social-toggle {
+    gap: 5px;
+}
+
+
+/* Social dropdown */
+
+.social-menu {
+    position: absolute;
+
+    top: calc(100% + 14px);
+    right: 0;
+
+    width: 175px;
+
+    padding: 8px;
+
+    background: #FFFFFF;
+
+    border-radius: 12px;
+
+    border: 1px solid rgba(212, 175, 55, 0.25);
+
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.22);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transform:
+        translateY(-10px)
+        scale(0.96);
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease,
+        visibility 0.25s ease;
+}
+
+
+/* Social dropdown arrow */
+
+.social-menu::before {
+    content: "";
+
+    position: absolute;
+
+    top: -7px;
+    right: 22px;
+
+    width: 14px;
+    height: 14px;
+
+    background: #FFFFFF;
+
+    transform: rotate(45deg);
+
+    border-left: 1px solid rgba(212, 175, 55, 0.25);
+    border-top: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+
+/* Open state */
+
+.social-dropdown.open .social-menu {
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* Social links */
+
+.social-menu a {
+    display: flex;
+
+    align-items: center;
+
+    width: 100%;
+
+    padding: 11px 14px;
+
+    color: #20242A;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        padding-left 0.25s ease;
+}
+
+.social-menu a:hover {
+    background: rgba(11, 61, 145, 0.08);
+
+    color: #0B3D91;
+
+    padding-left: 18px;
+}
+
+
+/* =========================================================
+   MOBILE MENU BUTTON
+   ========================================================= */
+
+.mobile-menu-toggle {
+    border: none;
+
+    background: transparent;
+
+    color: #FFFFFF;
+
+    font-size: 25px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        color 0.3s ease;
+}
+
+.mobile-menu-toggle:hover {
+    color: #D4AF37;
+
+    transform: scale(1.08);
+}
