@@ -11529,30 +11529,30 @@ nav ul li a {
    CHURCH LOGO
    ========================================================= */
 
+/* =========================================================
+   CHURCH LOGO
+   ========================================================= */
+
 .nav-brand {
     display: flex;
     align-items: center;
-
     flex-shrink: 0;
 }
 
 .nav-brand a {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .church-logo {
-    width: 145px;
-    height: 58px;
+    width: 175px;
+    height: 62px;
 
     object-fit: contain;
 
     display: block;
 
-    /*
-       The logo now sits directly on the
-       navigation background.
-    */
     background: transparent;
 
     border-radius: 8px;
@@ -11568,8 +11568,6 @@ nav ul li a {
     filter:
         drop-shadow(0 0 8px rgba(255,255,255,0.25));
 }
-
-
 /* =========================================================
    NAVIGATION LINKS
    ========================================================= */
