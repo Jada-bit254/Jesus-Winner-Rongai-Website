@@ -763,7 +763,11 @@ a {
 
 @media (max-width: 950px) {
 
-    /* MAIN HEADER */
+    /* =====================================================
+       MOBILE HEADER
+       Logo on top + swipeable navigation underneath
+       ===================================================== */
+
     .main-nav {
         position: sticky;
         top: 0;
@@ -783,18 +787,18 @@ a {
 
 
     /* =====================================================
-       LOGO ROW
+       LOGO
        ===================================================== */
 
     .nav-brand {
         width: 100%;
-        height: 72px;
+        height: 64px;
 
         display: flex;
         align-items: center;
         justify-content: center;
 
-        padding: 3px 10px;
+        padding: 2px 10px;
     }
 
     .nav-brand a {
@@ -804,8 +808,8 @@ a {
     }
 
     .church-logo {
-        width: 225px;
-        height: 62px;
+        width: 185px;
+        height: 52px;
 
         object-fit: fill;
         display: block;
@@ -821,69 +825,172 @@ a {
        ===================================================== */
 
     .nav-menu-wrapper {
-        position: relative;
-
         width: 100%;
         min-width: 0;
 
         display: flex;
         align-items: center;
-        justify-content: space-between;
 
-        gap: 0;
-
-        padding: 4px 10px 7px;
+        padding: 3px 0 5px;
 
         border-top: 1px solid rgba(255,255,255,0.10);
     }
 
 
     /* =====================================================
-       MAIN VISIBLE LINKS
-       HOME | ABOUT | MINISTRIES
+       SWIPEABLE NAVIGATION
+       All headers stay visible in one horizontal row
        ===================================================== */
 
     .nav-links {
+        width: max-content;
+
         display: flex;
+        flex-direction: row;
         align-items: center;
 
-        gap: 12px;
+        gap: 4px;
 
         margin: 0;
-        padding: 0;
+        padding: 0 10px;
 
         list-style: none;
+
+        white-space: nowrap;
+
+        overflow-x: auto;
+        overflow-y: visible;
+
+        scrollbar-width: none;
+
+        -webkit-overflow-scrolling: touch;
     }
 
-    .nav-links > li {
-        position: relative;
-    }
-
-    /* Hide all links initially */
-    .nav-links > li {
+    .nav-links::-webkit-scrollbar {
         display: none;
     }
 
-    /* Home */
-    .nav-links > li:nth-child(1) {
+
+    /* Every navigation item remains visible */
+
+    .nav-links > li {
+        position: relative;
+
         display: block;
+
+        flex: 0 0 auto;
     }
 
-    /* About */
-    .nav-links > li:nth-child(2) {
-        display: block;
-    }
 
-    /* Ministries */
-    .nav-links > li:nth-child(4) {
-        display: block;
-    }
+    /* Navigation links */
 
     .nav-links > li > a {
         display: inline-flex;
         align-items: center;
+        justify-content: center;
 
-        padding: 8px 2px;
+        min-height: 36px;
+
+        padding: 7px 10px;
+
+        color: #ffffff;
+
+        font-size: 12px;
+        font-weight: 600;
+
+        white-space: nowrap;
+
+        border-radius: 18px;
+
+        transition:
+            background 0.2s ease,
+            transform 0.2s ease;
+    }
+
+
+    .nav-links > li > a:active {
+        background: rgba(255,255,255,0.12);
+
+        transform: scale(0.97);
+    }
+
+
+    /* =====================================================
+       LIVE
+       ===================================================== */
+
+    .nav-actions {
+        display: flex;
+        align-items: center;
+
+        flex: 0 0 auto;
+
+        gap: 5px;
+
+        margin: 0;
+
+        padding: 0 8px 0 2px;
+    }
+
+
+    .nav-live {
+        display: inline-flex;
+
+        align-items: center;
+        justify-content: center;
+
+        min-width: 62px;
+
+        padding: 7px 9px;
+
+        gap: 5px;
+
+        border-radius: 20px;
+
+        font-size: 10px;
+        letter-spacing: 0.5px;
+
+        white-space: nowrap;
+    }
+
+
+    .live-indicator {
+        width: 6px;
+        height: 6px;
+
+        flex-shrink: 0;
+    }
+
+
+    /* =====================================================
+       SOCIAL
+       Remains on the navigation bar
+       ===================================================== */
+
+    .social-dropdown {
+        position: relative;
+
+        display: block;
+
+        flex: 0 0 auto;
+    }
+
+
+    .social-toggle {
+        display: inline-flex;
+
+        align-items: center;
+        justify-content: center;
+
+        min-height: 36px;
+
+        padding: 7px 10px;
+
+        color: #ffffff;
+
+        background: transparent;
+
+        border: none;
 
         font-size: 12px;
         font-weight: 600;
@@ -893,263 +1000,171 @@ a {
 
 
     /* =====================================================
-       LIVE BUTTON
+       MORE
        ===================================================== */
 
-    .nav-actions {
-        display: flex;
-        align-items: center;
-
-        gap: 7px;
-
-        margin-left: auto;
-        padding-right: 48px;
+    .more-dropdown {
+        flex: 0 0 auto;
     }
 
-    .nav-live {
+
+    .more-toggle {
         display: inline-flex;
 
         align-items: center;
         justify-content: center;
 
-        min-width: 64px;
+        min-height: 36px;
 
-        padding: 8px 9px;
-
-        gap: 5px;
-
-        border-radius: 25px;
-
-        font-size: 9px;
-        letter-spacing: 0.7px;
-    }
-
-    .live-indicator {
-        width: 6px;
-        height: 6px;
-    }
-
-
-    /* =====================================================
-       SOCIAL
-       Hidden from the bar.
-       It appears inside the opened menu.
-       ===================================================== */
-
-    .social-dropdown {
-        display: none;
-    }
-
-
-    /* =====================================================
-       HAMBURGER BUTTON
-       SITS ON THE SAME ROW AS NAVIGATION
-       ===================================================== */
-
-    .mobile-menu-toggle {
-        position: absolute;
-
-        right: 10px;
-        top: 50%;
-
-        transform: translateY(-50%);
-
-        z-index: 20;
-
-        width: 36px;
-        height: 36px;
-
-        display: flex;
-
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-
-        gap: 4px;
-
-        padding: 7px;
-
-        border: 1px solid rgba(255,255,255,0.30);
-        border-radius: 8px;
-
-        background: rgba(255,255,255,0.06);
-
-        cursor: pointer;
-    }
-
-    .mobile-menu-toggle span {
-        display: block;
-
-        width: 20px;
-        height: 2px;
-
-        background: #ffffff;
-
-        border-radius: 3px;
-    }
-
-
-    /* =====================================================
-       OPEN MENU
-       ===================================================== */
-
-    .nav-menu-wrapper.open {
-        flex-wrap: wrap;
-
-        padding-bottom: 12px;
-    }
-
-    /* Show ALL navigation links when menu opens */
-    .nav-menu-wrapper.open .nav-links {
-        width: 100%;
-
-        display: flex;
-
-        flex-direction: column;
-        align-items: stretch;
-
-        gap: 2px;
-
-        order: 2;
-
-        padding-top: 10px;
-    }
-
-    .nav-menu-wrapper.open .nav-links > li {
-        display: block;
-        width: 100%;
-    }
-
-    .nav-menu-wrapper.open .nav-links > li > a,
-    .nav-menu-wrapper.open .more-toggle {
-        display: flex;
-
-        width: 100%;
-
-        align-items: center;
-        justify-content: space-between;
-
-        padding: 11px 8px;
-
-        font-size: 14px;
-    }
-
-
-    /* =====================================================
-       OPEN MENU ACTIONS
-       ===================================================== */
-
-    .nav-menu-wrapper.open .nav-actions {
-        width: 100%;
-
-        display: flex;
-
-        align-items: center;
-        justify-content: flex-start;
-
-        order: 3;
-
-        margin: 8px 0 0;
-        padding: 8px 0 0;
-
-        border-top: 1px solid rgba(255,255,255,0.12);
-    }
-
-    /* Keep LIVE visible */
-    .nav-menu-wrapper.open .nav-live {
-        display: inline-flex;
-    }
-
-
-    /* =====================================================
-       SOCIAL INSIDE OPEN MENU
-       ===================================================== */
-
-    .nav-menu-wrapper.open .social-dropdown {
-        display: block;
-
-        position: relative;
-
-        margin-left: 5px;
-    }
-
-    .nav-menu-wrapper.open .social-toggle {
-        display: inline-flex;
-
-        padding: 8px 13px !important;
+        padding: 7px 10px;
 
         color: #ffffff;
 
-        border: 1px solid rgba(255,255,255,0.30);
-        border-radius: 25px;
-    }
+        background: transparent;
 
+        border: none;
 
-    /* SOCIAL DROPDOWN */
-    .nav-menu-wrapper.open .social-menu {
-        position: absolute;
+        font-size: 12px;
+        font-weight: 600;
 
-        top: calc(100% + 8px);
-        right: 0;
-
-        width: 175px;
-
-        padding: 8px;
-
-        background: #ffffff;
-
-        border: 1px solid rgba(212,175,55,0.30);
-        border-radius: 12px;
-
-        box-shadow: 0 15px 35px rgba(0,0,0,0.20);
-    }
-
-    .nav-menu-wrapper.open .social-menu::before {
-        display: none;
-    }
-
-    .nav-menu-wrapper.open .social-dropdown.open .social-menu {
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
-
-        transform: translateY(0) scale(1);
+        white-space: nowrap;
     }
 
 
     /* =====================================================
-       MORE DROPDOWN
+       DROPDOWN MENUS
        ===================================================== */
 
-    .nav-menu-wrapper.open .more-menu {
-        position: static;
-
-        width: 100%;
-
-        margin-top: 3px;
-
-        padding: 5px;
-
-        transform: none;
-
-        box-shadow: none;
-
-        border-radius: 9px;
+    .social-menu,
+    .more-menu {
+        z-index: 1100;
     }
 
-    .nav-menu-wrapper.open .more-menu::before {
-        display: none;
+
+    /* =====================================================
+       REMOVE OLD HAMBURGER
+       ===================================================== */
+
+    .mobile-menu-toggle {
+        display: none !important;
     }
 
-    .nav-menu-wrapper.open .more-dropdown.open .more-menu {
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
 
-        transform: none;
+    /* =====================================================
+       REMOVE OLD OPEN-MENU BEHAVIOUR
+       ===================================================== */
+
+    .nav-menu-wrapper.open {
+        display: flex;
+
+        flex-wrap: nowrap;
+
+        padding-bottom: 5px;
     }
+
+
+    .nav-menu-wrapper.open .nav-links {
+        display: flex;
+
+        flex-direction: row;
+
+        width: max-content;
+
+        padding-top: 0;
+    }
+
+
+    .nav-menu-wrapper.open .nav-links > li {
+        display: block;
+
+        width: auto;
+    }
+
+
+    .nav-menu-wrapper.open .nav-actions {
+        display: flex;
+
+        width: auto;
+
+        margin: 0;
+
+        padding: 0 8px 0 2px;
+
+        border-top: none;
+    }
+
+
+    /* =====================================================
+       SMALL PHONES
+       ===================================================== */
+
+    @media (max-width: 600px) {
+
+        .nav-brand {
+            height: 60px;
+        }
+
+
+        .church-logo {
+            width: 170px;
+            height: 48px;
+        }
+
+
+        .nav-links {
+            gap: 2px;
+
+            padding-left: 8px;
+            padding-right: 5px;
+        }
+
+
+        .nav-links > li > a,
+        .social-toggle,
+        .more-toggle {
+            min-height: 34px;
+
+            padding: 6px 9px;
+
+            font-size: 11px;
+        }
+
+
+        .nav-live {
+            min-width: 58px;
+
+            padding: 7px 8px;
+
+            font-size: 9px;
+        }
+
+    }
+
+
+    /* =====================================================
+       VERY SMALL PHONES
+       ===================================================== */
+
+    @media (max-width: 380px) {
+
+        .church-logo {
+            width: 155px;
+            height: 44px;
+        }
+
+
+        .nav-links > li > a,
+        .social-toggle,
+        .more-toggle {
+            padding-left: 8px;
+            padding-right: 8px;
+
+            font-size: 10px;
+        }
+
+    }
+
 }
-
 /* =========================================================
    11. ABOUT SECTION
    ========================================================= */
@@ -12140,3 +12155,4 @@ nav ul li a {
 
     transform: scale(1.08);
 }
+
