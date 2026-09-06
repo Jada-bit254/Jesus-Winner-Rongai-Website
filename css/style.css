@@ -12250,30 +12250,47 @@ nav ul li a {
         padding: 19px;
     }
 }
-/* Tighten the Hero-to-About transition */
+/* Reduce the gap between Hero and About */
 .about-luxury {
-    margin-top: 0;
-    padding-top: 65px;
+    margin-top: 0 !important;
+    padding-top: 50px !important;
 }
 
-/* Phone: reduce empty space and enlarge the church image */
+/* Phone: give the church photo almost full screen width */
 @media (max-width: 600px) {
     .about-luxury {
-        margin-top: 0;
-        padding: 38px 14px 55px;
+        padding: 24px 0 48px !important;
     }
 
     .about-luxury__container {
-        gap: 35px;
+        gap: 30px !important;
     }
 
     .about-luxury__image-column {
-        width: 100%;
-        padding: 0 0 18px;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 0 14px !important;
     }
 
-    .about-luxury__image-frame,
+    .about-luxury__image-frame {
+        min-height: 0 !important;
+        height: auto !important;
+        aspect-ratio: 4 / 3;
+    }
+
     .about-luxury__image-frame img {
-        min-height: 375px;
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 0 !important;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .about-luxury__image-caption {
+        right: 0;
+    }
+
+    .about-luxury__content {
+        padding: 0 20px;
     }
 }
