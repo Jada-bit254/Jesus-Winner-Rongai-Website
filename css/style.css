@@ -11312,7 +11312,7 @@ nav ul li a {
 /* =========================================================
    MOBILE
 ========================================================= */
-
+@media (max-width: 600px) {
 .hero {
     height: 72svh;
     min-height: 440px;
@@ -12008,4 +12008,22 @@ nav ul li a {
 .hero-action:focus-visible {
     outline: 3px solid #ffffff;
     outline-offset: 4px;
+}
+
+/* Fill the laptop hero more completely */
+@media (min-width: 601px) {
+    .hero-video,
+    #heroVideo1,
+    #heroVideo2 {
+        object-fit: cover;
+        object-position: center;
+    }
+}
+/* Keep navigation visible while scrolling on tablet and phone */
+@media (max-width: 950px) {
+    .main-nav {
+        position: sticky !important;
+        top: 0;
+        z-index: 9999;
+    }
 }
