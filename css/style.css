@@ -2317,27 +2317,13 @@ age {
 
 .about-image img {
     position: relative;
-
     z-index: 1;
-
     width: 100%;
     height: 450px;
-
     object-fit: cover;
-
     border-radius: 15px;
-
-    display: block
-
-.about-highlights {
-    grid-template-columns: 1fr;
+    display: block;
 }
-
-.about-text h3 {
-    font-size: 28px;
-}
-
-.hero-buttons {
 
 .about-highlights {
     grid-template-columns: 1fr;
@@ -2355,107 +2341,6 @@ age {
     width: 100%;
     max-width: 300px;
 }
-/* =========================================
-   HERO WELCOME BADGE
-========================================= */
-
-.hero-badge {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    padding: 18px 38px;
-    margin-bottom: 28px;
-
-    border: 1px solid #D4AF37;
-    border-radius: 50px;
-
-    background: rgba(255, 255, 255, 0.08);
-
-    color: #ffffff;
-
-    text-align: center;
-
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-
-    transition: 0.3s ease;
-}
-
-.hero-badge:hover {
-    transform: translateY(-3px);
-    border-color: #E8B4C8;
-}
-
-.hero-badge span {
-    font-size: 13px;
-    letter-spacing: 4px;
-    color: #D4AF37;
-    font-weight: 600;
-    margin-bottom: 5px;
-}
-
-.hero-badge strong {
-    font-size: 22px;
-    letter-spacing: 2px;
-    color: #ffffff;
-}
-
-.hero-badge small {
-    font-size: 12px;
-    letter-spacing: 3px;
-    color: #E8B4C8;
-    margin-top: 4px;
-}
-/* =========================================
-   LIVE CHURCH SERVICE BUTTON
-========================================= */
-
-.hero-live-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-
-    margin-top: 18px;
-
-    padding: 15px 30px;
-
-    border-radius: 50px;
-
-    background: #B71C3A;
-    color: #ffffff;
-
-    text-decoration: none;
-
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-
-    box-shadow: 0 12px 30px rgba(183, 28, 58, 0.30);
-
-    transition: all 0.3s ease;
-}
-
-.hero-live-btn:hover {
-    background: #D94F70;
-    transform: translateY(-4px);
-    box-shadow: 0 16px 35px rgba(183, 28, 58, 0.40);
-}
-
-.live-dot {
-    width: 10px;
-    height: 10px;
-
-    background: #ffffff;
-
-    border-radius: 50%;
-
-    box-shadow: 0 0 0 5px rgba(255,255,255,0.15);
-
-    animation: livePulse 1.6s infinite;
-}
-
 @keyframes livePulse {
 
     0% {
@@ -12085,3 +11970,43 @@ nav ul li a {
     transform: scale(1.08);
 }
 
+/* Hero intro and video-slider fixes */
+.hero-intro-background {
+    z-index: 2;
+}
+
+.hero-intro-background img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.hero-intro-background.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.hero-video-stage {
+    z-index: 1;
+    background: #071a52;
+}
+
+.hero-video-slide {
+    z-index: 1;
+}
+
+.hero-video-slide.active {
+    z-index: 2;
+}
+
+.hero-dot {
+    border: 0;
+    padding: 0;
+}
+
+.hero-dot:focus-visible,
+.hero-action:focus-visible {
+    outline: 3px solid #ffffff;
+    outline-offset: 4px;
+}

@@ -223,6 +223,69 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
     }
+    /* HERO INTRO AND VIDEO SLIDER */
+    const heroIntro = document.querySelector(".hero-intro-background");
+    const welcomeContent = document.querySelector(".hero-welcome-content");
+    const slides = Array.from(
+        document.querySelectorAll(".hero-video-slide")
+    );
+    const videos = Array.from(
+        document.querySelectorAll(".hero-video")
+    );
+    const dots = Array.from(
+        document.querySelectorAll(".hero-dot")
+    );
 
+    let currentSlide = 0;
+
+    function showSlide(index) {
+        currentSlide = index;
+
+        slides.forEach(function (slide, slideIndex) {
+            slide.classList.toggle(
+                "active",
+                slideIndex === currentSlide
+            );
+        });
+
+        dots.forEach(function (dot, dotIndex) {
+            const isActive = dotIndex === currentSlide;
+
+            dot.classList.toggle("active", isActive);
+            dot.setAttribute("aria-current", isActive);
+        });
+
+        videos.forEach(function (video, videoIndex) {
+            video.pause();
+            video.currentTime = 0;
+
+            if (videoIndex === currentSlide) {
+                video.play().catch(function () {
+                    console.log("Video playback needs user interaction.");
+                });
+            }
+        });
+    }
+
+    if (slides.length && videos.length) {
+        videos.forEach(function (video, videoIndex) {
+            video.addEventListener("ended", function () {
+                showSlide((videoIndex + 1) % videos.length);
+            });
+        });
+
+        dots.forEach(function (dot) {
+            dot.addEventListener("click", function () {
+                showSlide(Number(dot.dataset.slide));
+            });
+        });
+
+        setTimeout(function () {
+            heroIntro.classList.add("hide");
+            welcomeContent.classList.add("hide");
+
+            showSlide(0);
+        }, 6000);
+    }
 });
 

@@ -178,220 +178,113 @@
     </div>
 
 </nav>
-
-<!-- =====================================================
-     HERO SECTION
-====================================================== -->
-
-   <!-- =====================================================
-     CINEMATIC HERO
-     JESUS WINNER MINISTRY RONGAI
-====================================================== -->
-
 <section class="hero" id="home">
 
-    <!-- =================================================
-         WELCOME IMAGE
-         Shown for 6 seconds
-    ================================================== -->
-
+    <!-- Welcome image: visible for the first 6 seconds -->
     <div class="hero-intro-background">
         <img
-            src="images/Church/Ministries/background.png"
-            alt="Jesus Winner Ministry Rongai"
+            src="images/Ministries/background.png"
+            alt=""
         >
     </div>
 
-
-    <!-- =================================================
-         VIDEO STAGE
-    ================================================== -->
-
+    <!-- Video slider: videos occupy the same hero area -->
     <div class="hero-video-stage">
 
-        <!-- =============================================
-             VIDEO 1 — PRAISE
-        ============================================== -->
-
-        <div
-            class="hero-video-slide"
-            data-slide="1"
-        >
-
+        <div class="hero-video-slide" data-slide="0">
             <video
                 class="hero-video"
                 id="heroVideo1"
                 muted
                 playsinline
-                preload="auto"
+                preload="metadata"
             >
-
                 <source
-                    src="Videos/Ministries/Praise.mp4"
+                    src="Videos/Ministries/praisehero.mp4"
                     type="video/mp4"
                 >
-
                 Your browser does not support HTML5 video.
-
             </video>
-
         </div>
 
-
-        <!-- =============================================
-             VIDEO 2 — PASTOR
-        ============================================== -->
-
-        <div
-            class="hero-video-slide"
-            data-slide="2"
-        >
-
+        <div class="hero-video-slide" data-slide="1">
             <video
                 class="hero-video"
                 id="heroVideo2"
                 muted
                 playsinline
-                preload="auto"
+                preload="metadata"
             >
-
                 <source
                     src="Videos/Pastors/video1.mp4"
                     type="video/mp4"
                 >
-
                 Your browser does not support HTML5 video.
-
             </video>
-
         </div>
 
     </div>
 
+    <div class="hero-overlay" aria-hidden="true"></div>
 
-    <!-- =================================================
-         DARK CINEMATIC OVERLAY
-    ================================================== -->
-
-    <div
-        class="hero-overlay"
-        aria-hidden="true"
-    ></div>
-
-
-    <!-- =================================================
-         WELCOME MESSAGE
-    ================================================== -->
-
+    <!-- This welcome message fades with the image -->
     <div class="hero-welcome-content">
 
-        <span class="hero-welcome">
-            KARIBU
-        </span>
+        <span class="hero-welcome">KARIBU</span>
 
-        <h1 class="hero-title">
-            Jesus Winner Ministry
-        </h1>
+        <h1 class="hero-title">Jesus Winner Ministry</h1>
 
-        <p class="hero-location">
-            Ongata Rongai
-        </p>
+        <p class="hero-location">Ongata Rongai</p>
 
-        <div
-            class="hero-welcome-line"
-            aria-hidden="true"
-        ></div>
+        <div class="hero-welcome-line" aria-hidden="true"></div>
 
         <p class="hero-verse">
-
             <em>
                 “I was glad when they said to me,
                 ‘Let us go to the house of the Lord.’”
             </em>
-
-            <span>
-                — Psalm 122:1
-            </span>
-
+            <span>— Psalm 122:1</span>
         </p>
 
     </div>
 
-
-    <!-- =================================================
-         PERMANENT HERO BUTTONS
-         These remain visible throughout the hero
-    ================================================== -->
-
+    <!-- Buttons remain throughout the video slider -->
     <div class="hero-actions">
 
-        <a
-            href="#live-service"
-            class="hero-action live-action"
-        >
-
-            <span
-                class="action-icon"
-                aria-hidden="true"
-            >
-                ▶
-            </span>
-
-            <span>
-                JOIN LIVE SERVICE
-            </span>
-
+        <a href="live-service.html" class="hero-action live-action">
+            <span class="action-icon" aria-hidden="true">▶</span>
+            <span>JOIN LIVE SERVICE</span>
         </a>
 
-
-        <a
-            href="#join-us"
-            class="hero-action join-action"
-        >
-
-            <span
-                class="action-icon"
-                aria-hidden="true"
-            >
-                ✦
-            </span>
-
-            <span>
-                JOIN US
-            </span>
-
+        <a href="join-us.html" class="hero-action join-action">
+            <span class="action-icon" aria-hidden="true">✦</span>
+            <span>JOIN US</span>
         </a>
 
     </div>
 
+    <!-- Slider controls -->
+    <div class="hero-dots" aria-label="Hero video navigation">
 
-    <!-- =================================================
-         VIDEO DOTS
-    ================================================== -->
-
-    <div
-        class="hero-dots"
-        aria-label="Hero video navigation"
-    >
-
-        <span
+        <button
             class="hero-dot active"
-            data-slide="1"
+            type="button"
+            data-slide="0"
             aria-label="Show Praise video"
-        ></span>
+            aria-current="true"
+        ></button>
 
-        <span
+        <button
             class="hero-dot"
-            data-slide="2"
+            type="button"
+            data-slide="1"
             aria-label="Show Pastor video"
-        ></span>
+            aria-current="false"
+        ></button>
 
     </div>
 
 </section>
- <!----===================================================
-     ABOUT OUR CHURCH
-====================================================== -->
 
 <section id="about" class="about-section">
 
@@ -412,22 +305,15 @@
 
     </div>
 
-
     <div class="about-content">
-
-
-        <!-- IMAGE SIDE -->
 
         <div class="about-image">
 
-           <img
-    src="images/Church/church.jpg/frontchurch.png"
-    alt="Jesus Winner Ministry Rongai Church Building"
->
+            <img
+                src="images/Church/church.jpg/frontchurch.png"
+                alt="Jesus Winner Ministry Rongai Church Building"
+            >
         </div>
-
-
-        <!-- TEXT SIDE -->
 
         <div class="about-text">
 
@@ -460,25 +346,23 @@
                 place for you here.
             </p>
 
-
             <div class="faith-hope-love">
 
-    <div class="value-card">
-        <h3>Faith</h3>
-        <p>Growing deeper in Christ</p>
-    </div>
+                <div class="value-card">
+                    <h3>Faith</h3>
+                    <p>Growing deeper in Christ</p>
+                </div>
 
-    <div class="value-card">
-        <h3>Hope</h3>
-        <p>Trusting God's promises</p>
-    </div>
+                <div class="value-card">
+                    <h3>Hope</h3>
+                    <p>Trusting God's promises</p>
+                </div>
 
-    <div class="value-card">
-        <h3>Love</h3>
-        <p>Serving people with compassion</p>
-    </div>
+                <div class="value-card">
+                    <h3>Love</h3>
+                    <p>Serving people with compassion</p>
+                </div>
 
-</div>
             </div>
 
         </div>
@@ -486,6 +370,7 @@
     </div>
 
 </section>
+
 <!-- ================================
      MESSAGE FROM OUR PASTOR
 ================================ -->
