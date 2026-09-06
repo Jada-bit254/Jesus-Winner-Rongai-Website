@@ -12027,3 +12027,226 @@ nav ul li a {
         z-index: 9999;
     }
 }
+/* =========================================================
+   ABOUT — LUXURY CHURCH INTRODUCTION
+========================================================= */
+
+.about-luxury {
+    padding: 110px 6%;
+    background: #f7f9fc;
+}
+
+.about-luxury__container {
+    width: min(1180px, 100%);
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(45px, 7vw, 105px);
+    align-items: center;
+}
+
+.about-luxury__image-column {
+    position: relative;
+    padding: 0 0 30px 25px;
+}
+
+.about-luxury__image-frame {
+    position: relative;
+    overflow: hidden;
+    min-height: 500px;
+
+    border: 1px solid rgba(212, 175, 55, 0.65);
+    background: #071a52;
+    box-shadow: -18px 18px 0 #0b3d91, 0 24px 55px rgba(7, 26, 82, 0.2);
+}
+
+.about-luxury__image-frame img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+    object-fit: cover;
+    object-position: 20% center;
+}
+
+.about-luxury__image-caption {
+    position: absolute;
+    right: -10px;
+    bottom: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    padding: 18px 22px;
+    color: #ffffff;
+    background: #071a52;
+    border-left: 3px solid #d4af37;
+    box-shadow: 0 12px 30px rgba(7, 26, 82, 0.24);
+}
+
+.about-luxury__image-caption span,
+.about-luxury__eyebrow {
+    color: #c79f27;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2.4px;
+}
+
+.about-luxury__image-caption strong {
+    font-size: 17px;
+}
+
+.about-luxury__content h2 {
+    max-width: 670px;
+    margin: 14px 0 20px;
+
+    color: #071a52;
+    font-size: clamp(35px, 4vw, 56px);
+    line-height: 1.08;
+}
+
+.about-luxury__content h2 span {
+    color: #b58a13;
+}
+
+.about-luxury__line {
+    width: 72px;
+    height: 3px;
+    margin-bottom: 24px;
+    background: #d4af37;
+}
+
+.about-luxury__content p {
+    max-width: 650px;
+    margin: 0 0 17px;
+
+    color: #4d596a;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.about-luxury__lead {
+    color: #172c51 !important;
+    font-size: 18px !important;
+    font-weight: 600;
+}
+
+.about-luxury__values {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+
+    margin: 36px 0 32px;
+}
+
+.about-luxury__value {
+    min-height: 185px;
+    padding: 20px 16px;
+
+    background: #ffffff;
+    border-top: 3px solid #d4af37;
+    box-shadow: 0 10px 26px rgba(7, 26, 82, 0.08);
+}
+
+.about-luxury__value-number {
+    color: #c79f27;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.about-luxury__value h3 {
+    margin: 10px 0 7px;
+    color: #071a52;
+    font-size: 20px;
+}
+
+.about-luxury__value p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.about-luxury__button {
+    display: inline-flex;
+    align-items: center;
+    gap: 13px;
+
+    padding: 14px 21px;
+
+    color: #ffffff;
+    background: #071a52;
+    border: 1px solid #071a52;
+
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-decoration: none;
+
+    transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.about-luxury__button:hover {
+    background: #b58a13;
+    border-color: #b58a13;
+    transform: translateY(-3px);
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+    .about-luxury {
+        padding: 80px 5%;
+    }
+
+    .about-luxury__container {
+        grid-template-columns: 1fr;
+        gap: 55px;
+    }
+
+    .about-luxury__image-column {
+        width: min(620px, calc(100% - 25px));
+        margin: 0 auto;
+    }
+}
+
+/* Phone */
+@media (max-width: 600px) {
+    .about-luxury {
+        padding: 65px 20px;
+    }
+
+    .about-luxury__image-column {
+        width: calc(100% - 15px);
+        padding: 0 0 22px 15px;
+    }
+
+    .about-luxury__image-frame,
+    .about-luxury__image-frame img {
+        min-height: 330px;
+    }
+
+    .about-luxury__image-caption {
+        right: -5px;
+        padding: 14px 16px;
+    }
+
+    .about-luxury__content h2 {
+        font-size: 35px;
+    }
+
+    .about-luxury__lead {
+        font-size: 16px !important;
+    }
+
+    .about-luxury__values {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .about-luxury__value {
+        min-height: auto;
+        padding: 19px;
+    }
+}
