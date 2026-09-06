@@ -11313,12 +11313,11 @@ nav ul li a {
    MOBILE
 ========================================================= */
 
-@media (max-width: 600px) {
-
-    .hero {
-        height: 88vh;
-        min-height: 600px;
-    }
+.hero {
+    height: 72svh;
+    min-height: 440px;
+    max-height: 540px;
+}
 
 
     .hero-video {
