@@ -12333,3 +12333,273 @@ nav ul li a {
         object-position: center;
     }
 }
+/* =========================================================
+   HERO WELCOME — CLASSIC ENTRANCE AND EXIT
+========================================================= */
+
+.hero-welcome-content {
+    will-change: transform, opacity;
+}
+
+/* Reveal each part of the welcome message gracefully */
+.hero-welcome-content > * {
+    opacity: 0;
+    transform: translateY(22px);
+    animation: heroWelcomeReveal 0.8s ease forwards;
+}
+
+.hero-welcome-content > *:nth-child(1) {
+    animation-delay: 0.15s;
+}
+
+.hero-welcome-content > *:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.hero-welcome-content > *:nth-child(3) {
+    animation-delay: 0.45s;
+}
+
+.hero-welcome-content > *:nth-child(4) {
+    animation-delay: 0.6s;
+}
+
+.hero-welcome-content > *:nth-child(5) {
+    animation-delay: 0.75s;
+}
+
+@keyframes heroWelcomeReveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Move the complete introduction upwards together */
+.hero-welcome-content.hide {
+    opacity: 0 !important;
+    transform: translate(-50%, calc(-50% - 42vh)) !important;
+
+    filter: blur(4px);
+    pointer-events: none;
+
+    transition:
+        transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.8s ease,
+        filter 0.8s ease;
+}
+/* =========================================================
+   MESSAGE FROM THE PASTOR — LUXURY SECTION
+========================================================= */
+
+#pastor-message.pastor-message-luxury {
+    padding: 110px 6%;
+    background: linear-gradient(135deg, #061944 0%, #0b3d91 56%, #071a52 100%) !important;
+    color: #ffffff;
+}
+
+.pastor-message-luxury__container {
+    width: min(1180px, 100%);
+    margin: 0 auto;
+}
+
+.pastor-message-luxury__header {
+    max-width: 760px;
+    margin: 0 auto 58px;
+    text-align: center;
+}
+
+.pastor-message-luxury__eyebrow,
+.pastor-message-luxury__letter-label {
+    color: #d4af37;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+}
+
+.pastor-message-luxury__header h2 {
+    margin: 15px 0 20px;
+    color: #ffffff;
+    font-size: clamp(35px, 5vw, 62px);
+    line-height: 1.08;
+}
+
+.pastor-message-luxury__header h2 span {
+    color: #e2bd4a;
+}
+
+.pastor-message-luxury__line {
+    width: 70px;
+    height: 3px;
+    margin: 0 auto;
+    background: #d4af37;
+}
+
+.pastor-message-luxury__feature {
+    display: grid;
+    grid-template-columns: minmax(320px, 0.82fr) minmax(0, 1.18fr);
+    align-items: stretch;
+    overflow: hidden;
+    background: #ffffff;
+    box-shadow: 0 26px 65px rgba(0, 0, 0, 0.28);
+}
+
+.pastor-message-luxury__portrait {
+    position: relative;
+    min-height: 660px;
+    margin: 0;
+    overflow: hidden;
+    background: #061944;
+}
+
+.pastor-message-luxury__portrait::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent 52%);
+}
+
+.pastor-message-luxury__portrait img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.pastor-message-luxury__portrait figcaption {
+    position: absolute;
+    right: 28px;
+    bottom: 28px;
+    left: 28px;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    color: #ffffff;
+}
+
+.pastor-message-luxury__portrait figcaption span {
+    color: #e2bd4a;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.pastor-message-luxury__portrait figcaption strong {
+    font-size: 25px;
+    line-height: 1.1;
+}
+
+.pastor-message-luxury__portrait figcaption small {
+    font-size: 13px;
+    opacity: 0.88;
+}
+
+.pastor-message-luxury__letter {
+    padding: clamp(38px, 6vw, 78px);
+    color: #4c5869;
+}
+
+.pastor-message-luxury__letter p {
+    margin: 0 0 19px;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.pastor-message-luxury__lead {
+    margin-top: 18px !important;
+    color: #102b58;
+    font-size: 19px !important;
+    font-weight: 600;
+}
+
+.pastor-message-luxury__letter blockquote {
+    margin: 30px 0;
+    padding: 20px 0 20px 22px;
+    color: #0b3d91;
+    border-left: 3px solid #d4af37;
+    font-family: Georgia, serif;
+    font-size: 22px;
+    font-style: italic;
+    font-weight: 700;
+    line-height: 1.45;
+}
+
+.pastor-message-luxury__signature {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(11, 61, 145, 0.18);
+}
+
+.pastor-message-luxury__signature strong {
+    color: #0b3d91;
+    font-family: Georgia, serif;
+    font-size: 22px;
+}
+
+.pastor-message-luxury__signature span {
+    color: #8a6a17;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.7px;
+}
+
+/* Tablet and phone */
+@media (max-width: 900px) {
+    #pastor-message.pastor-message-luxury {
+        padding: 75px 5%;
+    }
+
+    .pastor-message-luxury__feature {
+        grid-template-columns: 1fr;
+    }
+
+    .pastor-message-luxury__portrait {
+        min-height: 560px;
+    }
+}
+
+@media (max-width: 600px) {
+    #pastor-message.pastor-message-luxury {
+        padding: 60px 16px;
+    }
+
+    .pastor-message-luxury__header {
+        margin-bottom: 35px;
+    }
+
+    .pastor-message-luxury__header h2 {
+        font-size: 36px;
+    }
+
+    .pastor-message-luxury__portrait {
+        min-height: 440px;
+    }
+
+    .pastor-message-luxury__portrait figcaption {
+        right: 20px;
+        bottom: 20px;
+        left: 20px;
+    }
+
+    .pastor-message-luxury__letter {
+        padding: 36px 24px;
+    }
+
+    .pastor-message-luxury__letter p {
+        font-size: 15px;
+    }
+
+    .pastor-message-luxury__lead {
+        font-size: 17px !important;
+    }
+
+    .pastor-message-luxury__letter blockquote {
+        font-size: 19px;
+    }
+}
