@@ -12250,3 +12250,30 @@ nav ul li a {
         padding: 19px;
     }
 }
+/* Tighten the Hero-to-About transition */
+.about-luxury {
+    margin-top: 0;
+    padding-top: 65px;
+}
+
+/* Phone: reduce empty space and enlarge the church image */
+@media (max-width: 600px) {
+    .about-luxury {
+        margin-top: 0;
+        padding: 38px 14px 55px;
+    }
+
+    .about-luxury__container {
+        gap: 35px;
+    }
+
+    .about-luxury__image-column {
+        width: 100%;
+        padding: 0 0 18px;
+    }
+
+    .about-luxury__image-frame,
+    .about-luxury__image-frame img {
+        min-height: 375px;
+    }
+}
