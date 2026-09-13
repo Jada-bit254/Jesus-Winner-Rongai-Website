@@ -251,18 +251,27 @@ document.addEventListener("DOMContentLoaded", () => {
     let syncTimer;
 
     const safePlay = (media) => media?.play().catch(() => {});
+
     const resetMedia = (media) => {
         if (!media) return;
+
         media.pause();
-        try { media.currentTime = 0; } catch (_) {}
+
+        try {
+            media.currentTime = 0;
+        } catch (_) {}
     };
 
-    /* Load the next scene before it is shown, avoiding a blank or lagging first frame. */
     const warmSlide = (index) => {
-        [videos[index], backdrops[index]].filter(Boolean).forEach((media) => {
-            media.preload = "auto";
-            if (media.readyState === media.HAVE_NOTHING) media.load();
-        });
+        [videos[index], backdrops[index]]
+            .filter(Boolean)
+            .forEach((media) => {
+                media.preload = "auto";
+
+                if (media.readyState === media.HAVE_NOTHING) {
+                    media.load();
+                }
+            });
     };
 
     const stopSync = () => {
@@ -272,14 +281,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const synchronizeBackdrop = (index) => {
         stopSync();
+
         const foreground = videos[index];
         const backdrop = backdrops[index];
+
         if (!phoneView.matches || !foreground || !backdrop) return;
 
-        /* Correct only meaningful drift; continuously seeking caused the original stutter. */
         syncTimer = window.setInterval(() => {
-            if (index !== currentSlide || foreground.paused || backdrop.paused) return;
-            if (Math.abs(foreground.currentTime - backdrop.currentTime) > 0.22) {
+            if (
+                index !== currentSlide ||
+                foreground.paused ||
+                backdrop.paused
+            ) {
+                return;
+            }
+
+            if (
+                Math.abs(
+                    foreground.currentTime - backdrop.currentTime
+                ) > 0.22
+            ) {
                 backdrop.currentTime = foreground.currentTime;
             }
         }, 900);
@@ -288,6 +309,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const updateControls = (index) => {
         dots.forEach((dot, dotIndex) => {
             const active = dotIndex === index;
+
             dot.classList.toggle("active", active);
             dot.setAttribute("aria-current", String(active));
         });
@@ -295,6 +317,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const showSlide = (index, { restart = true } = {}) => {
         if (index < 0 || index >= slides.length) return;
+
         window.clearTimeout(pauseTimer);
 
         const oldIndex = currentSlide;
@@ -307,9 +330,16 @@ document.addEventListener("DOMContentLoaded", () => {
             resetMedia(backdrop);
         }
 
-        slides.forEach((slide, slideIndex) => slide.classList.toggle("active", slideIndex === index));
+        slides.forEach((slide, slideIndex) => {
+            slide.classList.toggle(
+                "active",
+                slideIndex === index
+            );
+        });
+
         updateControls(index);
         currentSlide = index;
+
         warmSlide((index + 1) % slides.length);
 
         requestAnimationFrame(() => {
@@ -317,6 +347,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 backdrop.currentTime = foreground.currentTime;
                 safePlay(backdrop);
             }
+
             safePlay(foreground);
             synchronizeBackdrop(index);
         });
@@ -329,40 +360,52 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    slides.forEach((slide) => slide.classList.remove("active"));
+    slides.forEach((slide) => {
+        slide.classList.remove("active");
+    });
+
     videos.forEach((video) => {
         video.muted = true;
         video.playsInline = true;
         video.preload = "auto";
         video.pause();
     });
+
     backdrops.forEach((backdrop) => {
         backdrop.muted = true;
         backdrop.playsInline = true;
         backdrop.preload = "auto";
         backdrop.pause();
     });
+
     warmSlide(0);
 
     window.setTimeout(() => {
         experienceStarted = true;
+
         showSlide(0);
+
         intro?.classList.add("hide-intro");
         welcome?.classList.add("is-hidden");
     }, 5000);
 
     videos.forEach((video, index) => {
-        video.addEventListener("ended", () => showSlide((index + 1) % videos.length));
+        video.addEventListener("ended", () => {
+            showSlide((index + 1) % videos.length);
+        });
     });
 
     dots.forEach((dot, index) => {
         dot.addEventListener("click", () => {
-            if (experienceStarted && index !== currentSlide) showSlide(index);
+            if (experienceStarted && index !== currentSlide) {
+                showSlide(index);
+            }
         });
     });
 
     phoneView.addEventListener("change", () => {
-        if (experienceStarted) showSlide(currentSlide, { restart: false });
+        if (experienceStarted) {
+            showSlide(currentSlide, { restart: false });
+        }
     });
 });
-
