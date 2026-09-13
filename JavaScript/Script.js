@@ -226,207 +226,143 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-    /* =========================================================
+/* =========================================================
    HERO VIDEO SLIDER
    JESUS WINNER MINISTRY RONGAI
-========================================================= */
-
+   ========================================================= */
 document.addEventListener("DOMContentLoaded", () => {
-
     const hero = document.querySelector(".hero");
-
     if (!hero) return;
 
     const intro = hero.querySelector(".hero-intro-background");
-
     const welcome = hero.querySelector(".hero-welcome-content");
+    const slides = [...hero.querySelectorAll(".hero-video-slide")];
+    const videos = [...hero.querySelectorAll(".hero-video")];
+    const backdrops = [...hero.querySelectorAll(".hero-video-backdrop")];
+    const dots = [...hero.querySelectorAll(".hero-dot")];
+    const phoneView = window.matchMedia("(max-width: 600px)");
 
-    const slides = hero.querySelectorAll(".hero-video-slide");
+    if (!slides.length || slides.length !== videos.length) return;
 
-    const videos = hero.querySelectorAll(".hero-video");
-
-    const backdrops = hero.querySelectorAll(".hero-video-backdrop");
-
-    const dots = hero.querySelectorAll(".hero-dot");
-
-    if (!slides.length || !videos.length) return;
-
-
+    const fadeDuration = 650;
     let currentSlide = 0;
     let experienceStarted = false;
+    let pauseTimer;
+    let syncTimer;
 
+    const safePlay = (media) => media?.play().catch(() => {});
+    const resetMedia = (media) => {
+        if (!media) return;
+        media.pause();
+        try { media.currentTime = 0; } catch (_) {}
+    };
 
-    /* -----------------------------------------------------
-       INITIAL STATE
-    ----------------------------------------------------- */
+    /* Load the next scene before it is shown, avoiding a blank or lagging first frame. */
+    const warmSlide = (index) => {
+        [videos[index], backdrops[index]].filter(Boolean).forEach((media) => {
+            media.preload = "auto";
+            if (media.readyState === media.HAVE_NOTHING) media.load();
+        });
+    };
 
-    slides.forEach((slide) => {
-        slide.classList.remove("active");
-    });
+    const stopSync = () => {
+        window.clearInterval(syncTimer);
+        syncTimer = undefined;
+    };
 
+    const synchronizeBackdrop = (index) => {
+        stopSync();
+        const foreground = videos[index];
+        const backdrop = backdrops[index];
+        if (!phoneView.matches || !foreground || !backdrop) return;
 
+        /* Correct only meaningful drift; continuously seeking caused the original stutter. */
+        syncTimer = window.setInterval(() => {
+            if (index !== currentSlide || foreground.paused || backdrop.paused) return;
+            if (Math.abs(foreground.currentTime - backdrop.currentTime) > 0.22) {
+                backdrop.currentTime = foreground.currentTime;
+            }
+        }, 900);
+    };
+
+    const updateControls = (index) => {
+        dots.forEach((dot, dotIndex) => {
+            const active = dotIndex === index;
+            dot.classList.toggle("active", active);
+            dot.setAttribute("aria-current", String(active));
+        });
+    };
+
+    const showSlide = (index, { restart = true } = {}) => {
+        if (index < 0 || index >= slides.length) return;
+        window.clearTimeout(pauseTimer);
+
+        const oldIndex = currentSlide;
+        const foreground = videos[index];
+        const backdrop = backdrops[index];
+        const changingSlide = index !== oldIndex;
+
+        if (restart) {
+            resetMedia(foreground);
+            resetMedia(backdrop);
+        }
+
+        slides.forEach((slide, slideIndex) => slide.classList.toggle("active", slideIndex === index));
+        updateControls(index);
+        currentSlide = index;
+        warmSlide((index + 1) % slides.length);
+
+        requestAnimationFrame(() => {
+            if (phoneView.matches && backdrop) {
+                backdrop.currentTime = foreground.currentTime;
+                safePlay(backdrop);
+            }
+            safePlay(foreground);
+            synchronizeBackdrop(index);
+        });
+
+        if (changingSlide) {
+            pauseTimer = window.setTimeout(() => {
+                resetMedia(videos[oldIndex]);
+                resetMedia(backdrops[oldIndex]);
+            }, fadeDuration + 40);
+        }
+    };
+
+    slides.forEach((slide) => slide.classList.remove("active"));
     videos.forEach((video) => {
-
         video.muted = true;
         video.playsInline = true;
-        video.currentTime = 0;
+        video.preload = "auto";
         video.pause();
     });
-
     backdrops.forEach((backdrop) => {
         backdrop.muted = true;
         backdrop.playsInline = true;
+        backdrop.preload = "auto";
         backdrop.pause();
     });
-
-    const isPhoneView = () => window.matchMedia("(max-width: 600px)").matches;
-
-
-    /* -----------------------------------------------------
-       WELCOME INTRO
-       Give the welcome message time to appear,
-       then smoothly remove the whole intro.
-    ----------------------------------------------------- */
-
-    /* -----------------------------------------------------
-       SHOW VIDEO
-    ----------------------------------------------------- */
-
-    function showSlide(index) {
-
-        if (index < 0 || index >= slides.length) return;
-
-
-        slides.forEach((slide, i) => {
-
-            slide.classList.toggle(
-                "active",
-                i === index
-            );
-
-        });
-
-
-        videos.forEach((video, i) => {
-
-            if (i === index) {
-                if (i !== currentSlide || video.ended) {
-                    video.currentTime = 0;
-                }
-                video.play().catch(() => {});
-            }
-
-        });
-
-        const previousVideo = videos[currentSlide];
-
-        if (previousVideo && currentSlide !== index) {
-            window.setTimeout(() => previousVideo.pause(), 900);
-        }
-
-        const activeBackdrop = backdrops[index];
-        const previousBackdrop = backdrops[currentSlide];
-
-        if (isPhoneView() && activeBackdrop) {
-            activeBackdrop.currentTime = videos[index].currentTime;
-            activeBackdrop.play().catch(() => {});
-        }
-
-        if (previousBackdrop && currentSlide !== index) {
-            window.setTimeout(() => previousBackdrop.pause(), 900);
-        }
-
-
-        dots.forEach((dot, i) => {
-
-            dot.classList.toggle(
-                "active",
-                i === index
-            );
-
-            dot.setAttribute("aria-current", i === index ? "true" : "false");
-
-        });
-
-
-        currentSlide = index;
-
-    }
-
-
-    /* -----------------------------------------------------
-       WELCOME INTRO
-       The message remains visible for five seconds, then
-       the opening image fades away as the first video begins.
-    ----------------------------------------------------- */
+    warmSlide(0);
 
     window.setTimeout(() => {
-
         experienceStarted = true;
         showSlide(0);
-
-        if (intro) {
-            intro.classList.add("hide-intro");
-        }
-
-        if (welcome) {
-            welcome.classList.add("is-hidden");
-        }
-
+        intro?.classList.add("hide-intro");
+        welcome?.classList.add("is-hidden");
     }, 5000);
 
-
-    /* -----------------------------------------------------
-       WHEN A VIDEO FINISHES
-       Move automatically to the next video.
-    ----------------------------------------------------- */
-
     videos.forEach((video, index) => {
-
-        video.addEventListener("timeupdate", () => {
-            const backdrop = backdrops[index];
-
-            if (
-                isPhoneView() &&
-                backdrop &&
-                Math.abs(backdrop.currentTime - video.currentTime) > 0.4
-            ) {
-                backdrop.currentTime = video.currentTime;
-            }
-        });
-
-        video.addEventListener("ended", () => {
-
-            let nextIndex = index + 1;
-
-            if (nextIndex >= videos.length) {
-
-                nextIndex = 0;
-
-            }
-
-            showSlide(nextIndex);
-
-        });
-
+        video.addEventListener("ended", () => showSlide((index + 1) % videos.length));
     });
-
-
-    /* -----------------------------------------------------
-       DOT NAVIGATION
-    ----------------------------------------------------- */
 
     dots.forEach((dot, index) => {
-
         dot.addEventListener("click", () => {
-            if (experienceStarted) {
-                showSlide(index);
-            }
-
+            if (experienceStarted && index !== currentSlide) showSlide(index);
         });
-
     });
 
-
+    phoneView.addEventListener("change", () => {
+        if (experienceStarted) showSlide(currentSlide, { restart: false });
+    });
 });
 
