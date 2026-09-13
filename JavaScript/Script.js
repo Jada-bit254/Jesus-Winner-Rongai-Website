@@ -379,6 +379,8 @@ backdrops.forEach((backdrop) => {
     backdrop.pause();
 });
 
+warmSlide(0);
+
     window.setTimeout(() => {
         experienceStarted = true;
 

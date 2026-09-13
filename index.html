@@ -157,60 +157,73 @@
     </div>
 
     <!-- Video slider: videos occupy the same hero area -->
-    <div class="hero-video-stage">
+<div class="hero-video-stage">
 
-        <div class="hero-video-slide" data-slide="0">
-            
-<!-- First main video -->
-<video class="hero-video" id="heroVideo1" muted playsinline preload="auto">
-                <source
-                    src="Videos/Ministries/praisehero.mp4"
-                    type="video/mp4"
-                >
-            </video>
+    <div class="hero-video-slide" data-slide="0">
 
-            <video
-                class="hero-video"
-                id="heroVideo1"
-                muted
-                playsinline
-                preload="auto"
+        <video
+            class="hero-video-backdrop"
+            muted
+            playsinline
+            preload="metadata"
+            aria-hidden="true"
+            tabindex="-1"
+        >
+            <source
+                src="Videos/Ministries/praisehero.mp4"
+                type="video/mp4"
             >
-                <source
-                    src="Videos/Ministries/praisehero.mp4"
-                    type="video/mp4"
-                >
-                Your browser does not support HTML5 video.
-            </video>
-        </div>
+        </video>
 
-        <div class="hero-video-slide" data-slide="1">
-                <!-- Second main video -->
-<video class="hero-video" id="heroVideo2" muted playsinline preload="metadata"> </video>
+        <video
+            class="hero-video"
+            id="heroVideo1"
+            muted
+            playsinline
+            preload="auto"
+        >
+            <source
+                src="Videos/Ministries/praisehero.mp4"
+                type="video/mp4"
             >
-                <source
-                    src="Videos/Pastors/video1.mp4"
-                    type="video/mp4"
-                >
-            </video>
-
-            <video
-                class="hero-video"
-                id="heroVideo2"
-                muted
-                playsinline
-                preload="auto"
-            >
-                <source
-                    src="Videos/Pastors/video1.mp4"
-                    type="video/mp4"
-                >
-                Your browser does not support HTML5 video.
-            </video>
-        </div>
+            Your browser does not support HTML5 video.
+        </video>
 
     </div>
 
+    <div class="hero-video-slide" data-slide="1">
+
+        <video
+            class="hero-video-backdrop"
+            muted
+            playsinline
+            preload="metadata"
+            aria-hidden="true"
+            tabindex="-1"
+        >
+            <source
+                src="Videos/Pastors/video1.mp4"
+                type="video/mp4"
+            >
+        </video>
+
+        <video
+            class="hero-video"
+            id="heroVideo2"
+            muted
+            playsinline
+            preload="metadata"
+        >
+            <source
+                src="Videos/Pastors/video1.mp4"
+                type="video/mp4"
+            >
+            Your browser does not support HTML5 video.
+        </video>
+
+    </div>
+
+</div>
     <div class="hero-overlay" aria-hidden="true"></div>
 
     <!-- This welcome message fades with the introductory background -->
