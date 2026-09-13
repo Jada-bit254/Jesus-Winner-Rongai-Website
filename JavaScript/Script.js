@@ -263,16 +263,16 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const warmSlide = (index) => {
-        [videos[index], backdrops[index]]
-            .filter(Boolean)
-            .forEach((media) => {
-                media.preload = "auto";
+    const media = videos[index];
 
-                if (media.readyState === media.HAVE_NOTHING) {
-                    media.load();
-                }
-            });
-    };
+    if (!media) return;
+
+    media.preload = "auto";
+
+    if (media.readyState === media.HAVE_NOTHING) {
+        media.load();
+    }
+};
 
     const stopSync = () => {
         window.clearInterval(syncTimer);
@@ -364,21 +364,20 @@ document.addEventListener("DOMContentLoaded", () => {
         slide.classList.remove("active");
     });
 
-    videos.forEach((video) => {
-        video.muted = true;
-        video.playsInline = true;
-        video.preload = "auto";
-        video.pause();
-    });
+    
+    videos.forEach((video, index) => {
+    video.muted = true;
+    video.playsInline = true;
+    video.preload = index === 0 ? "auto" : "metadata";
+    video.pause();
+});
 
-    backdrops.forEach((backdrop) => {
-        backdrop.muted = true;
-        backdrop.playsInline = true;
-        backdrop.preload = "auto";
-        backdrop.pause();
-    });
-
-    warmSlide(0);
+backdrops.forEach((backdrop) => {
+    backdrop.muted = true;
+    backdrop.playsInline = true;
+    backdrop.preload = "metadata";
+    backdrop.pause();
+});
 
     window.setTimeout(() => {
         experienceStarted = true;

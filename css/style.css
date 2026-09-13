@@ -13752,3 +13752,60 @@ html {
         transition-duration: 1ms;
     }
 }
+
+/* FINAL MOBILE HERO ADJUSTMENTS */
+
+.hero-welcome-content {
+    gap: 0 !important;
+}
+
+.hero-welcome {
+    margin: 0 0 0.82rem !important;
+}
+
+.hero-title {
+    margin: 0 0 0.22rem !important;
+}
+
+.hero-location {
+    margin: 0 0 0.58rem !important;
+}
+
+.hero-welcome-line {
+    margin: 0 auto 0.42rem !important;
+}
+
+.hero-verse {
+    margin: 0 auto !important;
+}
+
+@media (max-width: 600px) {
+    .hero-welcome {
+        margin-bottom: 0.9rem !important;
+    }
+
+    .hero-title {
+        margin-bottom: 0.18rem !important;
+    }
+
+    .hero-location {
+        margin-bottom: 0.5rem !important;
+    }
+
+    .hero-video-backdrop {
+        inset: -8% !important;
+        width: 116% !important;
+        height: 116% !important;
+        filter: blur(10px) saturate(1.08) brightness(0.55) !important;
+        opacity: 0.88 !important;
+        transform: scale(1.02) !important;
+    }
+
+    .hero-video-slide::after {
+        background: linear-gradient(
+            180deg,
+            rgba(3, 9, 24, 0.12),
+            rgba(3, 9, 24, 0.38)
+        ) !important;
+    }
+}
