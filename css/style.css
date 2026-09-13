@@ -13380,3 +13380,38 @@ html {
     .hero-video-slide,
     .hero-welcome-content { transition-duration: 0.01ms; }
 }
+
+@media (max-width: 600px) {
+    /* Tighter welcome-message arrangement */
+    .hero-title {
+        margin: 0 !important;
+    }
+
+    .hero-location {
+        margin: 0.25rem 0 0.8rem !important;
+    }
+
+    .hero-welcome-line {
+        margin: 0 auto 0.9rem !important;
+    }
+
+    .hero-verse {
+        margin: 0.7rem auto 0 !important;
+    }
+
+    /* Full video frame on a classic neutral background */
+    .hero-video-stage,
+    .hero-video-slide {
+        background: #050505 !important;
+    }
+
+    .hero-video,
+    #heroVideo1,
+    #heroVideo2 {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important;
+        object-position: center center !important;
+        background: #050505 !important;
+    }
+}
