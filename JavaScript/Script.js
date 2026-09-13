@@ -229,9 +229,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const slides = Array.from(
         document.querySelectorAll(".hero-video-slide")
     );
-    const videos = Array.from(
-        document.querySelectorAll(".hero-video")
-    );
+);
+
+const videos = Array.from(
+    document.querySelectorAll(".hero-video")
+);
     const dots = Array.from(
         document.querySelectorAll(".hero-dot")
     );
@@ -255,16 +257,39 @@ document.addEventListener("DOMContentLoaded", function () {
             dot.setAttribute("aria-current", isActive);
         });
 
-        videos.forEach(function (video, videoIndex) {
-            video.pause();
-            video.currentTime = 0;
+       videos.forEach(function (video, videoIndex) {
 
-            if (videoIndex === currentSlide) {
-                video.play().catch(function () {
-                    console.log("Video playback needs user interaction.");
-                });
-            }
+    video.pause();
+    video.currentTime = 0;
+
+    const backgroundVideo =
+        slides[videoIndex].querySelector(".hero-video-bg");
+
+    if (backgroundVideo) {
+        backgroundVideo.pause();
+        backgroundVideo.currentTime = 0;
+    }
+
+    if (videoIndex === currentSlide) {
+
+        video.play().catch(function () {
+            console.log(
+                "Video playback needs user interaction."
+            );
         });
+
+        if (backgroundVideo) {
+
+            backgroundVideo.play().catch(function () {
+                console.log(
+                    "Background video playback needs user interaction."
+                );
+            });
+
+        }
+    }
+
+});
     }
 
     if (slides.length && videos.length) {
@@ -285,7 +310,7 @@ document.addEventListener("DOMContentLoaded", function () {
             welcomeContent.classList.add("hide");
 
             showSlide(0);
-        }, 6000);
+        }, 4000);
     }
 });
 
