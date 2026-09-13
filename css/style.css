@@ -13351,7 +13351,21 @@ html {
     }
 
     .hero-location {
+        margin: 0.5rem 0 0.9rem;
         font-size: 1.25rem;
+    }
+
+    /* Preserve the complete video frame on phones instead of cropping it. */
+    .hero-video-stage,
+    .hero-video-slide {
+        background: radial-gradient(circle at center, #142b60 0%, #050d24 72%);
+    }
+
+    .hero-video,
+    #heroVideo1,
+    #heroVideo2 {
+        object-fit: contain;
+        object-position: center;
     }
 
     .hero-verse {
