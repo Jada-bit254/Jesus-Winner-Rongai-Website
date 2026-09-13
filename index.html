@@ -43,37 +43,15 @@
 
         <ul class="nav-links">
 
-            <li>
-                <a href="index.html">Home</a>
-            </li>
-
-            <li>
-                <a href="about.html">About</a>
-            </li>
-
-            <li>
-                <a href="#leadership">Leadership</a>
-            </li>
-
-            <li>
-                <a href="ministries.html">Ministries</a>
-            </li>
-
-            <li>
-                <a href="services.html">Services</a>
-            </li>
-
-            <li>
-                <a href="events.html">Events</a>
-            </li>
-
-            <li>
-                <a href="media.html">Media</a>
-            </li>
-
-            <li>
-                <a href="join-us.html">Join Us</a>
-            </li>
+           <li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#leadership">Leadership</a></li>
+<li><a href="#ministries">Ministries</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#giving">Giving</a></li>
+<li><a href="#events">Events</a></li>
+<li><a href="#sermons">Media</a></li>
+<li><a href="#location">Join Us</a></li>
 
 
             <!-- MORE -->
@@ -90,21 +68,10 @@
 
                 <div class="more-menu">
 
-                    <a href="gallery.html">
-                        <span>Gallery</span>
-                    </a>
-
-                    <a href="visit-us.html">
-                        <span>Visit Us</span>
-                    </a>
-
-                    <a href="prayer.html">
-                        <span>Prayer Request</span>
-                    </a>
-
-                    <a href="contact.html">
-                        <span>Contact</span>
-                    </a>
+                   <a href="#gallery"><span>Gallery</span></a>
+<a href="#location"><span>Visit Us</span></a>
+<a href="#prayer"><span>Prayer Request</span></a>
+<a href="#location"><span>Contact</span></a>
 
                 </div>
 
@@ -180,12 +147,13 @@
 </nav>
 <section class="hero" id="home">
 
-    <!-- Welcome image: visible for the first 6 seconds -->
+    <!-- Welcome experience: visible for the first 4 seconds -->
     <div class="hero-intro-background">
         <img
             src="images/Ministries/background.png"
             alt=""
         >
+
     </div>
 
     <!-- Video slider: videos occupy the same hero area -->
@@ -197,7 +165,7 @@
                 id="heroVideo1"
                 muted
                 playsinline
-                preload="metadata"
+                preload="auto"
             >
                 <source
                     src="Videos/Ministries/praisehero.mp4"
@@ -213,7 +181,7 @@
                 id="heroVideo2"
                 muted
                 playsinline
-                preload="metadata"
+                preload="auto"
             >
                 <source
                     src="Videos/Pastors/video1.mp4"
@@ -227,7 +195,7 @@
 
     <div class="hero-overlay" aria-hidden="true"></div>
 
-    <!-- This welcome message fades with the image -->
+    <!-- This welcome message fades with the introductory background -->
     <div class="hero-welcome-content">
 
         <span class="hero-welcome">KARIBU</span>
@@ -453,6 +421,8 @@
 
 </section>
 
+<section id="leadership" class="leadership-section">
+
     <h2>Our Pastors & Leadership</h2>
 
     <p class="leadership-intro">
@@ -567,10 +537,6 @@
 
 
     </div>
-
-</section>
-
-
 
     <!-- Pastor Scripture -->
 
@@ -1080,6 +1046,20 @@
     </div>
 
 </section>
+
+<section id="giving" class="giving-section">
+    <div class="section-heading">
+        <span>GIVING</span>
+        <h2>Give With Purpose</h2>
+        <p>
+            Your generosity helps us share the love of Christ,
+            serve our community, and grow the ministry.
+        </p>
+
+        <a href="#" class="giving-button">Give Now →</a>
+    </div>
+</section>
+
 
   <!-- =========================================
      OUR MINISTRIES
@@ -1636,19 +1616,6 @@
     </div>
 
 </section>
-    
-   
-</header>
-
-<div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#vision">Vision</a>
-    <a href="#services">Services</a>
-    <a href="#ministry">Ministries</a>
-    <a href="#events">Events</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#contact">Contact</a>
-</div>
 
 
 <!-- =========================================
@@ -2214,8 +2181,6 @@
 
 </section>
 
-<section class="prayer">
-
     <!-- =========================================
      GALLERY FEATURE
 ========================================= -->
@@ -2395,8 +2360,7 @@
      PRAYER & CARE
 ============================== -->
 
-<section class="prayer-section">
-
+<section id="prayer" class="prayer-section"></section>
     <div class="prayer-content">
 
         <div class="prayer-icon">
@@ -2433,8 +2397,7 @@
 
 </section>
 
-<section>
-    <section id="social-media" class="social-section">
+<section id="social-media" class="social-section">
 
     <div class="section-heading">
 
@@ -2497,7 +2460,7 @@
 
 </section>
 
-#Statistics Section
+<!-- Statistics Section -->
 <section class="stats">
 
     <div class="stat-box">
@@ -2529,6 +2492,6 @@
  Faith . Hope . Love
 
 </div>
-</html>
 <script src="JavaScript/Script.js"></script>
 </body>
+</html>

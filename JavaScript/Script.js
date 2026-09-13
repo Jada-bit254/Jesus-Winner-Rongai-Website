@@ -223,94 +223,176 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
     }
-    /* HERO INTRO AND VIDEO SLIDER */
-    const heroIntro = document.querySelector(".hero-intro-background");
-    const welcomeContent = document.querySelector(".hero-welcome-content");
-    const slides = Array.from(
-        document.querySelectorAll(".hero-video-slide")
-    );
-);
-
-const videos = Array.from(
-    document.querySelectorAll(".hero-video")
-);
-    const dots = Array.from(
-        document.querySelectorAll(".hero-dot")
-    );
-
-    let currentSlide = 0;
-
-    function showSlide(index) {
-        currentSlide = index;
-
-        slides.forEach(function (slide, slideIndex) {
-            slide.classList.toggle(
-                "active",
-                slideIndex === currentSlide
-            );
-        });
-
-        dots.forEach(function (dot, dotIndex) {
-            const isActive = dotIndex === currentSlide;
-
-            dot.classList.toggle("active", isActive);
-            dot.setAttribute("aria-current", isActive);
-        });
-
-       videos.forEach(function (video, videoIndex) {
-
-    video.pause();
-    video.currentTime = 0;
-
-    const backgroundVideo =
-        slides[videoIndex].querySelector(".hero-video-bg");
-
-    if (backgroundVideo) {
-        backgroundVideo.pause();
-        backgroundVideo.currentTime = 0;
-    }
-
-    if (videoIndex === currentSlide) {
-
-        video.play().catch(function () {
-            console.log(
-                "Video playback needs user interaction."
-            );
-        });
-
-        if (backgroundVideo) {
-
-            backgroundVideo.play().catch(function () {
-                console.log(
-                    "Background video playback needs user interaction."
-                );
-            });
-
-        }
-    }
 
 });
-    }
 
-    if (slides.length && videos.length) {
-        videos.forEach(function (video, videoIndex) {
-            video.addEventListener("ended", function () {
-                showSlide((videoIndex + 1) % videos.length);
-            });
+    /* =========================================================
+   HERO VIDEO SLIDER
+   JESUS WINNER MINISTRY RONGAI
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const hero = document.querySelector(".hero");
+
+    if (!hero) return;
+
+    const intro = hero.querySelector(".hero-intro-background");
+
+    const welcome = hero.querySelector(".hero-welcome-content");
+
+    const slides = hero.querySelectorAll(".hero-video-slide");
+
+    const videos = hero.querySelectorAll(".hero-video");
+
+    const dots = hero.querySelectorAll(".hero-dot");
+
+    if (!slides.length || !videos.length) return;
+
+
+    let currentSlide = 0;
+    let experienceStarted = false;
+
+
+    /* -----------------------------------------------------
+       INITIAL STATE
+    ----------------------------------------------------- */
+
+    slides.forEach((slide) => {
+        slide.classList.remove("active");
+    });
+
+
+    videos.forEach((video) => {
+
+        video.muted = true;
+        video.playsInline = true;
+        video.currentTime = 0;
+        video.pause();
+    });
+
+
+    /* -----------------------------------------------------
+       WELCOME INTRO
+       Give the welcome message time to appear,
+       then smoothly remove the whole intro.
+    ----------------------------------------------------- */
+
+    /* -----------------------------------------------------
+       SHOW VIDEO
+    ----------------------------------------------------- */
+
+    function showSlide(index) {
+
+        if (index < 0 || index >= slides.length) return;
+
+
+        slides.forEach((slide, i) => {
+
+            slide.classList.toggle(
+                "active",
+                i === index
+            );
+
         });
 
-        dots.forEach(function (dot) {
-            dot.addEventListener("click", function () {
-                showSlide(Number(dot.dataset.slide));
-            });
+
+        videos.forEach((video, i) => {
+
+            if (i === index) {
+                if (i !== currentSlide || video.ended) {
+                    video.currentTime = 0;
+                }
+                video.play().catch(() => {});
+            }
+
         });
 
-        setTimeout(function () {
-            heroIntro.classList.add("hide");
-            welcomeContent.classList.add("hide");
+        const previousVideo = videos[currentSlide];
 
-            showSlide(0);
-        }, 4000);
+        if (previousVideo && currentSlide !== index) {
+            window.setTimeout(() => previousVideo.pause(), 900);
+        }
+
+
+        dots.forEach((dot, i) => {
+
+            dot.classList.toggle(
+                "active",
+                i === index
+            );
+
+            dot.setAttribute("aria-current", i === index ? "true" : "false");
+
+        });
+
+
+        currentSlide = index;
+
     }
+
+
+    /* -----------------------------------------------------
+       WELCOME INTRO
+       The message remains visible for five seconds, then
+       the opening image fades away as the first video begins.
+    ----------------------------------------------------- */
+
+    window.setTimeout(() => {
+
+        experienceStarted = true;
+        showSlide(0);
+
+        if (intro) {
+            intro.classList.add("hide-intro");
+        }
+
+        if (welcome) {
+            welcome.classList.add("is-hidden");
+        }
+
+    }, 5000);
+
+
+    /* -----------------------------------------------------
+       WHEN A VIDEO FINISHES
+       Move automatically to the next video.
+    ----------------------------------------------------- */
+
+    videos.forEach((video, index) => {
+
+        video.addEventListener("ended", () => {
+
+            let nextIndex = index + 1;
+
+            if (nextIndex >= videos.length) {
+
+                nextIndex = 0;
+
+            }
+
+            showSlide(nextIndex);
+
+        });
+
+    });
+
+
+    /* -----------------------------------------------------
+       DOT NAVIGATION
+    ----------------------------------------------------- */
+
+    dots.forEach((dot, index) => {
+
+        dot.addEventListener("click", () => {
+            if (experienceStarted) {
+                showSlide(index);
+            }
+
+        });
+
+    });
+
+
 });
 
