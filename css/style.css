@@ -13381,6 +13381,82 @@ html {
     .hero-welcome-content { transition-duration: 0.01ms; }
 }
 
+/* =========================================================
+   PHONE HERO — CINEMATIC VIDEO FRAME
+   ========================================================= */
+@media (max-width: 600px) {
+    .hero-welcome-content {
+        gap: 0;
+    }
+
+    .hero-welcome {
+        margin: 0 0 0.45rem !important;
+    }
+
+    .hero-title {
+        margin: 0 !important;
+    }
+
+    .hero-location {
+        margin: 0.35rem 0 0.7rem !important;
+    }
+
+    .hero-welcome-line {
+        margin: 0 auto 0.75rem !important;
+    }
+
+    .hero-verse {
+        margin: 0 auto !important;
+    }
+
+    .hero-video-stage,
+    .hero-video-slide {
+        background: #050914 !important;
+    }
+
+    .hero-video-backdrop {
+        position: absolute;
+        inset: -8%;
+        z-index: 1;
+        display: block;
+        width: 116%;
+        height: 116%;
+        max-width: none;
+        max-height: none;
+        object-fit: cover;
+        object-position: center;
+        filter: blur(18px) saturate(0.85) brightness(0.5);
+        opacity: 0.78;
+        transform: scale(1.04);
+    }
+
+    .hero-video-slide::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        pointer-events: none;
+        background: linear-gradient(180deg, rgba(5, 9, 20, 0.2), rgba(5, 9, 20, 0.48));
+    }
+
+    .hero-video,
+    #heroVideo1,
+    #heroVideo2 {
+        position: relative;
+        z-index: 3;
+        object-fit: contain !important;
+        object-position: center !important;
+        background: transparent !important;
+        box-shadow: 0 18px 48px rgba(0, 0, 0, 0.35);
+    }
+}
+
+@media (min-width: 601px) {
+    .hero-video-backdrop {
+        display: none;
+    }
+}
+
 @media (max-width: 600px) {
     /* Tighter welcome-message arrangement */
     .hero-title {

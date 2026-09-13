@@ -245,6 +245,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const videos = hero.querySelectorAll(".hero-video");
 
+    const backdrops = hero.querySelectorAll(".hero-video-backdrop");
+
     const dots = hero.querySelectorAll(".hero-dot");
 
     if (!slides.length || !videos.length) return;
@@ -270,6 +272,14 @@ document.addEventListener("DOMContentLoaded", () => {
         video.currentTime = 0;
         video.pause();
     });
+
+    backdrops.forEach((backdrop) => {
+        backdrop.muted = true;
+        backdrop.playsInline = true;
+        backdrop.pause();
+    });
+
+    const isPhoneView = () => window.matchMedia("(max-width: 600px)").matches;
 
 
     /* -----------------------------------------------------
@@ -312,6 +322,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (previousVideo && currentSlide !== index) {
             window.setTimeout(() => previousVideo.pause(), 900);
+        }
+
+        const activeBackdrop = backdrops[index];
+        const previousBackdrop = backdrops[currentSlide];
+
+        if (isPhoneView() && activeBackdrop) {
+            activeBackdrop.currentTime = videos[index].currentTime;
+            activeBackdrop.play().catch(() => {});
+        }
+
+        if (previousBackdrop && currentSlide !== index) {
+            window.setTimeout(() => previousBackdrop.pause(), 900);
         }
 
 
@@ -360,6 +382,18 @@ document.addEventListener("DOMContentLoaded", () => {
     ----------------------------------------------------- */
 
     videos.forEach((video, index) => {
+
+        video.addEventListener("timeupdate", () => {
+            const backdrop = backdrops[index];
+
+            if (
+                isPhoneView() &&
+                backdrop &&
+                Math.abs(backdrop.currentTime - video.currentTime) > 0.4
+            ) {
+                backdrop.currentTime = video.currentTime;
+            }
+        });
 
         video.addEventListener("ended", () => {
 
