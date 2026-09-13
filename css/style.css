@@ -2126,6 +2126,11 @@ a {
    This final block intentionally overrides previous hero experiments.
    ========================================================= */
 @media (max-width: 600px) {
+    .hero-video-slide {
+        transition: opacity 780ms cubic-bezier(0.4, 0, 0.2, 1),
+                    visibility 780ms linear !important;
+    }
+
     .hero-video-stage,
     .hero-video-slide {
         background:
@@ -2190,6 +2195,101 @@ a {
         margin: 0 auto !important;
         font-size: clamp(0.82rem, 3.7vw, 0.98rem) !important;
         line-height: 1.5 !important;
+    }
+}
+
+/* =========================================================
+   HERO — FINAL ELEGANT MOBILE VIDEO AND WELCOME TREATMENT
+   ========================================================= */
+.hero-video-slide {
+    transition: opacity 780ms cubic-bezier(0.4, 0, 0.2, 1),
+                visibility 780ms linear !important;
+}
+
+@media (max-width: 600px) {
+    /* Keep every part of the original video visible. */
+    .hero-video,
+    #heroVideo1,
+    #heroVideo2 {
+        position: relative !important;
+        z-index: 3 !important;
+        object-fit: contain !important;
+        object-position: center center !important;
+        background: transparent !important;
+        box-shadow: 0 18px 52px rgba(0, 0, 0, 0.3) !important;
+    }
+
+    /* The same video fills the spare space with a clear, softly diffused motion backdrop. */
+    .hero-video-backdrop {
+        position: absolute !important;
+        inset: -7% !important;
+        z-index: 1 !important;
+        display: block !important;
+        width: 114% !important;
+        height: 114% !important;
+        max-width: none !important;
+        max-height: none !important;
+        object-fit: cover !important;
+        object-position: center center !important;
+        filter: blur(8px) saturate(1.05) brightness(0.58) !important;
+        opacity: 0.92 !important;
+        transform: scale(1.025) !important;
+    }
+
+    .hero-video-stage,
+    .hero-video-slide {
+        background: #071126 !important;
+        overflow: hidden;
+    }
+
+    .hero-video-slide::after {
+        z-index: 2 !important;
+        background: linear-gradient(
+            180deg,
+            rgba(4, 12, 33, 0.12) 0%,
+            rgba(4, 12, 33, 0.18) 48%,
+            rgba(4, 12, 33, 0.48) 100%
+        ) !important;
+    }
+
+    /* The welcome stays on your supplied image, with deliberate line spacing. */
+    .hero-welcome-content {
+        width: min(88%, 390px) !important;
+        padding: 0 !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        gap: 0 !important;
+    }
+
+    .hero-welcome {
+        margin: 0 0 1rem !important;
+        font-size: clamp(1.12rem, 5.2vw, 1.38rem) !important;
+        letter-spacing: 0.32em !important;
+    }
+
+    .hero-title {
+        margin: 0 0 0.2rem !important;
+        font-size: clamp(2.65rem, 11vw, 3.55rem) !important;
+        line-height: 1.04 !important;
+    }
+
+    .hero-location {
+        margin: 0 0 0.62rem !important;
+        font-size: clamp(1.05rem, 4.6vw, 1.25rem) !important;
+        line-height: 1.15 !important;
+        letter-spacing: 0.13em !important;
+    }
+
+    .hero-welcome-line {
+        margin: 0 auto 0.5rem !important;
+    }
+
+    .hero-verse {
+        margin: 0 auto !important;
+        font-size: clamp(0.84rem, 3.8vw, 1rem) !important;
+        line-height: 1.52 !important;
     }
 }
 /* =========================
@@ -13868,9 +13968,9 @@ html {
         inset: -8% !important;
         width: 116% !important;
         height: 116% !important;
-        filter: blur(10px) saturate(1.08) brightness(0.55) !important;
-        opacity: 0.88 !important;
-        transform: scale(1.02) !important;
+        filter: blur(8px) saturate(1.05) brightness(0.58) !important;
+        opacity: 0.92 !important;
+        transform: scale(1.025) !important;
     }
 
     .hero-video-slide::after {
@@ -13889,8 +13989,9 @@ html {
 @media (max-width: 600px) {
     .hero-video-stage,
     .hero-video-slide {
-        background:
-            radial-gradient(circle at 50% 35%, #193b78 0%, #091738 52%, #030817 100%) !important;
+        transition: opacity 780ms cubic-bezier(0.4, 0, 0.2, 1),
+                    visibility 780ms linear !important;
+        background: #071126 !important;
     }
 
     .hero-video,
@@ -13898,57 +13999,57 @@ html {
     #heroVideo2 {
         width: 100% !important;
         height: 100% !important;
-        object-fit: cover !important;
+        object-fit: contain !important;
         object-position: center center !important;
         background: transparent !important;
-        box-shadow: none !important;
+        box-shadow: 0 18px 52px rgba(0, 0, 0, 0.3) !important;
     }
 
     .hero-video-slide::after {
         background: linear-gradient(
             180deg,
-            rgba(3, 10, 29, 0.14) 0%,
-            rgba(3, 10, 29, 0.08) 42%,
-            rgba(3, 10, 29, 0.52) 100%
+            rgba(4, 12, 33, 0.12) 0%,
+            rgba(4, 12, 33, 0.18) 48%,
+            rgba(4, 12, 33, 0.48) 100%
         ) !important;
     }
 
     .hero-welcome-content {
         width: min(88%, 390px) !important;
         gap: 0 !important;
-        padding: 1.15rem 1rem 1.25rem;
-        border: 1px solid rgba(231, 199, 94, 0.2);
-        border-radius: 1.25rem;
-        background: linear-gradient(145deg, rgba(7, 19, 48, 0.3), rgba(7, 19, 48, 0.08));
-        box-shadow: 0 18px 48px rgba(0, 0, 0, 0.2);
+        padding: 0 !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
     }
 
     .hero-welcome {
         margin: 0 0 0.9rem !important;
-        font-size: clamp(1.08rem, 5vw, 1.32rem) !important;
-        letter-spacing: 0.3em !important;
+        font-size: clamp(1.12rem, 5.2vw, 1.38rem) !important;
+        letter-spacing: 0.32em !important;
     }
 
     .hero-title {
         margin: 0 0 0.18rem !important;
-        font-size: clamp(2.55rem, 10.8vw, 3.45rem) !important;
+        font-size: clamp(2.65rem, 11vw, 3.55rem) !important;
         line-height: 1.04 !important;
     }
 
     .hero-location {
-        margin: 0 0 0.58rem !important;
-        font-size: clamp(1.02rem, 4.5vw, 1.22rem) !important;
+        margin: 0 0 0.62rem !important;
+        font-size: clamp(1.05rem, 4.6vw, 1.25rem) !important;
         line-height: 1.15 !important;
         letter-spacing: 0.12em !important;
     }
 
     .hero-welcome-line {
-        margin: 0 auto 0.48rem !important;
+        margin: 0 auto 0.5rem !important;
     }
 
     .hero-verse {
         margin: 0 auto !important;
-        font-size: clamp(0.82rem, 3.7vw, 0.98rem) !important;
-        line-height: 1.5 !important;
+        font-size: clamp(0.84rem, 3.8vw, 1rem) !important;
+        line-height: 1.52 !important;
     }
 }

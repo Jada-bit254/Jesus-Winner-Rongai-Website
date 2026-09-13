@@ -238,11 +238,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const welcome = hero.querySelector(".hero-welcome-content");
     const slides = [...hero.querySelectorAll(".hero-video-slide")];
     const videos = [...hero.querySelectorAll(".hero-video")];
+    const backdrops = [...hero.querySelectorAll(".hero-video-backdrop")];
     const dots = [...hero.querySelectorAll(".hero-dot")];
 
     if (!slides.length || slides.length !== videos.length) return;
 
-    const fadeDuration = 650;
+    const fadeDuration = 780;
     let currentSlide = 0;
     let experienceStarted = false;
     let pauseTimer;
@@ -287,10 +288,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const oldIndex = currentSlide;
         const foreground = videos[index];
+        const backdrop = backdrops[index];
         const changingSlide = index !== oldIndex;
 
         if (restart) {
             resetMedia(foreground);
+            resetMedia(backdrop);
         }
 
         slides.forEach((slide, slideIndex) => {
@@ -306,12 +309,17 @@ document.addEventListener("DOMContentLoaded", () => {
         warmSlide((index + 1) % slides.length);
 
         requestAnimationFrame(() => {
+            if (backdrop) {
+                backdrop.currentTime = foreground.currentTime;
+                safePlay(backdrop);
+            }
             safePlay(foreground);
         });
 
         if (changingSlide) {
             pauseTimer = window.setTimeout(() => {
                 resetMedia(videos[oldIndex]);
+                resetMedia(backdrops[oldIndex]);
             }, fadeDuration + 40);
         }
     };
@@ -321,7 +329,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     
-    videos.forEach((video, index) => {
+videos.forEach((video, index) => {
     video.muted = true;
     video.playsInline = true;
     video.preload = index === 0 ? "auto" : "metadata";
@@ -354,3 +362,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+
+    backdrops.forEach((backdrop, index) => {
+        backdrop.muted = true;
+        backdrop.playsInline = true;
+        backdrop.preload = index === 0 ? "auto" : "metadata";
+        backdrop.pause();
+    });
