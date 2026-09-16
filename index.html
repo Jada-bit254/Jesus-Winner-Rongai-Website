@@ -145,38 +145,43 @@
     </div>
 
 </nav>
-```html
+
 <!-- =========================================================
-     CODE 20 — CLEAN CLASSIC HERO
-     Jesus Winner Ministry — Ongata Rongai
+     CODE 21 — CLASSIC CINEMATIC HERO
+     Welcome → Video 1 → Video 2 → Welcome → Repeat
      ========================================================= -->
 
 <section class="hero" id="home">
 
     <!-- =====================================================
-         INTRO / WELCOME BACKGROUND
-         Shown during the opening welcome experience
+         WELCOME BACKGROUND
          ===================================================== -->
 
     <div class="hero-intro-background" aria-hidden="true">
+
         <img
             src="images/Ministries/background.png"
             alt=""
             loading="eager"
             decoding="async"
         >
+
     </div>
 
 
     <!-- =====================================================
-         CINEMATIC VIDEO BACKGROUND
-         Videos share the same visual stage
+         CINEMATIC VIDEO STAGE
          ===================================================== -->
 
     <div class="hero-video-stage">
 
+
         <!-- VIDEO 1 -->
-        <div class="hero-video-slide active" data-slide="0">
+
+        <div
+            class="hero-video-slide"
+            data-slide="0"
+        >
 
             <video
                 class="hero-video"
@@ -186,17 +191,23 @@
                 preload="auto"
                 poster="images/Ministries/background.png"
             >
+
                 <source
                     src="Videos/Ministries/praisehero.mp4"
                     type="video/mp4"
                 >
+
             </video>
 
         </div>
 
 
         <!-- VIDEO 2 -->
-        <div class="hero-video-slide" data-slide="1">
+
+        <div
+            class="hero-video-slide"
+            data-slide="1"
+        >
 
             <video
                 class="hero-video"
@@ -206,10 +217,12 @@
                 preload="metadata"
                 poster="images/Ministries/background.png"
             >
+
                 <source
                     src="Videos/Pastors/video1.mp4"
                     type="video/mp4"
                 >
+
             </video>
 
         </div>
@@ -218,8 +231,7 @@
 
 
     <!-- =====================================================
-         CINEMATIC OVERLAY
-         Keeps text readable without hiding the footage
+         CINEMATIC BLUE OVERLAY
          ===================================================== -->
 
     <div
@@ -229,7 +241,7 @@
 
 
     <!-- =====================================================
-         WELCOME TYPOGRAPHY
+         WELCOME CONTENT
          ===================================================== -->
 
     <div class="hero-welcome-content">
@@ -252,6 +264,7 @@
         </div>
 
         <p class="hero-verse">
+
             <em>
                 “I was glad when they said to me,
                 ‘Let us go to the house of the Lord.’”
@@ -260,6 +273,7 @@
             <span>
                 — Psalm 122:1
             </span>
+
         </p>
 
     </div>
@@ -316,11 +330,11 @@
         aria-label="Hero video navigation">
 
         <button
-            class="hero-dot active"
+            class="hero-dot"
             type="button"
             data-slide="0"
             aria-label="Show Praise video"
-            aria-current="true">
+            aria-current="false">
         </button>
 
         <button
@@ -334,6 +348,8 @@
     </div>
 
 </section>
+
+
 
 <section id="about" class="about-luxury">
 
@@ -2572,50 +2588,5 @@
  Faith . Hope . Love
 
 </div>
-<script src="JavaScript/Script.js"></script>
-</body>
-</html>
-
-<!-- =====================================================
-     CODE 9 — MORE DROPDOWN JAVASCRIPT
-     ===================================================== -->
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
-    const moreDropdown = document.querySelector(".more-dropdown");
-    const moreToggle = document.querySelector(".more-toggle");
-
-    if (!moreDropdown || !moreToggle) {
-        console.warn("More dropdown elements not found.");
-        return;
-    }
-
-    moreToggle.addEventListener("click", function (event) {
-        event.preventDefault();
-        event.stopPropagation();
-
-        const isOpen = moreDropdown.classList.toggle("open");
-
-        moreToggle.setAttribute(
-            "aria-expanded",
-            isOpen ? "true" : "false"
-        );
-    });
-
-    // Close More when clicking somewhere else
-    document.addEventListener("click", function (event) {
-
-        if (!moreDropdown.contains(event.target)) {
-
-            moreDropdown.classList.remove("open");
-
-            moreToggle.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-        }
-
-    });
-
-});
-</script>
+</body> 
+</html> 
