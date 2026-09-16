@@ -2500,3 +2500,47 @@
 <script src="JavaScript/Script.js"></script>
 </body>
 </html>
+
+<!-- =====================================================
+     CODE 9 — MORE DROPDOWN JAVASCRIPT
+     ===================================================== -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const moreDropdown = document.querySelector(".more-dropdown");
+    const moreToggle = document.querySelector(".more-toggle");
+
+    if (!moreDropdown || !moreToggle) {
+        console.warn("More dropdown elements not found.");
+        return;
+    }
+
+    moreToggle.addEventListener("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        const isOpen = moreDropdown.classList.toggle("open");
+
+        moreToggle.setAttribute(
+            "aria-expanded",
+            isOpen ? "true" : "false"
+        );
+    });
+
+    // Close More when clicking somewhere else
+    document.addEventListener("click", function (event) {
+
+        if (!moreDropdown.contains(event.target)) {
+
+            moreDropdown.classList.remove("open");
+
+            moreToggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+        }
+
+    });
+
+});
+</script>
