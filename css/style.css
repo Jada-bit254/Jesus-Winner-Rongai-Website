@@ -14053,3 +14053,182 @@ html {
         line-height: 1.52 !important;
     }
 }
+
+/* =========================================================
+   CODE 2 — MOBILE NAV DROPDOWNS + HERO VIDEO PERFORMANCE
+   Paste this at the VERY BOTTOM of your CSS file
+   ========================================================= */
+
+
+/* =========================================================
+   1. MOBILE NAVIGATION DROPDOWN FIX
+   Prevent More/Social menus from being clipped
+   ========================================================= */
+
+@media (max-width: 950px) {
+
+    /*
+     * Allow dropdowns to extend outside the
+     * horizontal navigation area.
+     */
+    .nav-menu-wrapper {
+        overflow-x: auto !important;
+        overflow-y: visible !important;
+    }
+
+
+    /*
+     * Make sure the navigation itself doesn't
+     * create an unwanted clipping layer.
+     */
+    .nav-links {
+        overflow: visible !important;
+    }
+
+
+    /*
+     * Keep dropdown containers above everything.
+     */
+    .more-dropdown,
+    .social-dropdown {
+        position: relative !important;
+        z-index: 10000 !important;
+        overflow: visible !important;
+    }
+
+
+    /*
+     * Make the actual dropdown menus appear
+     * above the rest of the page.
+     */
+    .more-menu,
+    .social-menu {
+        z-index: 10001 !important;
+    }
+
+
+    /*
+     * More menu positioning on phones.
+     */
+    .more-menu {
+        position: absolute !important;
+        top: calc(100% + 8px) !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+
+        min-width: 180px !important;
+
+        max-height: 70vh !important;
+        overflow-y: auto !important;
+
+        white-space: normal !important;
+    }
+
+
+    /*
+     * Social menu positioning on phones.
+     */
+    .social-menu {
+        position: absolute !important;
+        top: calc(100% + 8px) !important;
+        right: 0 !important;
+        left: auto !important;
+
+        min-width: 180px !important;
+
+        max-height: 70vh !important;
+        overflow-y: auto !important;
+
+        white-space: normal !important;
+    }
+
+
+    /*
+     * Make dropdown links easier to tap.
+     */
+    .more-menu a,
+    .social-menu a {
+        min-height: 44px !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+
+}
+
+
+/* =========================================================
+   2. MOBILE HERO VIDEO PERFORMANCE
+   ========================================================= */
+
+@media (max-width: 950px) {
+
+    /*
+     * The blurred duplicate video is not necessary
+     * on a small screen.
+     *
+     * Removing it reduces visual processing and
+     * helps prevent unnecessary video work.
+     */
+    .hero-video-backdrop {
+        display: none !important;
+    }
+
+
+    /*
+     * Let the main hero video use the full
+     * available hero area.
+     */
+    .hero-video {
+        width: 100% !important;
+        height: 100% !important;
+
+        object-fit: cover !important;
+        object-position: center center !important;
+    }
+
+
+    /*
+     * Prevent accidental horizontal overflow.
+     */
+    .hero,
+    .hero-video-stage,
+    .hero-video-slide {
+        max-width: 100vw;
+        overflow: hidden;
+    }
+
+}
+
+
+/* =========================================================
+   3. EXTRA SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    /*
+     * Keep the hero from becoming unnecessarily
+     * tall on smaller phones.
+     */
+    .hero {
+        min-height: 560px;
+    }
+
+
+    /*
+     * Keep video centered.
+     */
+    .hero-video {
+        object-position: center center !important;
+    }
+
+
+    /*
+     * Slightly tighten the welcome screen.
+     */
+    .hero-welcome-content {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+}
