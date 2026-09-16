@@ -14055,180 +14055,391 @@ html {
 }
 
 /* =========================================================
-   CODE 2 — MOBILE NAV DROPDOWNS + HERO VIDEO PERFORMANCE
-   Paste this at the VERY BOTTOM of your CSS file
+   CODE 3 — FINAL MOBILE NAV + HERO FIX
    ========================================================= */
 
 
 /* =========================================================
-   1. MOBILE NAVIGATION DROPDOWN FIX
-   Prevent More/Social menus from being clipped
+   1. FIX HERO INTRO / VIDEO LAYERING
    ========================================================= */
 
-@media (max-width: 950px) {
+/*
+ * The JavaScript uses "hide-intro".
+ * The old CSS was looking for ".hide".
+ * This makes the JavaScript and CSS agree.
+ */
 
-    /*
-     * Allow dropdowns to extend outside the
-     * horizontal navigation area.
-     */
-    .nav-menu-wrapper {
-        overflow-x: auto !important;
-        overflow-y: visible !important;
-    }
-
-
-    /*
-     * Make sure the navigation itself doesn't
-     * create an unwanted clipping layer.
-     */
-    .nav-links {
-        overflow: visible !important;
-    }
+.hero-intro-background.hide-intro {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
 
 
-    /*
-     * Keep dropdown containers above everything.
-     */
-    .more-dropdown,
-    .social-dropdown {
-        position: relative !important;
-        z-index: 10000 !important;
-        overflow: visible !important;
-    }
+/*
+ * Keep the video underneath the welcome screen initially,
+ * but allow it to become visible once the intro disappears.
+ */
+
+.hero-video-stage {
+    z-index: 2 !important;
+}
+
+.hero-video-slide {
+    z-index: 1 !important;
+}
+
+.hero-video-slide.active {
+    z-index: 3 !important;
+}
 
 
-    /*
-     * Make the actual dropdown menus appear
-     * above the rest of the page.
-     */
-    .more-menu,
-    .social-menu {
-        z-index: 10001 !important;
-    }
+/*
+ * Welcome layer sits above the video.
+ */
 
+.hero-intro-background {
+    z-index: 8 !important;
+}
 
-    /*
-     * More menu positioning on phones.
-     */
-    .more-menu {
-        position: absolute !important;
-        top: calc(100% + 8px) !important;
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-
-        min-width: 180px !important;
-
-        max-height: 70vh !important;
-        overflow-y: auto !important;
-
-        white-space: normal !important;
-    }
-
-
-    /*
-     * Social menu positioning on phones.
-     */
-    .social-menu {
-        position: absolute !important;
-        top: calc(100% + 8px) !important;
-        right: 0 !important;
-        left: auto !important;
-
-        min-width: 180px !important;
-
-        max-height: 70vh !important;
-        overflow-y: auto !important;
-
-        white-space: normal !important;
-    }
-
-
-    /*
-     * Make dropdown links easier to tap.
-     */
-    .more-menu a,
-    .social-menu a {
-        min-height: 44px !important;
-        display: flex !important;
-        align-items: center !important;
-    }
-
+.hero-welcome-content {
+    z-index: 9 !important;
 }
 
 
 /* =========================================================
-   2. MOBILE HERO VIDEO PERFORMANCE
+   2. MOBILE HERO — CLEANER DISPLAY
    ========================================================= */
 
 @media (max-width: 950px) {
 
     /*
-     * The blurred duplicate video is not necessary
-     * on a small screen.
-     *
-     * Removing it reduces visual processing and
-     * helps prevent unnecessary video work.
+     * DO NOT show the duplicate blurred video on phones.
+     * The main video remains visible.
      */
     .hero-video-backdrop {
         display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
     }
 
 
     /*
-     * Let the main hero video use the full
-     * available hero area.
+     * Main video.
      */
-    .hero-video {
+    .hero-video,
+    #heroVideo1,
+    #heroVideo2 {
+        position: relative !important;
+        z-index: 3 !important;
+
         width: 100% !important;
         height: 100% !important;
 
-        object-fit: cover !important;
+        max-width: none !important;
+        max-height: none !important;
+
+        object-fit: contain !important;
         object-position: center center !important;
+
+        background: #050914 !important;
     }
 
 
     /*
-     * Prevent accidental horizontal overflow.
+     * Keep the complete video visible on phones.
+     * No stretching and no unnecessary cropping.
      */
-    .hero,
-    .hero-video-stage,
     .hero-video-slide {
-        max-width: 100vw;
-        overflow: hidden;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        overflow: hidden !important;
+
+        background: #050914 !important;
+    }
+
+
+    .hero-video-stage {
+        overflow: hidden !important;
+        background: #050914 !important;
     }
 
 }
 
 
 /* =========================================================
-   3. EXTRA SMALL PHONES
+   3. PHONE HERO HEIGHT
    ========================================================= */
 
 @media (max-width: 600px) {
 
-    /*
-     * Keep the hero from becoming unnecessarily
-     * tall on smaller phones.
-     */
     .hero {
-        min-height: 560px;
+        width: 100% !important;
+
+        height: 78svh !important;
+
+        min-height: 520px !important;
+
+        overflow: hidden !important;
     }
 
 
     /*
-     * Keep video centered.
-     */
-    .hero-video {
-        object-position: center center !important;
-    }
-
-
-    /*
-     * Slightly tighten the welcome screen.
+     * Keep the welcome message comfortably
+     * inside a phone screen.
      */
     .hero-welcome-content {
-        padding-left: 20px;
-        padding-right: 20px;
+        width: min(90vw, 420px) !important;
+
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+
+        box-sizing: border-box !important;
+    }
+
+
+    .hero-title {
+        font-size: clamp(
+            2.35rem,
+            10vw,
+            3.3rem
+        ) !important;
+
+        line-height: 1.05 !important;
+    }
+
+
+    .hero-location {
+        font-size: clamp(
+            1rem,
+            4.5vw,
+            1.25rem
+        ) !important;
+
+        letter-spacing: 0.10em !important;
+    }
+
+
+    .hero-verse {
+        max-width: 88vw !important;
+
+        font-size: clamp(
+            0.9rem,
+            3.8vw,
+            1.05rem
+        ) !important;
+
+        line-height: 1.5 !important;
+    }
+
+}
+
+
+/* =========================================================
+   4. MOBILE MORE / SOCIAL DROPDOWNS
+   USE FIXED POSITIONING
+   ========================================================= */
+
+/*
+ * We are NOT trying to make the dropdown escape the
+ * horizontal scrolling nav anymore.
+ *
+ * Instead, the dropdown is positioned relative to the
+ * phone screen itself.
+ */
+
+@media (max-width: 950px) {
+
+    .more-menu,
+    .social-menu {
+        position: fixed !important;
+
+        z-index: 999999 !important;
+
+        max-height: calc(100svh - 90px) !important;
+
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+
+        white-space: normal !important;
+
+        box-sizing: border-box !important;
+    }
+
+
+    /*
+     * MORE
+     *
+     * The navigation bar is near the top of the screen,
+     * so place the menu underneath it.
+     */
+    .more-menu {
+        top: 72px !important;
+
+        left: 50% !important;
+        right: auto !important;
+
+        transform: translateX(-50%) !important;
+
+        width: min(
+            210px,
+            calc(100vw - 30px)
+        ) !important;
+
+        min-width: 180px !important;
+    }
+
+
+    /*
+     * SOCIAL
+     */
+    .social-menu {
+        top: 72px !important;
+
+        right: 15px !important;
+        left: auto !important;
+
+        width: min(
+            210px,
+            calc(100vw - 30px)
+        ) !important;
+
+        min-width: 180px !important;
+    }
+
+
+    /*
+     * Keep menu links comfortable for fingers.
+     */
+    .more-menu a,
+    .social-menu a {
+        min-height: 46px !important;
+
+        display: flex !important;
+
+        align-items: center !important;
+
+        box-sizing: border-box !important;
+    }
+
+
+    /*
+     * Make sure the dropdown containers themselves
+     * don't get clipped.
+     */
+    .more-dropdown,
+    .social-dropdown {
+        overflow: visible !important;
+
+        z-index: 100000 !important;
+    }
+
+}
+
+
+/* =========================================================
+   5. PHONE NAVIGATION
+   ========================================================= */
+
+@media (max-width: 950px) {
+
+    .main-nav {
+        position: sticky !important;
+
+        top: 0 !important;
+
+        z-index: 99999 !important;
+    }
+
+
+    /*
+     * Keep the horizontal navigation usable.
+     */
+    .nav-menu-wrapper {
+        overflow-x: auto !important;
+
+        overflow-y: hidden !important;
+
+        -webkit-overflow-scrolling: touch !important;
+
+        scrollbar-width: none !important;
+    }
+
+
+    .nav-menu-wrapper::-webkit-scrollbar {
+        display: none !important;
+    }
+
+
+    .nav-links {
+        overflow: visible !important;
+
+        white-space: nowrap !important;
+    }
+
+}
+
+
+/* =========================================================
+   6. MOBILE LOGO — MAKE IT SMALLER
+   ========================================================= */
+
+@media (max-width: 950px) {
+
+    .nav-brand {
+        flex-shrink: 0 !important;
+
+        display: flex !important;
+
+        align-items: center !important;
+    }
+
+
+    .church-logo {
+        width: auto !important;
+
+        /*
+         * Smaller than the desktop logo.
+         */
+        max-width: 145px !important;
+
+        height: auto !important;
+
+        max-height: 52px !important;
+
+        object-fit: contain !important;
+
+        object-position: center !important;
+
+        display: block !important;
+    }
+
+}
+
+
+/* =========================================================
+   7. VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+    .church-logo {
+        max-width: 120px !important;
+
+        max-height: 45px !important;
+    }
+
+
+    .more-menu {
+        top: 68px !important;
+    }
+
+
+    .social-menu {
+        top: 68px !important;
     }
 
 }
