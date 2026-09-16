@@ -1,337 +1,63 @@
-/* =========================================================
-   CODE 1 — NAVIGATION + HERO EXPERIENCE CONTROLLER
-   ========================================================= */
-
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* =====================================================
-       1. NAVIGATION
-       ===================================================== */
-
-    const mobileToggle = document.querySelector(".mobile-menu-toggle");
-    const navWrapper = document.querySelector(".nav-menu-wrapper");
-
-    const moreToggle = document.querySelector(".more-toggle");
-    const moreDropdown = document.querySelector(".more-dropdown");
-
-    const socialToggle = document.querySelector(".social-toggle");
-    const socialDropdown = document.querySelector(".social-dropdown");
-
-
-    /* MOBILE MENU */
-
-    if (mobileToggle && navWrapper) {
-
-        mobileToggle.addEventListener("click", () => {
-
-            const isOpen = navWrapper.classList.toggle("open");
-
-            mobileToggle.setAttribute(
-                "aria-expanded",
-                String(isOpen)
-            );
-
-            mobileToggle.setAttribute(
-                "aria-label",
-                isOpen
-                    ? "Close navigation menu"
-                    : "Open navigation menu"
-            );
-
-        });
-
-    }
-
-
-    /* MORE DROPDOWN */
-
-    if (moreToggle && moreDropdown) {
-
-        moreToggle.addEventListener("click", (event) => {
-
-            event.preventDefault();
-            event.stopPropagation();
-
-            const isOpen =
-                moreDropdown.classList.toggle("open");
-
-            moreToggle.setAttribute(
-                "aria-expanded",
-                String(isOpen)
-            );
-
-
-            /* Close Social */
-
-            if (socialDropdown && socialToggle) {
-
-                socialDropdown.classList.remove("open");
-
-                socialToggle.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-            }
-
-        });
-
-    }
-
-
-    /* SOCIAL DROPDOWN */
-
-    if (socialToggle && socialDropdown) {
-
-        socialToggle.addEventListener("click", (event) => {
-
-            event.preventDefault();
-            event.stopPropagation();
-
-            const isOpen =
-                socialDropdown.classList.toggle("open");
-
-            socialToggle.setAttribute(
-                "aria-expanded",
-                String(isOpen)
-            );
-
-
-            /* Close More */
-
-            if (moreDropdown && moreToggle) {
-
-                moreDropdown.classList.remove("open");
-
-                moreToggle.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-            }
-
-        });
-
-    }
-
-
-    /* CLOSE DROPDOWNS WHEN CLICKING OUTSIDE */
-
-    document.addEventListener("click", (event) => {
-
-        if (
-            moreDropdown &&
-            !moreDropdown.contains(event.target)
-        ) {
-
-            moreDropdown.classList.remove("open");
-
-            if (moreToggle) {
-                moreToggle.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-            }
-
-        }
-
-
-        if (
-            socialDropdown &&
-            !socialDropdown.contains(event.target)
-        ) {
-
-            socialDropdown.classList.remove("open");
-
-            if (socialToggle) {
-                socialToggle.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-            }
-
-        }
-
-    });
-
-
-    /* CLOSE MOBILE NAV AFTER NORMAL LINK CLICK */
-
-    if (navWrapper) {
-
-        const navLinks =
-            navWrapper.querySelectorAll("a");
-
-        navLinks.forEach((link) => {
-
-            link.addEventListener("click", () => {
-
-                /*
-                 * Don't close the navigation when
-                 * clicking inside More/Social menus.
-                 */
-
-                if (
-                    window.innerWidth <= 950 &&
-                    !link.closest(".social-menu") &&
-                    !link.closest(".more-menu")
-                ) {
-
-                    navWrapper.classList.remove("open");
-
-                    if (mobileToggle) {
-
-                        mobileToggle.setAttribute(
-                            "aria-expanded",
-                            "false"
-                        );
-
-                        mobileToggle.setAttribute(
-                            "aria-label",
-                            "Open navigation menu"
-                        );
-
-                    }
-
-                }
-
-            });
-
-        });
-
-    }
-
-
-
-    /* =====================================================
-       2. HERO EXPERIENCE
-       ===================================================== */
-
-    const hero =
-        document.querySelector(".hero");
-
+    const hero = document.querySelector(".hero");
     if (!hero) return;
 
+    const intro = hero.querySelector(".hero-intro-background");
+    const welcome = hero.querySelector(".hero-welcome-content");
 
-    const intro =
-        hero.querySelector(".hero-intro-background");
+    const slides = [...hero.querySelectorAll(".hero-video-slide")];
+    const videos = [...hero.querySelectorAll(".hero-video")];
+    const dots = [...hero.querySelectorAll(".hero-dot")];
 
-    const welcome =
-        hero.querySelector(".hero-welcome-content");
+    if (!slides.length || !videos.length) return;
 
-    const slides =
-        [...hero.querySelectorAll(".hero-video-slide")];
-
-    const videos =
-        [...hero.querySelectorAll(".hero-video")];
-
-    const backdrops =
-        [...hero.querySelectorAll(".hero-video-backdrop")];
-
-    const dots =
-        [...hero.querySelectorAll(".hero-dot")];
-
-
-    if (
-        !slides.length ||
-        slides.length !== videos.length
-    ) {
-        return;
-    }
-
-
-    /* =====================================================
-       HERO SETTINGS
-       ===================================================== */
-
-    const INTRO_DURATION = 5000;
-
-    const FADE_DURATION = 900;
+    const fadeDuration = 650;
 
     let currentSlide = 0;
-
     let experienceStarted = false;
-
-    let transitionTimer = null;
+    let pauseTimer;
 
 
     /* =====================================================
        SAFE VIDEO PLAY
-       ===================================================== */
+    ===================================================== */
 
     const safePlay = (video) => {
-
         if (!video) return;
 
-        const promise = video.play();
-
-        if (promise !== undefined) {
-
-            promise.catch(() => {});
-
-        }
-
+        video.play().catch(() => {
+            // Browser may block autoplay.
+        });
     };
 
 
     /* =====================================================
        RESET VIDEO
-       ===================================================== */
+    ===================================================== */
 
     const resetVideo = (video) => {
-
         if (!video) return;
 
         video.pause();
 
         try {
-
             video.currentTime = 0;
-
-        } catch (error) {}
-
-    };
-
-
-    /* =====================================================
-       PRELOAD NEXT VIDEO
-       ===================================================== */
-
-    const preloadVideo = (index) => {
-
-        const video = videos[index];
-
-        if (!video) return;
-
-        video.preload = "metadata";
-
-        if (
-            video.readyState ===
-            HTMLMediaElement.HAVE_NOTHING
-        ) {
-
-            video.load();
-
-        }
-
+        } catch (_) {}
     };
 
 
     /* =====================================================
        UPDATE DOTS
-       ===================================================== */
+    ===================================================== */
 
-    const updateDots = (index) => {
+    const updateControls = (index) => {
 
         dots.forEach((dot, dotIndex) => {
 
-            const active =
-                dotIndex === index;
+            const active = dotIndex === index;
 
-            dot.classList.toggle(
-                "active",
-                active
-            );
+            dot.classList.toggle("active", active);
 
             dot.setAttribute(
                 "aria-current",
@@ -344,12 +70,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       SHOW VIDEO SLIDE
-       ===================================================== */
+       SHOW SLIDE
+    ===================================================== */
 
-    const showVideoSlide = (
+    const showSlide = (
         index,
-        restart = true
+        { restart = true } = {}
     ) => {
 
         if (
@@ -359,33 +85,18 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
+        window.clearTimeout(pauseTimer);
 
-        window.clearTimeout(
-            transitionTimer
-        );
+        const oldIndex = currentSlide;
 
+        const video = videos[index];
 
-        const oldIndex =
-            currentSlide;
-
-        const foreground =
-            videos[index];
-
-        const backdrop =
-            backdrops[index];
+        const changingSlide =
+            index !== oldIndex;
 
 
         if (restart) {
-
-            resetVideo(foreground);
-
-            /*
-             * Only reset the backdrop if
-             * we actually have one.
-             */
-
-            resetVideo(backdrop);
-
+            resetVideo(video);
         }
 
 
@@ -403,70 +114,29 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
+        updateControls(index);
+
         currentSlide = index;
 
-        updateDots(index);
 
-
-        /*
-         * Prepare the NEXT video,
-         * not every video at once.
-         */
-
-        preloadVideo(
-            (index + 1) % videos.length
-        );
-
+        /* Start video after slide becomes active */
 
         requestAnimationFrame(() => {
-
-            /*
-             * Keep backdrop synchronized
-             * with foreground video.
-             */
-
-            if (backdrop) {
-
-                try {
-
-                    backdrop.currentTime =
-                        foreground.currentTime;
-
-                } catch (error) {}
-
-                safePlay(backdrop);
-
-            }
-
-
-            safePlay(foreground);
-
+            safePlay(video);
         });
 
 
-        /*
-         * Stop previous video after
-         * the fade has completed.
-         */
+        /* Stop previous video after transition */
 
-        if (oldIndex !== index) {
+        if (changingSlide) {
 
-            transitionTimer =
-                window.setTimeout(() => {
+            pauseTimer = window.setTimeout(() => {
 
-                    resetVideo(
-                        videos[oldIndex]
-                    );
+                resetVideo(
+                    videos[oldIndex]
+                );
 
-                    if (backdrops[oldIndex]) {
-
-                        resetVideo(
-                            backdrops[oldIndex]
-                        );
-
-                    }
-
-                }, FADE_DURATION + 50);
+            }, fadeDuration + 50);
 
         }
 
@@ -474,15 +144,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       INITIAL VIDEO STATE
-       ===================================================== */
-
-    slides.forEach((slide) => {
-
-        slide.classList.remove("active");
-
-    });
-
+       INITIAL VIDEO SETTINGS
+    ===================================================== */
 
     videos.forEach((video, index) => {
 
@@ -491,81 +154,53 @@ document.addEventListener("DOMContentLoaded", () => {
         video.playsInline = true;
 
         /*
-         * Only the first video is prepared
-         * aggressively.
+         * Only load the first video immediately.
+         * The second video waits until it is needed.
          */
 
         video.preload =
             index === 0
-                ? "auto"
-                : "metadata";
+                ? "metadata"
+                : "none";
 
         video.pause();
 
     });
 
 
-    /*
-     * Backdrops are kept lightweight.
-     */
+    /* =====================================================
+       INITIAL STATE
+    ===================================================== */
 
-    backdrops.forEach((backdrop, index) => {
+    slides.forEach((slide) => {
 
-        backdrop.muted = true;
-
-        backdrop.playsInline = true;
-
-        backdrop.preload =
-            index === 0
-                ? "metadata"
-                : "none";
-
-        backdrop.pause();
+        slide.classList.remove("active");
 
     });
 
 
     /* =====================================================
-       PREPARE FIRST VIDEO
-       ===================================================== */
-
-    preloadVideo(0);
-
-
-    /* =====================================================
-       HERO EXPERIENCE START
-       ===================================================== */
+       WELCOME SCREEN
+       5 SECONDS
+    ===================================================== */
 
     window.setTimeout(() => {
 
         experienceStarted = true;
 
+        showSlide(0);
 
-        /*
-         * Hide welcome screen.
-         */
+        intro?.classList.add("hide-intro");
 
-        intro?.classList.add(
-            "hide-intro"
-        );
+        welcome?.classList.add("is-hidden");
 
-        welcome?.classList.add(
-            "is-hidden"
-        );
-
-
-        /*
-         * Start with FIRST video.
-         */
-
-        showVideoSlide(0, true);
-
-    }, INTRO_DURATION);
+    }, 5000);
 
 
     /* =====================================================
-       VIDEO END → NEXT VIDEO
-       ===================================================== */
+       WHEN VIDEO FINISHES
+       MOVE TO NEXT VIDEO
+    ===================================================== */
 
     videos.forEach((video, index) => {
 
@@ -573,90 +208,8 @@ document.addEventListener("DOMContentLoaded", () => {
             "ended",
             () => {
 
-                if (!experienceStarted) {
-                    return;
-                }
-
-
-                const nextIndex =
-                    index + 1;
-
-
-                /*
-                 * If this was the LAST video,
-                 * return to the WELCOME screen
-                 * instead of jumping directly
-                 * to the first video.
-                 */
-
-                if (
-                    nextIndex >=
-                    videos.length
-                ) {
-
-                    currentSlide =
-                        videos.length - 1;
-
-
-                    /* Stop all videos */
-
-                    videos.forEach(
-                        resetVideo
-                    );
-
-                    backdrops.forEach(
-                        resetVideo
-                    );
-
-
-                    /*
-                     * Show welcome image again.
-                     */
-
-                    intro?.classList.remove(
-                        "hide-intro"
-                    );
-
-                    welcome?.classList.remove(
-                        "is-hidden"
-                    );
-
-
-                    /*
-                     * Wait 5 seconds before
-                     * starting the first video.
-                     */
-
-                    window.setTimeout(() => {
-
-                        showVideoSlide(
-                            0,
-                            true
-                        );
-
-                        intro?.classList.add(
-                            "hide-intro"
-                        );
-
-                        welcome?.classList.add(
-                            "is-hidden"
-                        );
-
-                    }, INTRO_DURATION);
-
-
-                    return;
-
-                }
-
-
-                /*
-                 * Otherwise continue normally.
-                 */
-
-                showVideoSlide(
-                    nextIndex,
-                    true
+                showSlide(
+                    (index + 1) % videos.length
                 );
 
             }
@@ -666,8 +219,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       HERO DOT CONTROLS
-       ===================================================== */
+       HERO DOTS
+    ===================================================== */
 
     dots.forEach((dot, index) => {
 
@@ -680,10 +233,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     index !== currentSlide
                 ) {
 
-                    showVideoSlide(
-                        index,
-                        true
-                    );
+                    showSlide(index);
 
                 }
 
