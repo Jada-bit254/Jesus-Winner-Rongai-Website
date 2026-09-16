@@ -145,116 +145,191 @@
     </div>
 
 </nav>
+```html
+<!-- =========================================================
+     CODE 20 — CLEAN CLASSIC HERO
+     Jesus Winner Ministry — Ongata Rongai
+     ========================================================= -->
+
 <section class="hero" id="home">
 
-    <!-- Welcome experience: visible for the first 4 seconds -->
-    <div class="hero-intro-background">
+    <!-- =====================================================
+         INTRO / WELCOME BACKGROUND
+         Shown during the opening welcome experience
+         ===================================================== -->
+
+    <div class="hero-intro-background" aria-hidden="true">
         <img
             src="images/Ministries/background.png"
             alt=""
+            loading="eager"
+            decoding="async"
         >
-
     </div>
 
-    <!-- Video slider: videos occupy the same hero area -->
-<div class="hero-video-stage">
 
-    <div class="hero-video-slide" data-slide="0">
+    <!-- =====================================================
+         CINEMATIC VIDEO BACKGROUND
+         Videos share the same visual stage
+         ===================================================== -->
 
-    
-        <video
-            class="hero-video"
-            id="heroVideo1"
-            muted
-            playsinline
-            preload="auto"
-        >
-            <source
-                src="Videos/Ministries/praisehero.mp4"
-                type="video/mp4"
+    <div class="hero-video-stage">
+
+        <!-- VIDEO 1 -->
+        <div class="hero-video-slide active" data-slide="0">
+
+            <video
+                class="hero-video"
+                id="heroVideo1"
+                muted
+                playsinline
+                preload="auto"
+                poster="images/Ministries/background.png"
             >
-            Your browser does not support HTML5 video.
-        </video>
+                <source
+                    src="Videos/Ministries/praisehero.mp4"
+                    type="video/mp4"
+                >
+            </video>
 
-    </div>
+        </div>
 
-    <div class="hero-video-slide" data-slide="1">
 
-       
+        <!-- VIDEO 2 -->
+        <div class="hero-video-slide" data-slide="1">
 
-        <video
-            class="hero-video"
-            id="heroVideo2"
-            muted
-            playsinline
-            preload="metadata"
-        >
-            <source
-                src="Videos/Pastors/video1.mp4"
-                type="video/mp4"
+            <video
+                class="hero-video"
+                id="heroVideo2"
+                muted
+                playsinline
+                preload="metadata"
+                poster="images/Ministries/background.png"
             >
-            Your browser does not support HTML5 video.
-        </video>
+                <source
+                    src="Videos/Pastors/video1.mp4"
+                    type="video/mp4"
+                >
+            </video>
+
+        </div>
 
     </div>
 
-</div>
-    <div class="hero-overlay" aria-hidden="true"></div>
 
-    <!-- This welcome message fades with the introductory background -->
+    <!-- =====================================================
+         CINEMATIC OVERLAY
+         Keeps text readable without hiding the footage
+         ===================================================== -->
+
+    <div
+        class="hero-overlay"
+        aria-hidden="true">
+    </div>
+
+
+    <!-- =====================================================
+         WELCOME TYPOGRAPHY
+         ===================================================== -->
+
     <div class="hero-welcome-content">
 
-        <span class="hero-welcome">KARIBU</span>
+        <span class="hero-welcome">
+            KARIBU
+        </span>
 
-        <h1 class="hero-title">Jesus Winner Ministry</h1>
+        <h1 class="hero-title">
+            Jesus Winner Ministry
+        </h1>
 
-        <p class="hero-location">Ongata Rongai</p>
+        <p class="hero-location">
+            Ongata Rongai
+        </p>
 
-        <div class="hero-welcome-line" aria-hidden="true"></div>
+        <div
+            class="hero-welcome-line"
+            aria-hidden="true">
+        </div>
 
         <p class="hero-verse">
             <em>
                 “I was glad when they said to me,
                 ‘Let us go to the house of the Lord.’”
             </em>
-            <span>— Psalm 122:1</span>
+
+            <span>
+                — Psalm 122:1
+            </span>
         </p>
 
     </div>
 
-    <!-- Buttons remain throughout the video slider -->
+
+    <!-- =====================================================
+         HERO ACTIONS
+         ===================================================== -->
+
     <div class="hero-actions">
 
-        <a href="live-service.html" class="hero-action live-action">
-            <span class="action-icon" aria-hidden="true">▶</span>
-            <span>JOIN LIVE SERVICE</span>
+        <a
+            href="live-service.html"
+            class="hero-action live-action">
+
+            <span
+                class="action-icon"
+                aria-hidden="true">
+                ▶
+            </span>
+
+            <span>
+                JOIN LIVE SERVICE
+            </span>
+
         </a>
 
-        <a href="join-us.html" class="hero-action join-action">
-            <span class="action-icon" aria-hidden="true">✦</span>
-            <span>JOIN US</span>
+
+        <a
+            href="join-us.html"
+            class="hero-action join-action">
+
+            <span
+                class="action-icon"
+                aria-hidden="true">
+                ✦
+            </span>
+
+            <span>
+                JOIN US
+            </span>
+
         </a>
 
     </div>
 
-    <!-- Slider controls -->
-    <div class="hero-dots" aria-label="Hero video navigation">
+
+    <!-- =====================================================
+         VIDEO NAVIGATION
+         ===================================================== -->
+
+    <div
+        class="hero-dots"
+        aria-label="Hero video navigation">
 
         <button
             class="hero-dot active"
             type="button"
             data-slide="0"
             aria-label="Show Praise video"
-            aria-current="true"
-        ></button>
+            aria-current="true">
+        </button>
 
         <button
             class="hero-dot"
             type="button"
             data-slide="1"
             aria-label="Show Pastor video"
-            aria-current="false"
-        ></button>
+            aria-current="false">
+        </button>
 
     </div>
 
