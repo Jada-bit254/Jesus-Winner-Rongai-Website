@@ -15754,3 +15754,37 @@ html {
     }
 
 }
+
+/* =========================================================
+   MOBILE LOGO SIZE
+   Makes the logo larger without interfering with navigation
+========================================================= */
+@media (max-width: 768px) {
+
+    .logo img,
+    .navbar-logo img,
+    .nav-logo img,
+    header .logo img {
+        width: 155px !important;
+        height: auto !important;
+        max-width: none !important;
+        object-fit: contain;
+    }
+
+    /* Keep the logo close to the navigation bar */
+    .logo,
+    .navbar-logo,
+    .nav-logo {
+        display: flex;
+        align-items: center;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Prevent the larger logo from pushing navigation items */
+    nav,
+    .navbar,
+    header {
+        overflow: visible;
+    }
+}
