@@ -1,252 +1,695 @@
 /* =========================================================
-   CODE 6 — HERO PERFORMANCE + REPEATING WELCOME EXPERIENCE
+   HERO CINEMATIC LOOP
+   WELCOME → VIDEO 1 → VIDEO 2 → WELCOME
    ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
+    const closeDropdowns = (except = null) => {
+        document.querySelectorAll(
+            ".more-dropdown.open, .social-dropdown.open"
+        ).forEach(dropdown => {
+            if (dropdown === except) return;
+
+            dropdown.classList.remove("open");
+            dropdown.querySelector("button")?.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+        });
+    };
+
+    document.querySelectorAll(
+        ".more-dropdown, .social-dropdown"
+    ).forEach(dropdown => {
+        const toggle = dropdown.querySelector("button");
+
+        if (!toggle) return;
+
+        toggle.addEventListener("click", event => {
+            event.stopPropagation();
+            const willOpen = !dropdown.classList.contains("open");
+
+            closeDropdowns(dropdown);
+            dropdown.classList.toggle("open", willOpen);
+            toggle.setAttribute("aria-expanded", String(willOpen));
+        });
+    });
+
+    document.addEventListener("click", () => closeDropdowns());
+
+    document.addEventListener("keydown", event => {
+        if (event.key === "Escape") closeDropdowns();
+    });
+
     const hero = document.querySelector(".hero");
+
     if (!hero) return;
 
-    const intro = hero.querySelector(".hero-intro-background");
-    const welcome = hero.querySelector(".hero-welcome-content");
 
-    const slides = [...hero.querySelectorAll(".hero-video-slide")];
-    const videos = [...hero.querySelectorAll(".hero-video")];
-    const dots = [...hero.querySelectorAll(".hero-dot")];
+    /* =====================================================
+       HERO ELEMENTS
+       ===================================================== */
 
-    if (!slides.length || !videos.length) return;
+    const intro =
+        hero.querySelector(".hero-intro-background");
 
-    const WELCOME_TIME = 5000;
-    const FADE_TIME = 700;
+    const welcome =
+        hero.querySelector(".hero-welcome-content");
 
-    let currentSlide = 0;
-    let experienceStarted = false;
-    let welcomeTimer = null;
-    let oldVideoTimer = null;
+    const slides = Array.from(
+        hero.querySelectorAll(".hero-video-slide")
+    );
 
-    /* ---------------------------------------------------------
-       SAFE VIDEO PLAY
-       --------------------------------------------------------- */
+    const videos = Array.from(
+        hero.querySelectorAll(".hero-video")
+    );
 
-    function safePlay(video) {
-        if (!video) return;
+    const dots = Array.from(
+        hero.querySelectorAll(".hero-dot")
+    );
 
-        video.muted = true;
-        video.playsInline = true;
 
-        const playPromise = video.play();
-
-        if (playPromise !== undefined) {
-            playPromise.catch(() => {
-                // Autoplay may be blocked by the browser.
-            });
-        }
+    if (!slides.length || !videos.length) {
+        console.warn("Hero videos were not found.");
+        return;
     }
 
-    /* ---------------------------------------------------------
-       RESET VIDEO
-       --------------------------------------------------------- */
 
-    function resetVideo(video) {
+    /* =====================================================
+       SETTINGS
+       ===================================================== */
+
+    const WELCOME_TIME = 5000;
+
+    const TRANSITION_TIME = 1000;
+
+    let currentSlide = -1;
+
+    let welcomeTimer = null;
+
+    let transitionTimer = null;
+
+
+    /* =====================================================
+       CREATE MOBILE BLURRED BACKDROPS
+       ===================================================== */
+
+    slides.forEach((slide, index) => {
+
+        const original =
+            videos[index];
+
+        if (!original) return;
+
+
+        /*
+         * Do not create duplicate backdrops.
+         */
+
+        if (
+            slide.querySelector(
+                ".hero-video-backdrop"
+            )
+        ) {
+            return;
+        }
+
+
+        const backdrop =
+            original.cloneNode(true);
+
+
+        /*
+         * IMPORTANT:
+         * The backdrop does NOT use .hero-video
+         * so it will not be included in the
+         * main video control system.
+         */
+
+        backdrop.classList.remove(
+            "hero-video"
+        );
+
+        backdrop.classList.add(
+            "hero-video-backdrop"
+        );
+
+
+        backdrop.removeAttribute("id");
+
+        backdrop.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+        backdrop.muted = true;
+
+        backdrop.playsInline = true;
+
+        backdrop.preload = "auto";
+
+
+        /*
+         * Put blurred copy behind
+         * the original video.
+         */
+
+        slide.insertBefore(
+            backdrop,
+            original
+        );
+
+
+        /*
+         * Start loading immediately.
+         */
+
+        try {
+            backdrop.load();
+        } catch (error) {}
+
+    });
+
+
+    /* =====================================================
+       SAFE VIDEO PLAY
+       ===================================================== */
+
+    function playVideo(video) {
+
         if (!video) return;
+
+
+        video.muted = true;
+
+        video.playsInline = true;
+
+
+        const promise =
+            video.play();
+
+
+        if (
+            promise !== undefined
+        ) {
+
+            promise.catch(() => {
+
+                /*
+                 * Autoplay can be blocked by
+                 * some browsers.
+                 *
+                 * Because the videos are muted,
+                 * modern browsers normally allow them.
+                 */
+
+            });
+
+        }
+
+    }
+
+
+    /* =====================================================
+       STOP VIDEO
+       ===================================================== */
+
+    function stopVideo(video) {
+
+        if (!video) return;
+
 
         video.pause();
 
+
         try {
             video.currentTime = 0;
-        } catch (error) {}
+        }
+
+        catch (error) {}
+
     }
 
-    /* ---------------------------------------------------------
-       DOTS
-       --------------------------------------------------------- */
+
+    /* =====================================================
+       UPDATE DOTS
+       ===================================================== */
 
     function updateDots(index) {
 
         dots.forEach((dot, i) => {
 
-            const active = i === index;
+            const active =
+                i === index;
 
-            dot.classList.toggle("active", active);
+
+            dot.classList.toggle(
+                "active",
+                active
+            );
+
 
             dot.setAttribute(
                 "aria-current",
-                active ? "true" : "false"
-            );
-        });
-    }
-
-    /* ---------------------------------------------------------
-       SHOW VIDEO
-       --------------------------------------------------------- */
-
-    function showVideo(index) {
-
-        if (index < 0 || index >= slides.length) return;
-
-        clearTimeout(oldVideoTimer);
-
-        const previousIndex = currentSlide;
-        const video = videos[index];
-
-        slides.forEach((slide, i) => {
-
-            slide.classList.toggle(
-                "active",
-                i === index
+                active
+                    ? "true"
+                    : "false"
             );
 
         });
 
-        currentSlide = index;
-
-        updateDots(index);
-
-        resetVideo(video);
-
-        /*
-         * Give the browser one frame to make the slide visible
-         * before starting playback.
-         */
-
-        requestAnimationFrame(() => {
-            safePlay(video);
-        });
-
-        /*
-         * Stop the previous video after the fade.
-         */
-
-        if (previousIndex !== index) {
-
-            oldVideoTimer = setTimeout(() => {
-
-                if (videos[previousIndex]) {
-                    resetVideo(videos[previousIndex]);
-                }
-
-            }, FADE_TIME + 100);
-        }
     }
 
-    /* ---------------------------------------------------------
-       WELCOME SCREEN
-       --------------------------------------------------------- */
 
-    function showWelcome() {
+    /* =====================================================
+       HIDE ALL VIDEOS
+       ===================================================== */
 
-        clearTimeout(welcomeTimer);
+    function hideAllVideos() {
+
+        slides.forEach(slide => {
+
+            slide.classList.remove(
+                "active"
+            );
+
+        });
+
+
+        videos.forEach(video => {
+
+            stopVideo(video);
+
+        });
+
 
         /*
-         * Hide all videos while welcome screen is showing.
+         * Stop blurred mobile copies too.
          */
 
         slides.forEach(slide => {
-            slide.classList.remove("active");
+
+            const backdrop =
+                slide.querySelector(
+                    ".hero-video-backdrop"
+                );
+
+            if (backdrop) {
+                stopVideo(backdrop);
+            }
+
         });
 
-        videos.forEach(video => {
-            resetVideo(video);
-        });
-
-        /*
-         * Show welcome background and text.
-         */
-
-        intro?.classList.remove("hide-intro");
-        intro?.classList.remove("hide");
-
-        welcome?.classList.remove("is-hidden");
-        welcome?.classList.remove("hide");
-
-        /*
-         * Wait before starting the first video.
-         */
-
-        welcomeTimer = setTimeout(() => {
-
-            /*
-             * Start the first video.
-             */
-
-            intro?.classList.add("hide-intro");
-            intro?.classList.add("hide");
-
-            welcome?.classList.add("is-hidden");
-            welcome?.classList.add("hide");
-
-            showVideo(0);
-
-        }, WELCOME_TIME);
     }
 
-    /* ---------------------------------------------------------
-       VIDEO SETTINGS
-       --------------------------------------------------------- */
 
-    videos.forEach((video, index) => {
+    /* =====================================================
+       SHOW VIDEO
+       ===================================================== */
 
-        video.muted = true;
-        video.playsInline = true;
+    function showVideo(index) {
 
-        /*
-         * First video can begin loading immediately.
-         * Second video waits until needed.
-         */
-
-        if (index === 0) {
-            video.preload = "auto";
-        } else {
-            video.preload = "metadata";
+        if (
+            index < 0 ||
+            index >= videos.length
+        ) {
+            return;
         }
 
-        video.setAttribute("playsinline", "");
-        video.setAttribute("muted", "");
 
-        video.pause();
+        clearTimeout(
+            transitionTimer
+        );
 
-    });
+        clearTimeout(
+            welcomeTimer
+        );
 
-    /* ---------------------------------------------------------
-       VIDEO END → NEXT VIDEO
-       --------------------------------------------------------- */
 
-    videos.forEach((video, index) => {
+        /*
+         * Hide welcome immediately.
+         */
 
-        video.addEventListener("ended", () => {
+        if (intro) {
 
-            const nextIndex =
-                (index + 1) % videos.length;
+            intro.classList.add(
+                "hide-intro"
+            );
 
-            showVideo(nextIndex);
+        }
+
+
+        if (welcome) {
+
+            welcome.classList.add(
+                "is-hidden"
+            );
+
+            welcome.classList.add(
+                "hide"
+            );
+
+        }
+
+
+        /*
+         * Stop every other video.
+         */
+
+        videos.forEach(
+            (video, i) => {
+
+                if (i !== index) {
+
+                    stopVideo(
+                        video
+                    );
+
+                }
+
+            }
+        );
+
+
+        /*
+         * Stop other blurred videos.
+         */
+
+        slides.forEach(
+            (slide, i) => {
+
+                if (i !== index) {
+
+                    const backdrop =
+                        slide.querySelector(
+                            ".hero-video-backdrop"
+                        );
+
+                    if (backdrop) {
+                        stopVideo(
+                            backdrop
+                        );
+                    }
+
+                }
+
+            }
+        );
+
+
+        /*
+         * Remove active state
+         * from all slides.
+         */
+
+        slides.forEach(slide => {
+
+            slide.classList.remove(
+                "active"
+            );
 
         });
 
-    });
 
-    /* ---------------------------------------------------------
+        const slide =
+            slides[index];
+
+        const video =
+            videos[index];
+
+        const backdrop =
+            slide.querySelector(
+                ".hero-video-backdrop"
+            );
+
+
+        /*
+         * Activate selected slide.
+         */
+
+        slide.classList.add(
+            "active"
+        );
+
+
+        currentSlide =
+            index;
+
+
+        updateDots(index);
+
+
+        /*
+         * Always restart the video.
+         */
+
+        try {
+
+            video.currentTime = 0;
+
+        }
+
+        catch (error) {}
+
+
+        if (backdrop) {
+
+            try {
+
+                backdrop.currentTime = 0;
+
+            }
+
+            catch (error) {}
+
+        }
+
+
+        /*
+         * Start both layers together.
+         */
+
+        requestAnimationFrame(() => {
+
+            playVideo(video);
+
+            /*
+             * The blurred backdrop only
+             * matters visually on mobile.
+             */
+
+            if (backdrop) {
+                playVideo(backdrop);
+            }
+
+        });
+
+    }
+
+
+    /* =====================================================
+       SHOW WELCOME
+       ===================================================== */
+
+    function showWelcome() {
+
+        clearTimeout(
+            welcomeTimer
+        );
+
+        clearTimeout(
+            transitionTimer
+        );
+
+
+        /*
+         * Stop videos.
+         */
+
+        hideAllVideos();
+
+
+        /*
+         * Show welcome background.
+         */
+
+        if (intro) {
+
+            intro.classList.remove(
+                "hide"
+            );
+
+            intro.classList.remove(
+                "hide-intro"
+            );
+
+        }
+
+
+        /*
+         * Show welcome text.
+         */
+
+        if (welcome) {
+
+            welcome.classList.remove(
+                "hide"
+            );
+
+            welcome.classList.remove(
+                "is-hidden"
+            );
+
+
+            welcome.style.opacity =
+                "";
+
+            welcome.style.visibility =
+                "";
+
+            welcome.style.transform =
+                "";
+
+        }
+
+
+        /*
+         * After 5 seconds:
+         *
+         * WELCOME
+         * ↓
+         * VIDEO 1
+         *
+         * There is NO artificial
+         * extra delay here.
+         */
+
+        welcomeTimer =
+            setTimeout(() => {
+
+                showVideo(0);
+
+            }, WELCOME_TIME);
+
+    }
+
+
+    /* =====================================================
+       PRELOAD BOTH VIDEOS
+       ===================================================== */
+
+    videos.forEach(
+        (video, index) => {
+
+            video.muted = true;
+
+            video.playsInline = true;
+
+            video.setAttribute(
+                "playsinline",
+                ""
+            );
+
+            video.setAttribute(
+                "muted",
+                ""
+            );
+
+
+            /*
+             * Load both videos early.
+             * This is important for smooth
+             * transition from video 1 → video 2.
+             */
+
+            video.preload = "auto";
+
+
+            try {
+                video.load();
+            }
+
+            catch (error) {}
+
+
+            stopVideo(video);
+
+        }
+    );
+
+
+    /* =====================================================
+       VIDEO END EVENTS
+       ===================================================== */
+
+    videos.forEach(
+        (video, index) => {
+
+            video.addEventListener(
+                "ended",
+                () => {
+
+
+                    /*
+                     * VIDEO 1 → VIDEO 2
+                     */
+
+                    if (
+                        index <
+                        videos.length - 1
+                    ) {
+
+                        showVideo(
+                            index + 1
+                        );
+
+                        return;
+
+                    }
+
+
+                    /*
+                     * LAST VIDEO → WELCOME
+                     *
+                     * The loop starts again.
+                     */
+
+                    showWelcome();
+
+                }
+            );
+
+        }
+    );
+
+
+    /* =====================================================
        DOT CONTROLS
-       --------------------------------------------------------- */
+       ===================================================== */
 
-    dots.forEach((dot, index) => {
+    dots.forEach(
+        (dot, index) => {
 
-        dot.addEventListener("click", () => {
+            dot.addEventListener(
+                "click",
+                () => {
 
-            if (!experienceStarted) return;
+                    showVideo(
+                        index
+                    );
 
-            showVideo(index);
+                }
+            );
 
-        });
+        }
+    );
 
-    });
 
-    /* ---------------------------------------------------------
-       START
-       --------------------------------------------------------- */
-
-    experienceStarted = true;
+    /* =====================================================
+       START HERO
+       ===================================================== */
 
     showWelcome();
 
 });
-
