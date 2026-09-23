@@ -42,6 +42,43 @@ document.addEventListener("DOMContentLoaded", () => {
         if (event.key === "Escape") closeDropdowns();
     });
 
+    const navLinks = document.querySelector(".nav-links");
+    const navActions = document.querySelector(".nav-actions");
+    const navScrollButton = document.querySelector(".nav-scroll-indicator");
+
+    if (navLinks && navActions && navScrollButton) {
+        let navOffset = 0;
+        const step = 170;
+        const maxShift = 360;
+        let resetMode = false;
+
+        const updateArrow = () => {
+            const arrow = navScrollButton.querySelector("span");
+            if (!arrow) return;
+
+            arrow.textContent = resetMode ? "‹" : "›";
+        };
+
+        updateArrow();
+
+        navScrollButton.addEventListener("click", () => {
+            if (resetMode) {
+                navOffset = 0;
+                resetMode = false;
+            } else {
+                navOffset = Math.max(navOffset - step, -maxShift);
+                if (navOffset <= -maxShift + 10) {
+                    resetMode = true;
+                }
+            }
+
+            navLinks.style.transform = `translateX(${navOffset}px)`;
+            navActions.style.transform = `translateX(${navOffset}px)`;
+            navScrollButton.style.transform = `translateX(${navOffset}px)`;
+            updateArrow();
+        });
+    }
+
     const hero = document.querySelector(".hero");
 
     if (!hero) return;

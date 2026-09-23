@@ -5036,15 +5036,31 @@ nav ul li a {
 
     .main-nav {
         padding: 12px 2.5%;
-        gap: 15px;
+        gap: 12px;
     }
 
-    .main-nav .nav-links {
-        gap: 14px;
+    .nav-menu-wrapper {
+        overflow: hidden;
     }
 
-    .main-nav .nav-links a {
+    .nav-links {
+        flex-wrap: nowrap;
+        white-space: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .nav-links::-webkit-scrollbar {
+        display: none;
+    }
+
+    .nav-links > li > a,
+    .more-toggle,
+    .social-toggle {
         font-size: 12px;
+        padding: 8px 5px 7px;
     }
 
     .brand-main {
@@ -5060,33 +5076,52 @@ nav ul li a {
 @media (max-width: 900px) {
 
     .main-nav {
-        min-height: auto;
-
-        flex-direction: column;
-
-        padding: 15px 20px;
-
-        gap: 12px;
+        min-height: 72px;
+        flex-direction: row;
+        align-items: center;
+        padding: 10px 16px;
+        gap: 8px;
     }
 
     .nav-brand {
-        text-align: center;
+        text-align: left;
+        margin-right: 0;
+        flex-shrink: 0;
     }
 
-    .main-nav .nav-links {
-        width: 100%;
-
-        flex-wrap: wrap;
-
-        gap: 12px 18px;
+    .nav-menu-wrapper {
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+        gap: 6px;
     }
 
-    .main-nav .nav-links a {
-        font-size: 12px;
+    .nav-links {
+        flex: 1 1 auto;
+        width: auto;
+        min-width: 0;
+        flex-wrap: nowrap;
+        white-space: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .nav-links::-webkit-scrollbar {
+        display: none;
+    }
+
+    .nav-links > li > a,
+    .more-toggle,
+    .social-toggle {
+        font-size: 11.5px;
+        padding: 8px 4px 6px;
     }
 
     .nav-actions {
-        justify-content: center;
+        justify-content: flex-end;
+        flex-shrink: 0;
     }
 }
 /* =========================================================
@@ -8887,9 +8922,9 @@ nav ul li a {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 4px;
+    gap: 8px;
 
-    padding: 8px 4.2%;
+    padding: 8px 3.8% 9px;
 
     background:
         linear-gradient(
@@ -8936,8 +8971,9 @@ nav ul li a {
     justify-content: flex-start;
     flex: 1;
     min-width: 0;
-    gap: 4px;
+    gap: 10px;
     margin-left: 0;
+    overflow: visible;
 }
 
 .church-logo {
@@ -8968,18 +9004,27 @@ nav ul li a {
    ========================================================= */
 
 .nav-links {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     flex: 1 1 auto;
+    min-width: 0;
 
-    gap: 6px;
+    gap: 10px;
 
     list-style: none;
 
     margin: 0;
     padding: 0;
-    margin-right: 4px;
+    margin-right: 6px;
+    white-space: nowrap;
+    transform: translateX(0);
+    transition: transform 0.35s ease;
+}
+
+.nav-links::-webkit-scrollbar {
+    display: none;
 }
 
 .nav-links > li {
@@ -9008,10 +9053,12 @@ nav ul li a {
 
     cursor: pointer;
 
-    padding: 9px 1px;
+    padding: 9px 6px 8px;
+    border-radius: 8px;
 
     transition:
         color 0.3s ease,
+        background 0.3s ease,
         transform 0.3s ease;
 }
 
@@ -9043,12 +9090,59 @@ nav ul li a {
 .more-toggle:hover,
 .social-toggle:hover {
     color: #D4AF37;
+    background: rgba(255, 255, 255, 0.06);
 }
 
 .nav-links > li > a:hover::after,
 .more-toggle:hover::after,
 .social-toggle:hover::after {
     width: 100%;
+}
+
+.nav-scroll-indicator {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    margin-left: -2px;
+    margin-right: -2px;
+    z-index: 5;
+    border: 1px solid rgba(212, 175, 55, 0.55);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #D4AF37;
+    cursor: pointer;
+    font-size: 24px;
+    line-height: 1;
+    padding: 0;
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.25);
+    animation: nav-scroll-float 1.6s ease-in-out infinite;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.nav-scroll-indicator:hover,
+.nav-scroll-indicator:focus-visible {
+    background: rgba(212, 175, 55, 0.14);
+    transform: translateX(-2px);
+}
+
+.nav-scroll-indicator span {
+    display: block;
+    transform: translateX(-1px);
+}
+
+@keyframes nav-scroll-float {
+    0%, 100% {
+        transform: translateX(0);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translateX(-3px);
+        opacity: 1;
+    }
 }
 
 
@@ -9065,6 +9159,7 @@ nav ul li a {
 
 .more-menu {
     position: absolute;
+    z-index: 50;
 
     top: calc(100% + 14px);
     left: 50%;
@@ -9180,10 +9275,11 @@ nav ul li a {
     align-items: center;
     justify-content: flex-end;
 
-    gap: 4px;
+    gap: 10px;
 
     flex-shrink: 0;
     margin-left: 0;
+    transition: transform 0.35s ease;
 }
 
 
@@ -9355,6 +9451,7 @@ nav ul li a {
 
 .social-menu {
     position: absolute;
+    z-index: 50;
 
     top: calc(100% + 14px);
     right: 0;
