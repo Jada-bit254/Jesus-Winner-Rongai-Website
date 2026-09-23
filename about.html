@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About | Jesus Winner Ministry Rongai</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+        body {
+            background: linear-gradient(180deg, #f7f7f9 0%, #f0f5ff 100%);
+            color: #1f2937;
+        }
+        .page-shell {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 52px 24px 80px;
+        }
+        .hero-banner {
+            background: linear-gradient(135deg, rgba(11,61,145,0.97), rgba(18,62,140,0.92));
+            border-radius: 24px;
+            color: #fff;
+            padding: 44px 30px;
+            box-shadow: 0 18px 35px rgba(11,61,145,0.12);
+        }
+        .hero-banner h1 {
+            font-size: clamp(2.3rem, 4vw, 4rem);
+            margin-top: 12px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 28px;
+            margin-top: 36px;
+        }
+        .card {
+            background: #fff;
+            border-radius: 18px;
+            padding: 28px;
+            box-shadow: 0 12px 28px rgba(15,23,42,0.08);
+        }
+        .card h3 {
+            color: #0b3d91;
+            margin-bottom: 12px;
+        }
+        .feature-row {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+            margin-top: 28px;
+        }
+        .feature {
+            background: rgba(255,255,255,0.8);
+            border-radius: 14px;
+            padding: 20px;
+            border: 1px solid rgba(11,61,145,0.08);
+        }
+        @media (max-width: 760px) {
+            .grid,
+            .feature-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav" id="main-navigation">
+        <div class="nav-brand">
+            <a href="index.html" aria-label="Jesus Winner Ministry Rongai Home">
+                <img src="images/Church/church/jwmtranslogo.png" alt="Jesus Winner Ministry Rongai" class="church-logo" />
+            </a>
+        </div>
+        <div class="nav-menu-wrapper" id="main-nav-links">
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#leadership">Leadership</a></li>
+                <li><a href="index.html#ministries">Ministries</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="join-us.html">Join Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="page-shell">
+        <section class="hero-banner">
+            <span style="display:inline-block;padding:8px 14px;border:1px solid rgba(212,175,55,0.8);border-radius:999px;background:rgba(212,175,55,0.12);color:#f8d76f;letter-spacing:2px;font-size:12px;font-weight:700;text-transform:uppercase;">Who we are</span>
+            <h1>A place to encounter God, belong, and grow.</h1>
+            <p>Jesus Winner Ministry Rongai is a vibrant Christian family committed to living out the love of Christ through worship, discipleship, and mission.</p>
+        </section>
+
+        <section class="grid">
+            <article class="card">
+                <h3>Our Mission</h3>
+                <p>To see lives transformed by the Gospel, rooted in faith, empowered by the Holy Spirit, and filled with purpose to serve God and humanity.</p>
+            </article>
+            <article class="card">
+                <h3>Our Vision</h3>
+                <p>To build a Christ-centered community where everyone finds belonging, spiritual growth, and a clear path to fulfilling their divine purpose.</p>
+            </article>
+        </section>
+
+        <section class="feature-row">
+            <article class="feature"><h3>Faith</h3><p>We teach the truth of God’s Word and cultivate a life of trust in Him.</p></article>
+            <article class="feature"><h3>Hope</h3><p>We point people to the promises of God and encourage perseverance through every season.</p></article>
+            <article class="feature"><h3>Service</h3><p>We seek to love our community through outreach, kindness, and practical support.</p></article>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery | Jesus Winner Ministry Rongai</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+        body {
+            background: linear-gradient(180deg, #f7f7fb 0%, #f6f1fe 100%);
+            color: #1f2937;
+        }
+        .page-shell {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 52px 24px 80px;
+        }
+        .page-header {
+            text-align: center;
+            margin-bottom: 26px;
+        }
+        .page-header h1 {
+            font-size: clamp(2.1rem, 4vw, 3.3rem);
+            margin-top: 10px;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+        .gallery-card {
+            background: #fff;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 12px 28px rgba(15,23,42,0.08);
+        }
+        .gallery-card img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            display: block;
+        }
+        .gallery-card figcaption {
+            padding: 16px 18px;
+            font-weight: 600;
+            color: #0b3d91;
+        }
+        @media (max-width: 760px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav" id="main-navigation">
+        <div class="nav-brand">
+            <a href="index.html" aria-label="Jesus Winner Ministry Rongai Home">
+                <img src="images/Church/church/jwmtranslogo.png" alt="Jesus Winner Ministry Rongai" class="church-logo" />
+            </a>
+        </div>
+        <div class="nav-menu-wrapper" id="main-nav-links">
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="index.html#leadership">Leadership</a></li>
+                <li><a href="index.html#ministries">Ministries</a></li>
+                <li><a href="join-us.html">Join Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="page-shell">
+        <header class="page-header">
+            <span style="display:inline-block;padding:8px 14px;border:1px solid rgba(212,175,55,0.8);border-radius:999px;background:rgba(212,175,55,0.12);color:#b8860b;letter-spacing:2px;font-size:12px;font-weight:700;text-transform:uppercase;">Gallery</span>
+            <h1>Moments of worship, fellowship, and community.</h1>
+        </header>
+
+        <section class="gallery-grid">
+            <figure class="gallery-card">
+                <img src="images/Church/church/frontchurch.png" alt="Church front view" />
+                <figcaption>Church family</figcaption>
+            </figure>
+            <figure class="gallery-card">
+                <img src="images/Ministries/background.png" alt="Worship background" />
+                <figcaption>Worship</figcaption>
+            </figure>
+            <figure class="gallery-card">
+                <img src="images/Church/church/praise.jpg" alt="Praise and worship" />
+                <figcaption>Praise night</figcaption>
+            </figure>
+            <figure class="gallery-card">
+                <img src="images/Pastor/BishopEdward.png" alt="Bishop Edward" />
+                <figcaption>Leadership</figcaption>
+            </figure>
+            <figure class="gallery-card">
+                <img src="images/Pastor/pastorisaiah.png" alt="Pastor Isaiah" />
+                <figcaption>Pastor’s ministry</figcaption>
+            </figure>
+            <figure class="gallery-card">
+                <img src="images/Pastor/Rev-Isaiah.png" alt="Rev Isaiah" />
+                <figcaption>Faith walk</figcaption>
+            </figure>
+        </section>
+    </main>
+</body>
+</html>
