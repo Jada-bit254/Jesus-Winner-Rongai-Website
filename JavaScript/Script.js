@@ -72,9 +72,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
 
-            navLinks.style.transform = `translateX(${navOffset}px)`;
-            navActions.style.transform = `translateX(${navOffset}px)`;
-            navScrollButton.style.transform = `translateX(${navOffset}px)`;
+            const slideOffset = navOffset + 14;
+
+            navLinks.style.transform = `translateX(${slideOffset}px)`;
+            navActions.style.transform = `translateX(${slideOffset}px)`;
+            navScrollButton.style.transform = `translateX(${slideOffset}px)`;
             updateArrow();
         });
     }
@@ -613,11 +615,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       PRELOAD BOTH VIDEOS
+       DEFER HEAVY VIDEO LOADING
        ===================================================== */
 
     videos.forEach(
-        (video, index) => {
+        (video) => {
 
             video.muted = true;
 
@@ -633,22 +635,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 ""
             );
 
+            video.preload = "metadata";
 
-            /*
-             * Load both videos early.
-             * This is important for smooth
-             * transition from video 1 → video 2.
-             */
-
-            video.preload = "auto";
-
-
-            try {
-                video.load();
-            }
-
-            catch (error) {}
-
+            video.dataset.loaded = "false";
 
             stopVideo(video);
 
