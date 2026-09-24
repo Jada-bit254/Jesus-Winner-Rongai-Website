@@ -10816,11 +10816,12 @@ body {
 
 /* Final transparent logo and responsive navigation layout */
 body {
+    margin: 0;
     padding-top: 82px;
 }
 
 .main-nav {
-    position: fixed;
+    position: fixed !important;
     top: 0;
     left: 0;
     right: 0;
@@ -10891,6 +10892,7 @@ body {
     }
 
     .main-nav {
+        top: 0;
         flex-wrap: wrap;
         align-items: flex-start;
         padding: 7px 10px 8px;
