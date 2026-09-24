@@ -10831,8 +10831,8 @@ body {
 }
 
 .church-logo {
-    width: clamp(170px, 18vw, 250px);
-    height: 54px;
+    width: clamp(160px, 17vw, 235px);
+    height: 50px;
     max-height: none;
     object-fit: contain;
     background: transparent !important;
@@ -10849,7 +10849,7 @@ body {
     align-items: center;
     min-width: 0;
     overflow: hidden;
-    gap: 8px;
+    gap: 5px;
 }
 
 .nav-links {
@@ -10860,6 +10860,7 @@ body {
     overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;
+    gap: 7px;
     scrollbar-width: none;
 }
 
@@ -10910,8 +10911,8 @@ body {
     }
 
     .church-logo {
-        width: min(205px, 62vw);
-        height: 57px;
+        width: min(195px, 60vw);
+        height: 54px;
     }
 
     .mobile-menu-toggle {
@@ -10930,7 +10931,7 @@ body {
     .nav-links {
         flex: 1 1 auto;
         width: auto;
-        gap: 3px 16px;
+        gap: 3px 13px;
         overflow-x: auto;
         justify-content: flex-start;
         transform: none !important;
