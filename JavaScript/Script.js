@@ -43,6 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     const navLinks = document.querySelector(".nav-links");
+<<<<<<< HEAD
     const navActions = document.querySelector(".nav-actions");
     const navScrollButton = document.querySelector(".nav-scroll-indicator");
 
@@ -78,6 +79,37 @@ document.addEventListener("DOMContentLoaded", () => {
             navActions.style.transform = `translateX(${slideOffset}px)`;
             navScrollButton.style.transform = `translateX(${slideOffset}px)`;
             updateArrow();
+=======
+    const navScrollButton = document.querySelector(".nav-scroll-indicator");
+
+    if (navLinks && navScrollButton) {
+        const updateArrow = () => {
+            const arrow = navScrollButton.querySelector("span");
+            if (!arrow) return;
+
+            const atEnd = navLinks.scrollLeft + navLinks.clientWidth >= navLinks.scrollWidth - 8;
+            arrow.textContent = atEnd ? "‹" : "›";
+        };
+
+        updateArrow();
+        navLinks.addEventListener("scroll", updateArrow);
+
+        navScrollButton.addEventListener("click", event => {
+            event.preventDefault();
+
+            const atEnd = navLinks.scrollLeft + navLinks.clientWidth >= navLinks.scrollWidth - 8;
+            const maximumScroll = navLinks.scrollWidth - navLinks.clientWidth;
+            const nextPosition = atEnd
+                ? 0
+                : Math.min(navLinks.scrollLeft + 220, maximumScroll);
+
+            navLinks.scrollTo({
+                left: nextPosition,
+                behavior: "smooth"
+            });
+
+            window.setTimeout(updateArrow, 350);
+>>>>>>> bb58788 (Improve responsive navigation scrolling)
         });
     }
 

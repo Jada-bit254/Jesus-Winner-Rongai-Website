@@ -7,6 +7,14 @@
 /* =========================================================
    1. COLOR SYSTEM
    ========================================================= */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 96px;
+}
+
+body {
+    padding-top: 82px;
+}
 
 :root {
 
@@ -173,7 +181,6 @@
 /* Individual image/video space */
 
 .media-placeholder {
-
     min-height: 150px;
 
     border-radius: 16px;
@@ -500,20 +507,23 @@
     text-align: center;
     max-width: 850px;
     margin: 0 auto 70px;
-}
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: 8px;
 
 .pastor-intro .section-label {
     color: #b51f3a;
     font-size: 13px;
-    font-weight: 800;
+    grid-column: 1;
     letter-spacing: 3px;
 }
 
-.pastor-intro h2 {
+    grid-column: 2;
     margin: 15px 0;
     color: #0b3d91;
     font-size: clamp(38px, 5vw, 58px);
-    font-weight: 800;
+    grid-column: 3;
 }
 
 .section-line {
@@ -4817,10 +4827,29 @@ nav ul li a {
 }
 
 .nav-brand img {
+<<<<<<< HEAD
     height: 72px;
     width: auto;
+=======
+    width: clamp(235px, 23vw, 320px);
+    height: auto;
+    max-height: 115px;
+>>>>>>> bb58788 (Improve responsive navigation scrolling)
     display: block;
     object-fit: contain;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: transparent !important;
+    box-shadow: none;
+    filter: drop-shadow(0 0 10px rgba(126, 179, 255, 0.22));
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-brand a:hover .church-logo {
+    transform: translateY(-1px);
+    opacity: 1;
+    background: transparent;
 }
 .brand-main {
     color: var(--white);
@@ -5133,6 +5162,17 @@ nav ul li a {
     .nav-actions {
         justify-content: flex-end;
         flex-shrink: 0;
+<<<<<<< HEAD
+=======
+    }
+
+    .nav-brand img {
+        width: clamp(180px, 40vw, 240px);
+        height: auto;
+        max-height: 92px;
+        padding: 0;
+        border-radius: 0;
+>>>>>>> bb58788 (Improve responsive navigation scrolling)
     }
 }
 /* =========================================================
@@ -6299,6 +6339,7 @@ nav ul li a {
     z-index: 4;
 }
 
+<<<<<<< HEAD
 .nav-brand img {
     height: 100px;
     width: auto;
@@ -6307,6 +6348,8 @@ nav ul li a {
     background: transparent;
     mix-blend-mode: lighten;
 }
+=======
+>>>>>>> bb58788 (Improve responsive navigation scrolling)
 .pastor-image-area {
     position: relative;
     width: 100%;
@@ -7057,6 +7100,168 @@ nav ul li a {
 #leadership {
     background: var(--white) !important;
     background-image: none !important;
+    padding: 110px 6% 90px;
+    position: relative;
+}
+
+#leadership h2 {
+    color: #071A52;
+    text-align: center;
+    font-size: clamp(32px, 4vw, 48px);
+    margin: 0 0 18px;
+    letter-spacing: -0.04em;
+}
+
+.leadership-intro {
+    max-width: 760px;
+    margin: 0 auto 52px;
+    text-align: center;
+    color: #4f5d75;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.leaders-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
+}
+
+.leader-card {
+    position: relative;
+    background: #ffffff;
+    padding: 28px 24px 26px;
+    text-align: center;
+    border-radius: 22px;
+    overflow: hidden;
+    border: 1px solid rgba(7, 26, 82, 0.08);
+    box-shadow: 0 14px 35px rgba(6, 25, 52, 0.08);
+    transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.leader-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #0B3D91, #c8a96b, #7A1630);
+}
+
+.leader-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 22px 44px rgba(6, 25, 52, 0.12);
+}
+
+.leader-photo {
+    width: 170px;
+    height: 170px;
+    margin: 18px auto 22px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #0B3D91, #1455A5);
+    border: 1px solid rgba(200, 169, 107, 0.8);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    box-shadow: 0 12px 28px rgba(11, 61, 145, 0.18);
+}
+
+.leader-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+}
+
+.leader-photo span {
+    font-size: 11px;
+    opacity: 0.9;
+}
+
+.leader-card h3 {
+    color: #071A52;
+    font-size: clamp(26px, 2vw, 30px);
+    margin: 0 0 8px;
+    letter-spacing: -0.03em;
+}
+
+.leader-card h4 {
+    color: #7A1630;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0 0 16px;
+    line-height: 1.6;
+}
+
+.leader-card p {
+    color: #4f5d75;
+    line-height: 1.75;
+    margin: 0;
+    font-size: 15px;
+}
+
+.leader-verse {
+    margin-top: 22px;
+    padding: 18px 16px;
+    background: linear-gradient(135deg, rgba(11, 61, 145, 0.05), rgba(122, 22, 48, 0.04));
+    border: 1px solid rgba(11, 61, 145, 0.09);
+    border-radius: 14px;
+    color: #7A1630;
+    font-style: italic;
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+.leader-card:nth-child(2) .leader-photo {
+    border-radius: 22px;
+}
+
+.leader-card:nth-child(2) .leader-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+}
+
+@media (max-width: 900px) {
+    #leadership {
+        padding: 90px 5% 72px;
+    }
+
+    .leaders-container {
+        gap: 22px;
+    }
+}
+
+@media (max-width: 600px) {
+    #leadership {
+        padding: 80px 5% 64px;
+    }
+
+    .leadership-intro {
+        font-size: 16px;
+        margin-bottom: 36px;
+    }
+
+    .leader-card {
+        padding: 22px 18px 20px;
+    }
+
+    .leader-photo {
+        width: 150px;
+        height: 150px;
+    }
 }
 
 
@@ -8923,8 +9128,15 @@ nav ul li a {
 
 /* Main navigation */
 .main-nav {
+<<<<<<< HEAD
     position: sticky;
     top: 0;
+=======
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+>>>>>>> bb58788 (Improve responsive navigation scrolling)
     z-index: 1000;
 
     width: 100%;
@@ -8977,6 +9189,7 @@ nav ul li a {
 }
 
 .church-logo {
+<<<<<<< HEAD
     width: 170px;
     height: 54px;
     object-fit: contain;
@@ -8992,6 +9205,60 @@ nav ul li a {
 .church-logo:hover {
     transform: scale(1.04);
     filter: brightness(1.22) saturate(0.95) contrast(1.18) drop-shadow(0 0 8px rgba(255,255,255,0.18));
+=======
+    width: clamp(235px, 23vw, 320px);
+    height: auto;
+    max-height: 115px;
+    object-fit: contain;
+    display: block;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: transparent !important;
+    opacity: 1;
+    mix-blend-mode: screen;
+    -webkit-mask-image: url("../JWM Images/New folder/jwmtranslogo.png");
+    mask-image: url("../JWM Images/New folder/jwmtranslogo.png");
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-mode: luminance;
+    mask-mode: luminance;
+    filter:
+        drop-shadow(0 0 5px rgba(255, 215, 120, 0.38))
+        drop-shadow(0 0 13px rgba(126, 179, 255, 0.2));
+    box-shadow: none;
+    animation: logoLuxuryGlow 4.5s ease-in-out infinite;
+    transition: transform 0.3s ease, opacity 0.3s ease, filter 0.3s ease;
+}
+
+.church-logo:hover {
+    transform: translateY(-1px) scale(1.02);
+    background: transparent;
+    filter:
+        drop-shadow(0 0 7px rgba(255, 215, 120, 0.56))
+        drop-shadow(0 0 16px rgba(126, 179, 255, 0.32));
+}
+
+@keyframes logoLuxuryGlow {
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
+        filter:
+            drop-shadow(0 0 5px rgba(255, 215, 120, 0.3))
+            drop-shadow(0 0 12px rgba(126, 179, 255, 0.16));
+    }
+
+    50% {
+        transform: translateY(-1px) scale(1.01);
+        filter:
+            drop-shadow(0 0 8px rgba(255, 215, 120, 0.5))
+            drop-shadow(0 0 17px rgba(126, 179, 255, 0.28));
+    }
+>>>>>>> bb58788 (Improve responsive navigation scrolling)
 }
 
 .nav-brand a {
@@ -9000,6 +9267,7 @@ nav ul li a {
     justify-content: center;
     padding-left: 0;
     background: transparent;
+<<<<<<< HEAD
 }
 
 .nav-menu-wrapper {
@@ -9118,6 +9386,89 @@ nav ul li a {
 
 /* Gold animated underline */
 
+=======
+}
+
+.nav-menu-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex: 1;
+    min-width: 0;
+    gap: 10px;
+    margin-left: 0;
+    overflow: visible;
+    position: relative;
+    z-index: 1;
+}
+
+/* =========================================================
+   NAVIGATION LINKS
+   ========================================================= */
+
+.nav-links {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex: 1 1 auto;
+    min-width: 0;
+
+    gap: 10px;
+
+    list-style: none;
+
+    margin: 0;
+    padding: 0;
+    margin-right: 6px;
+    white-space: nowrap;
+    transform: translateX(0);
+    transition: transform 0.35s ease;
+}
+
+.nav-links::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-links > li {
+    position: relative;
+    white-space: nowrap;
+}
+
+.nav-links > li > a,
+.more-toggle,
+.social-toggle {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+
+    color: #FFFFFF;
+
+    background: transparent;
+
+    border: none;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    letter-spacing: 0.2px;
+
+    cursor: pointer;
+
+    padding: 9px 6px 8px;
+    border-radius: 8px;
+
+    transition:
+        color 0.3s ease,
+        background 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+/* Gold animated underline */
+
+>>>>>>> bb58788 (Improve responsive navigation scrolling)
 .nav-links > li > a::after,
 .more-toggle::after,
 .social-toggle::after {
@@ -9172,7 +9523,11 @@ nav ul li a {
     line-height: 1;
     padding: 0;
     box-shadow: 0 0 12px rgba(212, 175, 55, 0.25);
+<<<<<<< HEAD
     animation: nav-scroll-float 1.6s ease-in-out infinite;
+=======
+    animation: none;
+>>>>>>> bb58788 (Improve responsive navigation scrolling)
     transition: transform 0.2s ease, background 0.2s ease;
 }
 
@@ -9185,6 +9540,10 @@ nav ul li a {
 .nav-scroll-indicator span {
     display: block;
     transform: translateX(-1px);
+<<<<<<< HEAD
+=======
+    animation: nav-scroll-float 1.6s ease-in-out infinite;
+>>>>>>> bb58788 (Improve responsive navigation scrolling)
 }
 
 @keyframes nav-scroll-float {
@@ -9904,6 +10263,7 @@ nav ul li a {
 
     .about-luxury__image-caption {
         right: 0;
+<<<<<<< HEAD
     }
 
     .about-luxury__content {
@@ -10496,6 +10856,841 @@ html {
 
 body {
     overflow-x: hidden;
+=======
+    }
+
+    .about-luxury__content {
+        padding: 0 20px;
+    }
+}
+/* Final About-image sizing adjustments */
+.about-luxury {
+    padding-top: 35px !important;
+}
+
+/* Taller church image on laptop and desktop */
+@media (min-width: 901px) {
+    .about-luxury__image-frame,
+    .about-luxury__image-frame img {
+        min-height: 620px !important;
+    }
+}
+
+/* Full-width church image on phone */
+@media (max-width: 600px) {
+    .about-luxury {
+        padding-top: 8px !important;
+    }
+
+    .about-luxury__image-column {
+        width: 100vw !important;
+        margin-left: calc(50% - 50vw) !important;
+        padding: 0 0 14px !important;
+    }
+
+    .about-luxury__image-frame {
+        width: 100% !important;
+        min-height: 0 !important;
+        aspect-ratio: 4 / 3;
+    }
+
+    .about-luxury__image-frame img {
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 0 !important;
+        object-fit: cover;
+        object-position: center;
+    }
+}
+/* =========================================================
+   MESSAGE FROM THE PASTOR — LUXURY SECTION
+========================================================= */
+
+#pastor-message.pastor-message-luxury {
+    padding: 110px 6%;
+    background: linear-gradient(135deg, #061944 0%, #0b3d91 56%, #071a52 100%) !important;
+    color: #ffffff;
+}
+
+.pastor-message-luxury__container {
+    width: min(1180px, 100%);
+    margin: 0 auto;
+}
+
+.pastor-message-luxury__header {
+    max-width: 760px;
+    margin: 0 auto 58px;
+    text-align: center;
+}
+
+.pastor-message-luxury__eyebrow,
+.pastor-message-luxury__letter-label {
+    color: #d4af37;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+}
+
+.pastor-message-luxury__header h2 {
+    margin: 15px 0 20px;
+    color: #ffffff;
+    font-size: clamp(35px, 5vw, 62px);
+    line-height: 1.08;
+}
+
+.pastor-message-luxury__header h2 span {
+    color: #e2bd4a;
+}
+
+.pastor-message-luxury__line {
+    width: 70px;
+    height: 3px;
+    margin: 0 auto;
+    background: #d4af37;
+}
+
+.pastor-message-luxury__feature {
+    display: grid;
+    grid-template-columns: minmax(320px, 0.82fr) minmax(0, 1.18fr);
+    align-items: stretch;
+    overflow: hidden;
+    background: #ffffff;
+    box-shadow: 0 26px 65px rgba(0, 0, 0, 0.28);
+}
+
+.pastor-message-luxury__portrait {
+    position: relative;
+    min-height: 660px;
+    margin: 0;
+    overflow: hidden;
+    background: #061944;
+}
+
+.pastor-message-luxury__portrait::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent 52%);
+}
+
+.pastor-message-luxury__portrait img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.pastor-message-luxury__portrait figcaption {
+    position: absolute;
+    right: 28px;
+    bottom: 28px;
+    left: 28px;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    color: #ffffff;
+}
+
+.pastor-message-luxury__portrait figcaption span {
+    color: #e2bd4a;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.pastor-message-luxury__portrait figcaption strong {
+    font-size: 25px;
+    line-height: 1.1;
+}
+
+.pastor-message-luxury__portrait figcaption small {
+    font-size: 13px;
+    opacity: 0.88;
+}
+
+.pastor-message-luxury__letter {
+    padding: clamp(38px, 6vw, 78px);
+    color: #4c5869;
+}
+
+.pastor-message-luxury__letter p {
+    margin: 0 0 19px;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.pastor-message-luxury__lead {
+    margin-top: 18px !important;
+    color: #102b58;
+    font-size: 19px !important;
+    font-weight: 600;
+}
+
+.pastor-message-luxury__letter blockquote {
+    margin: 30px 0;
+    padding: 20px 0 20px 22px;
+    color: #0b3d91;
+    border-left: 3px solid #d4af37;
+    font-family: Georgia, serif;
+    font-size: 22px;
+    font-style: italic;
+    font-weight: 700;
+    line-height: 1.45;
+}
+
+.pastor-message-luxury__signature {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(11, 61, 145, 0.18);
+}
+
+.pastor-message-luxury__signature strong {
+    color: #0b3d91;
+    font-family: Georgia, serif;
+    font-size: 22px;
+}
+
+.pastor-message-luxury__signature span {
+    color: #8a6a17;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.7px;
+}
+
+/* Tablet and phone */
+@media (max-width: 900px) {
+    #pastor-message.pastor-message-luxury {
+        padding: 75px 5%;
+    }
+
+    .pastor-message-luxury__feature {
+        grid-template-columns: 1fr;
+    }
+
+    .pastor-message-luxury__portrait {
+        min-height: 560px;
+    }
+}
+
+@media (max-width: 600px) {
+    #pastor-message.pastor-message-luxury {
+        padding: 60px 16px;
+    }
+
+    .pastor-message-luxury__header {
+        margin-bottom: 35px;
+    }
+
+    .pastor-message-luxury__header h2 {
+        font-size: 36px;
+    }
+
+    .pastor-message-luxury__portrait {
+        min-height: 440px;
+    }
+
+    .pastor-message-luxury__portrait figcaption {
+        right: 20px;
+        bottom: 20px;
+        left: 20px;
+    }
+
+    .pastor-message-luxury__letter {
+        padding: 36px 24px;
+    }
+
+    .pastor-message-luxury__letter p {
+        font-size: 15px;
+    }
+
+    .pastor-message-luxury__lead {
+        font-size: 17px !important;
+    }
+
+    .pastor-message-luxury__letter blockquote {
+        font-size: 19px;
+    }
+}
+/* =========================================================
+   CLEAN HERO SYSTEM
+   Welcome → Video 1 → Video 2 → Welcome loop
+   Everything after this is the single active ruleset.
+========================================================= */
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 650px;
+    overflow: hidden;
+    background: #000;
+}
+
+.hero-intro-background {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.9s ease, visibility 0.9s ease;
+}
+
+.hero-intro-background.hide-intro {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.hero-intro-background img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    filter: brightness(0.8) saturate(1.05);
+}
+
+.hero-intro-background::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(7, 18, 38, 0.2), rgba(7, 18, 38, 0.58));
+}
+
+.hero-video-stage {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+}
+
+.hero-video-slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 1;
+    transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+}
+
+.hero-video-slide.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+    pointer-events: auto;
+}
+
+.hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center center;
+    background: #000;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(2, 10, 28, 0.18) 0%, rgba(2, 10, 28, 0.1) 42%, rgba(2, 10, 28, 0.48) 100%);
+}
+
+.hero-welcome-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 5;
+    width: min(90%, 900px);
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.85s ease, transform 0.85s ease, visibility 0.85s ease;
+}
+
+.hero-welcome-content.is-hidden,
+.hero-welcome-content.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translate(-50%, calc(-50% - 32px));
+}
+
+.hero-welcome {
+    display: block;
+    margin: 0;
+    color: #e7c75e;
+    font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+    letter-spacing: 0.32em;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.42);
+}
+
+.hero-title {
+    margin: 0;
+    font-size: clamp(2.7rem, 5vw, 5rem);
+    line-height: 1.04;
+    font-weight: 700;
+    text-shadow: 0 4px 22px rgba(0, 0, 0, 0.38);
+}
+
+.hero-location {
+    margin: 0;
+    font-size: clamp(1.05rem, 2vw, 1.8rem);
+    line-height: 1.2;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+}
+
+.hero-welcome-line {
+    width: 70px;
+    height: 2px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.hero-verse {
+    margin: 0;
+    max-width: 700px;
+    font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+    line-height: 1.6;
+    text-align: center;
+}
+
+.hero-verse em {
+    font-style: italic;
+    display: block;
+    font-weight: 500;
+}
+
+.hero-verse span {
+    display: block;
+    margin-top: 0.55rem;
+    font-size: 0.88em;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+.hero-actions {
+    position: absolute;
+    left: 50%;
+    bottom: 10%;
+    z-index: 6;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+}
+
+.hero-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-width: 185px;
+    padding: 13px 22px;
+    border-radius: 3px;
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.hero-action:hover {
+    transform: translateY(-2px);
+}
+
+.live-action {
+    background: #d4af37;
+    color: #111;
+}
+
+.join-action {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    color: #fff;
+}
+
+.action-icon {
+    font-size: 0.9rem;
+}
+
+.hero-dots {
+    position: absolute;
+    left: 50%;
+    bottom: 28px;
+    z-index: 7;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.hero-dot {
+    width: 9px;
+    height: 9px;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.55);
+    cursor: pointer;
+    transition: width 0.25s ease, background 0.25s ease;
+}
+
+.hero-dot.active {
+    width: 28px;
+    background: #d4af37;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        height: 100svh;
+        min-height: 560px;
+    }
+
+    .hero-welcome-content {
+        width: min(90%, 420px);
+        gap: 0.4rem;
+    }
+
+    .hero-welcome {
+        letter-spacing: 0.28em;
+        font-size: 0.78rem;
+    }
+
+    .hero-title {
+        font-size: clamp(2.2rem, 9vw, 3.2rem);
+    }
+
+    .hero-location {
+        font-size: clamp(0.95rem, 4vw, 1.2rem);
+        letter-spacing: 0.1em;
+    }
+
+    .hero-welcome-line {
+        width: 56px;
+    }
+
+    .hero-verse {
+        max-width: min(86vw, 340px);
+        font-size: 0.84rem;
+    }
+
+    .hero-actions {
+        bottom: 12%;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hero-action {
+        min-width: 190px;
+        padding: 11px 18px;
+        font-size: 0.7rem;
+    }
+
+    .hero-dots {
+        bottom: 22px;
+    }
+}
+
+@media (max-width: 420px) {
+    .hero {
+        min-height: 500px;
+    }
+
+    .hero-welcome-content {
+        width: min(90vw, 360px);
+    }
+
+    .hero-title {
+        font-size: clamp(1.9rem, 9vw, 2.7rem);
+    }
+
+    .hero-verse {
+        max-width: 290px;
+        font-size: 0.75rem;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+@media (min-width: 601px) and (max-width: 1150px) {
+    body {
+        padding-top: 128px;
+    }
+
+    .main-nav {
+        flex-wrap: wrap;
+        padding: 8px 2.5% 10px;
+    }
+
+    .nav-brand {
+        flex: 1 1 auto;
+    }
+
+    .nav-menu-wrapper {
+        order: 3;
+        flex: 0 0 100%;
+        width: 100%;
+        overflow: visible;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        overflow: visible;
+        white-space: normal;
+        transform: none !important;
+    }
+}
+
+/* Keep every navigation label available on narrow screens. */
+@media (max-width: 600px) {
+    body {
+        padding-top: 152px;
+    }
+
+    .main-nav {
+        min-height: 0;
+        flex-wrap: wrap;
+        align-content: center;
+        padding: 8px 12px 10px;
+        gap: 6px 10px;
+    }
+
+    .nav-brand {
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+
+    .church-logo {
+        width: min(220px, 62vw);
+        max-height: 58px;
+    }
+
+    .mobile-menu-toggle {
+        display: none;
+    }
+
+    .nav-menu-wrapper {
+        order: 3;
+        flex: 0 0 100%;
+        width: 100%;
+        min-width: 0;
+        overflow: visible;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 3px 10px;
+        width: 100%;
+        overflow: visible;
+        white-space: normal;
+        transform: none !important;
+    }
+
+    .nav-links > li > a,
+    .more-toggle,
+    .social-toggle {
+        padding: 5px 1px 4px;
+        font-size: 11px;
+        line-height: 1.2;
+    }
+
+    .nav-actions {
+        margin-left: auto;
+        gap: 6px;
+    }
+
+    .nav-actions .nav-live,
+    .nav-actions .social-toggle {
+        padding: 6px 9px;
+        font-size: 10px;
+    }
+}
+
+/* Final responsive navigation layout */
+.main-nav {
+    flex-wrap: nowrap;
+}
+
+.nav-menu-wrapper {
+    min-width: 0;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-links {
+    grid-column: 1;
+    min-width: 0;
+    width: 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    scrollbar-width: none;
+}
+
+.nav-links::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-actions {
+    grid-column: 3;
+    flex-shrink: 0;
+}
+
+/* Keep the scroll cue visible at every responsive size. */
+.nav-scroll-indicator {
+    grid-column: 2;
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1;
+    flex-shrink: 0;
+    animation: none;
+}
+
+.nav-menu-wrapper::after {
+    display: none;
+}
+
+.main-nav::after {
+    display: none;
+}
+
+@media (min-width: 601px) {
+    .nav-scroll-indicator {
+        position: fixed;
+        top: 21px;
+        right: 72px;
+        margin-top: 0;
+        z-index: 1001;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        padding-top: 124px;
+    }
+
+    .main-nav {
+        flex-wrap: wrap;
+        align-items: flex-start;
+        padding: 7px 10px 8px;
+        gap: 6px 0;
+    }
+
+    .nav-brand {
+        flex: 0 0 100%;
+        justify-content: center;
+        margin-right: 0;
+    }
+
+    .nav-brand a {
+        width: 100%;
+    }
+
+    .church-logo {
+        width: min(205px, 62vw);
+        max-height: 57px;
+    }
+
+    .nav-menu-wrapper {
+        order: 3;
+        flex: 0 0 100%;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        gap: 7px;
+        overflow: hidden;
+    }
+
+    .nav-links {
+        flex: 1 1 auto;
+        width: auto;
+        gap: 3px 16px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        justify-content: flex-start;
+        transform: none !important;
+        padding: 0 2px;
+    }
+
+    .nav-links > li > a,
+    .more-toggle {
+        padding: 5px 1px 4px;
+        font-size: 11px;
+    }
+
+    .nav-scroll-indicator {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin-top: 0;
+        order: 2;
+        flex-shrink: 0;
+    }
+
+    .nav-menu-wrapper::after {
+        display: none;
+    }
+
+    .nav-actions {
+        order: 3;
+        margin-left: auto;
+        gap: 5px;
+    }
+
+    .nav-actions .nav-live,
+    .nav-actions .social-toggle {
+        padding: 6px 8px;
+        font-size: 10px;
+    }
+>>>>>>> bb58788 (Improve responsive navigation scrolling)
 }
 
 #home,
