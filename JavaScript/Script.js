@@ -43,43 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     const navLinks = document.querySelector(".nav-links");
-<<<<<<< HEAD
-    const navActions = document.querySelector(".nav-actions");
-    const navScrollButton = document.querySelector(".nav-scroll-indicator");
-
-    if (navLinks && navActions && navScrollButton) {
-        let navOffset = 0;
-        const step = 170;
-        const maxShift = 360;
-        let resetMode = false;
-
-        const updateArrow = () => {
-            const arrow = navScrollButton.querySelector("span");
-            if (!arrow) return;
-
-            arrow.textContent = resetMode ? "‹" : "›";
-        };
-
-        updateArrow();
-
-        navScrollButton.addEventListener("click", () => {
-            if (resetMode) {
-                navOffset = 0;
-                resetMode = false;
-            } else {
-                navOffset = Math.max(navOffset - step, -maxShift);
-                if (navOffset <= -maxShift + 10) {
-                    resetMode = true;
-                }
-            }
-
-            const slideOffset = navOffset + 14;
-
-            navLinks.style.transform = `translateX(${slideOffset}px)`;
-            navActions.style.transform = `translateX(${slideOffset}px)`;
-            navScrollButton.style.transform = `translateX(${slideOffset}px)`;
-            updateArrow();
-=======
     const navScrollButton = document.querySelector(".nav-scroll-indicator");
 
     if (navLinks && navScrollButton) {
@@ -96,20 +59,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         navScrollButton.addEventListener("click", event => {
             event.preventDefault();
-
             const atEnd = navLinks.scrollLeft + navLinks.clientWidth >= navLinks.scrollWidth - 8;
             const maximumScroll = navLinks.scrollWidth - navLinks.clientWidth;
-            const nextPosition = atEnd
-                ? 0
-                : Math.min(navLinks.scrollLeft + 220, maximumScroll);
 
             navLinks.scrollTo({
-                left: nextPosition,
+                left: atEnd ? 0 : Math.min(navLinks.scrollLeft + 220, maximumScroll),
                 behavior: "smooth"
             });
-
-            window.setTimeout(updateArrow, 350);
->>>>>>> bb58788 (Improve responsive navigation scrolling)
         });
     }
 
@@ -647,11 +603,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       DEFER HEAVY VIDEO LOADING
+       PRELOAD BOTH VIDEOS
        ===================================================== */
 
     videos.forEach(
-        (video) => {
+        (video, index) => {
 
             video.muted = true;
 
@@ -667,9 +623,22 @@ document.addEventListener("DOMContentLoaded", () => {
                 ""
             );
 
-            video.preload = "metadata";
 
-            video.dataset.loaded = "false";
+            /*
+             * Load both videos early.
+             * This is important for smooth
+             * transition from video 1 → video 2.
+             */
+
+            video.preload = "auto";
+
+
+            try {
+                video.load();
+            }
+
+            catch (error) {}
+
 
             stopVideo(video);
 
